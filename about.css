@@ -1,0 +1,160 @@
+/* About Page Specific Styles */
+.about-page {
+    max-width: 700px;
+}
+
+.about-page h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-2xl);
+    color: var(--text-primary);
+}
+
+.about-intro {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-3xl);
+    color: var(--text-secondary);
+}
+
+.about-intro p {
+    margin-bottom: var(--space-lg);
+}
+
+.about-details {
+    margin-bottom: var(--space-3xl);
+}
+
+.about-details h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    color: var(--text-primary);
+}
+
+.about-details p {
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+    color: var(--text-secondary);
+}
+
+.about-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-details li {
+    padding: var(--space-sm) 0;
+    color: var(--text-secondary);
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+.skill-category {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+}
+
+.skill-category h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-category li {
+    padding: var(--space-xs) 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.skill-category li::before {
+    content: "→ ";
+    color: var(--link-color);
+    font-weight: bold;
+}
+
+/* Philosophy List */
+.philosophy-list {
+    list-style: none;
+    padding: 0;
+}
+
+.philosophy-list li {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.philosophy-list li:last-child {
+    border-bottom: none;
+}
+
+.philosophy-list strong {
+    color: var(--text-primary);
+}
+
+/* Contact Links */
+.contact-links {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.contact-item:hover {
+    background-color: var(--link-color);
+    color: white;
+    border-color: var(--link-color);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-page h1 {
+        font-size: 2rem;
+    }
+    
+    .about-intro {
+        font-size: 1rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-links {
+        flex-direction: column;
+    }
+    
+    .contact-item {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -54,24 +54,41 @@ function highlightNavigation() {
 
 window.addEventListener('scroll', highlightNavigation);
 
-// Typing animation for hero text (optional enhancement)
-const heroTitle = document.querySelector('.hero h1');
-if (heroTitle) {
-    const text = heroTitle.innerText;
-    heroTitle.innerText = '';
+function typeWriterEffect(element, options = {}) {
+    if (!element) return;
+
+    const text = element.textContent;     // Keeps spaces exactly as they are
+    const width = element.offsetWidth;    // Prevents layout jump
+    const speed = options.speed || 50;    // ms per character
+    const delay = options.delay || 500;   // start delay
+    const cursor = options.cursor || false;
+
+    // Lock width + reset text
+    element.style.display = 'inline-block';
+    element.style.width = width + 'px';
+    element.textContent = '';
+
     let index = 0;
-    
-    function typeWriter() {
+
+    function type() {
         if (index < text.length) {
-            heroTitle.innerText += text.charAt(index);
+            element.textContent += text[index];
             index++;
-            setTimeout(typeWriter, 50);
+            setTimeout(type, speed);
         }
     }
-    
-    // Start typing animation after a short delay
-    setTimeout(typeWriter, 500);
+
+    setTimeout(type, delay);
 }
+
+const heroTitle = document.querySelector('.hero h1');
+typeWriterEffect(heroTitle, {
+    speed: 40,
+    delay: 300,
+    cursor: true
+});
+
+
 
 // Newsletter form (placeholder functionality)
 document.addEventListener('DOMContentLoaded', () => {

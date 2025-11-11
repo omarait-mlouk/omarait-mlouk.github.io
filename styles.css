@@ -189,6 +189,11 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
+.main-nav img{
+    width: 20px;
+    height: 20px;
+}
+
 .nav-item {
     display: flex;
     align-items: center;

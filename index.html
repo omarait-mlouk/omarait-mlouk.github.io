@@ -32,19 +32,23 @@
             </section>
 
             <nav class="main-nav">
-                <a href="#blog" class="nav-item">
+                <a href="#" class="nav-item" data-section="home">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="#blog" class="nav-item" data-section="blog">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAXlJREFUWEdjZBjkgHGQu48Bw4FcXFz/B9LR3759Q3HT0HEgesh9DQ1CCUju1evA/K9brFDFfY6B+d8OOKOIcznsBfPPnz+PIn7/9n28ERQUBrEXFpLwEBxyDhzIdEhUCA5aB5qZmWF124cPH6jq5i9fvqCY9+3bNzAfZg/ONDjqQGi4Df8Q3D/VEmuaM4zeTpW0SHEIDnoHwoKJ2rkXZi7FIThkHEgoqg+5e2JNk3Y78adVqoXgoHUgvdIeLPhJrkmGjAOTFiZRpdyDGTIpeBJW88gOwUHvQKoGHwMDA3ruHf5pEOZDq8bDVA3MXcWGsL4HirlEtwfRc/GgdyClwUco7aFXrQRb1NQuB2nuwPNLsde5sPYhrjoZFjJGa1dj7YOgxwzZaXDQO5DcNIir1YLLPLJDcNA7kNhi5li9LdgvbkuWkeSnJW4upPWLyS0HB8yBJAUHljoX1lohZA7d0iCpmYNgQQ1TMDrCSiCOCQ4BE0oj9JYf9KP8AAwOCkcMzeo6AAAAAElFTkSuQmCC" alt="Blog">
                     <span>Blog</span>
                 </a>
-                <a href="#notes" class="nav-item">
+                <a href="#notes" class="nav-item" data-section="notes">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAlFJREFUWEfVmT9IQkEcx7XmJ4QRBBItbZGiLc7SVtmQ0GJbRottDRaKRlMQ5BI4SdIgLQk6iAkiRJNiW7VE5WTSoNAiZfi7fuK7ON97vhPu3fJ793535/f3ud/94Wk2MYokSd2eK5VKQQu/3w+Wd73dbptZGnrvmU7DCIwcRiDA6EkUbCwSAxuOhrnUkR6LpCJB4QTi1JZLZQguuB8E6131gs1kM2Dj5/Ghfrq9Ur32UIPxaJL/CBpGYKvVgohqVRIZlumZ6WGLjulLX6VluYwNHXYH+R2tBA0n0OEkkbJKvV4f6rfb7eDPHSfBSo1vsO6zbVk/1TlIExRW4EgJN9DJarXKhggGya6w2SVEX9/fwG5dH4HVTFB4gfQqVit4L+CEps8vU2CRXKVSgbrL5SLEso9gE0+50QgKL1AtMVzFvo056HJ/d0u6fnrArO+uycjF4+QkwtLpdEYjKLxAtVOMOUeTy19OQIxLCxawizukjiV0EIJHvC1pXsXCC1SaYvcyIaJEbna+De3cgR+wF4kq2GKhqI+g8AJZU6w252hym75TiNmzQla3boLCC6SnWG/O4X2y2WjyISi8QJxivTlHB8o9B4UVaLGQE6D1cUMg/J2t9AnB2ucw52w2mwwizozuVWwcgaUvIJAvwCeb/tnK2ueUNnhuOdgnKLpAJPKUnIRHVs4pkeO+DyJBwwikCeE3HHzPWrXox5s3t5OEJiiMQPzsppRTvPyab9TCChwgQjY8qkiSxAuabBzNX1hNJpPwAsdCSuugQ/8C0DrYONr/AqWg4EdKn+XrAAAAAElFTkSuQmCC" alt="Notes">
                     <span>Notes</span>
                 </a>
-                <a href="#projects" class="nav-item">
+                <a href="#projects" class="nav-item" data-section="projects">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAlFJREFUWEfVmLtKA0EUhg1iETD2ETtJbATFlHaxtLFSMAHB0sZOsPLSCGkkCj5BougrCNamWBMrQ6JdRDshEawk4pn9zcwwl911i9k0k90zc+afb8+cuaTG9L+hb0oZ6sRhMvZj6txZgSSsXNokOrX6JShhMBAelZ7gx9AP+VcRTJbAp3abRuJ5D1RixMAHe1Ccsh/ZvwzNStAlgcKnDUsmKEFdvUH/k0ydbkeIeZ5gMgViZP8lhPaZqUmlq8gEEyOQi41YYBYKS+RHBhA6BhXo3RKIvPV1dxSLMDhJFw/or0wyNEFnBWIN7jevBXKZxXXhedC6MZLV1Z/4YCuUTBJAsKJo82DiBILE7doyjfzq+Z3Kau1ESdBWP3aCtg5llbb6EQSO+0vdBvVVq7PY6zfZfhAdbs/PClpsBHX1RwKP/dm8QKXnPfr+vyn8uBhMuEBbErw/rAaKTZAb5cOYCDogEBLMn9omVGcPSw5+FDtq9wRqjpfhhO6W9wV4F+dbSpjpIou5fI5lg073RZi1cqNfgokRqPvsNIB8Li+NOFo0jsiJZw+dN56gmwKzjSERWjkrkUDuJsGPFUYu7p+879MSdF4glEPo9E6BXmFfhthDPZzKdIepoHZ532eKQbI5L5AbAcVktsGyT6Y8589eNutwN4ObB/lQFdZuI6m9m3FZIGBK+e8vb5EdpzEFAWpns9vuBXU5j49VtwRWeiwf7s2ob4UrPRaTMdiNN7VcP+KO2lmBEIZve/oqZqS3FnuurLISdrxH7bB2tJP9yPkw5brAHy6QY3VmdklZAAAAAElFTkSuQmCC" alt="Projects">
                     <span>Projects</span>
                 </a>
-                <a href="./about.html" class="nav-item">
+                <a href="#about" class="nav-item" data-section="about">
                     <span class="nav-icon">👨‍💻</span>
                     <span>About Me</span>
                 </a>
@@ -72,8 +76,10 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Hero Section -->
-            <section class="hero">
+            <!-- Home Page Content -->
+            <div id="home" class="page-section">
+                <!-- Hero Section -->
+                <section class="hero">
                 <h1>Hey, I'm Omar!</h1>
                 <div class="hero-content">
                     <div class="hero-text">
@@ -293,6 +299,710 @@
                             <a href="#" class="btn-small">Demo</a>
                         </div>
                     </article>
+                </div>
+            </section>
+            </div>
+            <!-- End Home Page Content -->
+
+            <!-- About Section (Initially Hidden) -->
+            <section id="about" class="page-section" style="display: none;">
+                <div class="about-hero">
+                    <h1>About Me</h1>
+                    <p class="about-intro">AI Engineer · Deep Learning Researcher · Full-Stack Developer</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Hi, I’m Omar Ait Mlouk 👋</h2>
+                        <p>I’m a Master’s student in Artificial Intelligence and Applications at Université Ibn Zohr in Morocco, while working as a Full-Stack Developer and Python & Odoo ERP Specialist at AinnovateX.</p>
+                        
+                        <p>With over 4 years of professional experience in software development, I’ve had the privilege of working on diverse projects ranging from enterprise ERP solutions to cutting-edge computer vision systems. My journey in tech began with web development and gradually evolved into the fascinating world of AI and machine learning.</p>
+
+                        <h3>What I Do</h3>
+                        <p>I specialize in building end-to-end AI solutions, from research and model development to deployment and optimization. My recent work includes:</p>
+                        <ul class="about-list">
+                            <li>Implementing state-of-the-art deep learning models like DeblurGAN-v2 for image restoration</li>
+                            <li>Developing computer vision systems for medical imaging and character recognition</li>
+                            <li>Creating full-stack web applications with modern frameworks</li>
+                            <li>Building custom ERP solutions and business automation tools</li>
+                        </ul>
+
+                        <h3>Research Interests</h3>
+                        <p>My research focuses on:</p>
+                        <ul class="about-list">
+                            <li><strong>Computer Vision:</strong> Image restoration, GANs, and medical imaging</li>
+                            <li><strong>Deep Learning:</strong> Neural architecture design and optimization</li>
+                            <li><strong>NLP:</strong> Multilingual systems and low-resource languages</li>
+                            <li><strong>MLOps:</strong> Model deployment and production systems</li>
+                        </ul>
+
+                        <h3>Technical Stack</h3>
+                        <div class="tech-grid">
+                            <div class="tech-category">
+                                <h4>AI/ML</h4>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">Hugging Face</span>
+                            </div>
+                            <div class="tech-category">
+                                <h4>Backend</h4>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Odoo</span>
+                            </div>
+                            <div class="tech-category">
+                                <h4>Frontend</h4>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">D3.js</span>
+                            </div>
+                            <div class="tech-category">
+                                <h4>Tools</h4>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Git</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+
+                        <h3>Education</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="timeline-date">2023 - Present</span>
+                                <h4>Master’s in Artificial Intelligence and Applications</h4>
+                                <p>Université Ibn Zohr, Morocco</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">2020 - 2023</span>
+                                <h4>Bachelor’s in Computer Science</h4>
+                                <p>Focus on Software Engineering and Data Science</p>
+                            </div>
+                        </div>
+
+                        <h3>Let’s Connect!</h3>
+                        <p>I’m always excited to discuss new projects, research collaborations, or interesting technical challenges. Feel free to reach out!</p>
+                        <div class="about-links">
+                            <a href="mailto:omar.aitmlouk@gmail.com" class="btn btn-primary">📧 Email Me</a>
+                            <a href="https://github.com/omarait-mlouk" class="btn btn-secondary" target="_blank">🐱 GitHub</a>
+                            <a href="https://linkedin.com/in/aitmloukomar" class="btn btn-secondary" target="_blank">💼 LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Page (Initially Hidden) -->
+            <section id="projects-page" class="page-section" style="display: none;">
+                <div class="projects-hero">
+                    <h1>Projects</h1>
+                    <p class="projects-intro">A collection of my work in AI, machine learning, and full-stack development</p>
+                    <div class="projects-nav-links">
+                        <a href="#" class="quick-preview-link">← View Quick Preview on Homepage</a>
+                    </div>
+                </div>
+
+                <div class="projects-content">
+                    <!-- Featured Projects -->
+                    <div class="projects-featured">
+                        <h2>Featured Projects</h2>
+                        
+                        <div class="featured-project">
+                            <div class="featured-project-content">
+                                <span class="project-badge">2024 • Computer Vision</span>
+                                <h3>DeblurGAN-v2 Image Restoration Platform</h3>
+                                <p>Implemented state-of-the-art motion deblurring using DeblurGAN-v2 architecture with Feature Pyramid Networks. The web platform processes images in real-time, achieving significant improvements in image quality metrics.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">PyTorch</span>
+                                    <span class="tech-pill">Flask</span>
+                                    <span class="tech-pill">OpenCV</span>
+                                    <span class="tech-pill">Docker</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="https://github.com/omarait-mlouk/deblurgan-v2" class="project-link" target="_blank">
+                                        <span>View on GitHub</span>
+                                        <span>→</span>
+                                    </a>
+                                    <a href="https://deblurgan-demo.herokuapp.com" class="project-link" target="_blank">
+                                        <span>Live Demo</span>
+                                        <span>→</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="featured-project-image">
+                                <div class="project-image-placeholder">
+                                    <span>🔬</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="featured-project reverse">
+                            <div class="featured-project-content">
+                                <span class="project-badge">2024 • Enterprise Solution</span>
+                                <h3>Morocco Tourism Booking Platform</h3>
+                                <p>Developed a comprehensive tourism booking system using Odoo ERP. Features include multi-language support, real-time availability, payment integration, and an admin dashboard for tour operators.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">Odoo 18</span>
+                                    <span class="tech-pill">Python</span>
+                                    <span class="tech-pill">PostgreSQL</span>
+                                    <span class="tech-pill">XML/QWeb</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="project-link">
+                                        <span>Case Study</span>
+                                        <span>→</span>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <span>View Demo</span>
+                                        <span>→</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="featured-project-image">
+                                <div class="project-image-placeholder">
+                                    <span>🏖️</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI/ML Projects -->
+                    <div class="project-category">
+                        <h2>AI & Machine Learning</h2>
+                        <div class="project-grid">
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">🔤</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3>Tifinagh Character Recognition</h3>
+                                <p>Built a CNN-based OCR system for recognizing Amazigh script characters, achieving 96% accuracy on handwritten samples.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">TensorFlow</span>
+                                    <span class="tech-pill">Keras</span>
+                                    <span class="tech-pill">NumPy</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Paper</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">🎨</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3>Neural Style Transfer</h3>
+                                <p>Implemented artistic style transfer using VGG19 and optimization techniques for real-time style application.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">PyTorch</span>
+                                    <span class="tech-pill">Streamlit</span>
+                                    <span class="tech-pill">PIL</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Demo</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">🫁</span>
+                                    <span class="project-year">2022</span>
+                                </div>
+                                <h3>COVID-19 X-Ray Classifier</h3>
+                                <p>Developed a deep learning model for detecting COVID-19 from chest X-rays with 94% accuracy using transfer learning.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">TensorFlow</span>
+                                    <span class="tech-pill">ResNet50</span>
+                                    <span class="tech-pill">Flask</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Article</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">😷</span>
+                                    <span class="project-year">2022</span>
+                                </div>
+                                <h3>Face Mask Detection</h3>
+                                <p>Real-time face mask detection system using MobileNetV2 for deployment on edge devices.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">OpenCV</span>
+                                    <span class="tech-pill">MobileNet</span>
+                                    <span class="tech-pill">TF Lite</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Video</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">🧠</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3>U-Net Tumor Segmentation</h3>
+                                <p>Implemented U-Net architecture for breast ultrasound tumor segmentation, achieving 49.96% IoU score.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">PyTorch</span>
+                                    <span class="tech-pill">U-Net</span>
+                                    <span class="tech-pill">SimpleITK</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Report</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">📊</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3>Autoencoder Comparison Study</h3>
+                                <p>Comprehensive comparison of autoencoder architectures on Fashion-MNIST for dimensionality reduction.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">TensorFlow</span>
+                                    <span class="tech-pill">Scikit-learn</span>
+                                    <span class="tech-pill">Matplotlib</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Notebook</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web Development Projects -->
+                    <div class="project-category">
+                        <h2>Web Development</h2>
+                        <div class="project-grid">
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">📚</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3>AI Children's Book Generator</h3>
+                                <p>Platform for generating personalized children's stories using OpenAI's GPT and DALL-E APIs.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React</span>
+                                    <span class="tech-pill">Node.js</span>
+                                    <span class="tech-pill">OpenAI API</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Live Site</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">📈</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3>Morocco Regional Dashboard</h3>
+                                <p>Interactive data visualization dashboard for Morocco's regional statistics using D3.js.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">D3.js</span>
+                                    <span class="tech-pill">JavaScript</span>
+                                    <span class="tech-pill">TopoJSON</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Demo</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card-detailed">
+                                <div class="project-card-header">
+                                    <span class="project-icon">🚗</span>
+                                    <span class="project-year">2024</span>
+                                </div>
+                                <h3>Transportation Booking System</h3>
+                                <p>Odoo module for managing transportation routes with interactive maps and real-time booking.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">Odoo</span>
+                                    <span class="tech-pill">Leaflet.js</span>
+                                    <span class="tech-pill">PostgreSQL</span>
+                                </div>
+                                <div class="project-links-bottom">
+                                    <a href="#" class="link-with-icon">GitHub</a>
+                                    <a href="#" class="link-with-icon">Documentation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Open Source Contributions -->
+                    <div class="project-category">
+                        <h2>Open Source Contributions</h2>
+                        <div class="contributions-list">
+                            <div class="contribution-item">
+                                <div class="contribution-header">
+                                    <h4>TensorFlow Models</h4>
+                                    <span class="contribution-badge">15 commits</span>
+                                </div>
+                                <p>Contributed to the official TensorFlow models repository with improvements to image segmentation models.</p>
+                            </div>
+                            <div class="contribution-item">
+                                <div class="contribution-header">
+                                    <h4>Odoo Community</h4>
+                                    <span class="contribution-badge">8 modules</span>
+                                </div>
+                                <p>Developed and maintained several community modules for Odoo 16-18, focusing on tourism and booking systems.</p>
+                            </div>
+                            <div class="contribution-item">
+                                <div class="contribution-header">
+                                    <h4>Scikit-learn</h4>
+                                    <span class="contribution-badge">3 PRs merged</span>
+                                </div>
+                                <p>Documentation improvements and bug fixes for preprocessing modules.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Page (Initially Hidden) -->
+            <section id="blog-page" class="page-section" style="display: none;">
+                <div class="blog-hero">
+                    <h1>Blog</h1>
+                    <p class="blog-intro">Guides, references, tutorials, and deep dives into AI and development</p>
+                    <div class="blog-nav-links">
+                        <a href="#" class="quick-preview-link-blog">← View Recent Posts on Homepage</a>
+                    </div>
+                </div>
+
+                <div class="blog-content">
+                    <!-- Featured Article -->
+                    <div class="featured-article">
+                        <span class="article-badge">Featured • Computer Vision</span>
+                        <h2>Advanced Image Deblurring with DeblurGAN-v2 and Feature Pyramid Networks</h2>
+                        <div class="article-meta">
+                            <span class="article-date">November 15, 2024</span>
+                            <span class="article-read-time">• 12 min read</span>
+                        </div>
+                        <p class="article-excerpt">A comprehensive guide to implementing state-of-the-art motion deblurring using DeblurGAN-v2 architecture. Learn how Feature Pyramid Networks enhance multi-scale processing and discover optimization techniques that achieve real-time performance on consumer GPUs.</p>
+                        <div class="article-tags">
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">GANs</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                        <a href="/blog/deblurgan-v2-implementation" class="read-more-link">Continue Reading →</a>
+                    </div>
+
+                    <!-- Recent Articles -->
+                    <div class="blog-category">
+                        <h2>Recent Articles</h2>
+                        <div class="articles-grid">
+                            <article class="article-card">
+                                <span class="article-category">Machine Learning</span>
+                                <h3>Building a Tifinagh Character Recognition System with CNNs</h3>
+                                <p>Explore the development of a CNN-based OCR system for Amazigh script, achieving 96% accuracy through careful data augmentation and architecture design.</p>
+                                <div class="article-footer">
+                                    <span class="article-date">Oct 28, 2024</span>
+                                    <a href="#" class="article-link">Read More →</a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <span class="article-category">Web Development</span>
+                                <h3>Creating a Complete Tourism Booking Platform in Odoo</h3>
+                                <p>Step-by-step guide to building an enterprise tourism platform with multi-language support, payment integration, and real-time availability tracking.</p>
+                                <div class="article-footer">
+                                    <span class="article-date">Oct 15, 2024</span>
+                                    <a href="#" class="article-link">Read More →</a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <span class="article-category">Deep Learning</span>
+                                <h3>Understanding U-Net, Autoencoders, and Modern CNN Architectures</h3>
+                                <p>A deep dive into the evolution of convolutional architectures, from basic autoencoders to sophisticated segmentation networks.</p>
+                                <div class="article-footer">
+                                    <span class="article-date">Sep 20, 2024</span>
+                                    <a href="#" class="article-link">Read More →</a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <span class="article-category">MLOps</span>
+                                <h3>Deploying Deep Learning Models with Flask: A Complete Guide</h3>
+                                <p>Learn how to productionize your models with Flask, Docker, and cloud deployment strategies for scalable AI applications.</p>
+                                <div class="article-footer">
+                                    <span class="article-date">Sep 5, 2024</span>
+                                    <a href="#" class="article-link">Read More →</a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <span class="article-category">Computer Vision</span>
+                                <h3>Real-Time Face Mask Detection with MobileNetV2</h3>
+                                <p>Build an efficient face mask detection system optimized for edge devices using transfer learning and model quantization.</p>
+                                <div class="article-footer">
+                                    <span class="article-date">Aug 18, 2024</span>
+                                    <a href="#" class="article-link">Read More →</a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <span class="article-category">Data Science</span>
+                                <h3>Interactive Data Visualization with D3.js and React</h3>
+                                <p>Create dynamic, interactive visualizations by combining D3's power with React's component architecture.</p>
+                                <div class="article-footer">
+                                    <span class="article-date">Jul 30, 2024</span>
+                                    <a href="#" class="article-link">Read More →</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial Series -->
+                    <div class="blog-category">
+                        <h2>Tutorial Series</h2>
+                        <div class="series-list">
+                            <div class="series-item">
+                                <div class="series-header">
+                                    <h3>GANs From Scratch</h3>
+                                    <span class="series-count">5 parts</span>
+                                </div>
+                                <p>A comprehensive series covering GAN fundamentals, from basic theory to advanced architectures like StyleGAN and CycleGAN.</p>
+                                <ol class="series-parts">
+                                    <li><a href="#">Part 1: Understanding Generative Adversarial Networks</a></li>
+                                    <li><a href="#">Part 2: Implementing Your First GAN in PyTorch</a></li>
+                                    <li><a href="#">Part 3: DCGAN and Convolutional Architectures</a></li>
+                                    <li><a href="#">Part 4: Advanced GANs - WGAN, StyleGAN, and Beyond</a></li>
+                                    <li><a href="#">Part 5: Real-World Applications and Best Practices</a></li>
+                                </ol>
+                            </div>
+
+                            <div class="series-item">
+                                <div class="series-header">
+                                    <h3>Building Production ML Systems</h3>
+                                    <span class="series-count">4 parts</span>
+                                </div>
+                                <p>Learn how to take machine learning models from notebook to production with best practices for deployment and monitoring.</p>
+                                <ol class="series-parts">
+                                    <li><a href="#">Part 1: Model Development and Validation</a></li>
+                                    <li><a href="#">Part 2: Containerization with Docker</a></li>
+                                    <li><a href="#">Part 3: API Development and Testing</a></li>
+                                    <li><a href="#">Part 4: Monitoring and Maintenance</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="blog-category">
+                        <h2>Browse by Category</h2>
+                        <div class="category-grid">
+                            <a href="#" class="category-card">
+                                <span class="category-icon">🤖</span>
+                                <span class="category-name">Deep Learning</span>
+                                <span class="category-count">15 articles</span>
+                            </a>
+                            <a href="#" class="category-card">
+                                <span class="category-icon">👁️</span>
+                                <span class="category-name">Computer Vision</span>
+                                <span class="category-count">12 articles</span>
+                            </a>
+                            <a href="#" class="category-card">
+                                <span class="category-icon">💬</span>
+                                <span class="category-name">NLP</span>
+                                <span class="category-count">8 articles</span>
+                            </a>
+                            <a href="#" class="category-card">
+                                <span class="category-icon">🚀</span>
+                                <span class="category-name">MLOps</span>
+                                <span class="category-count">10 articles</span>
+                            </a>
+                            <a href="#" class="category-card">
+                                <span class="category-icon">🌐</span>
+                                <span class="category-name">Web Development</span>
+                                <span class="category-count">7 articles</span>
+                            </a>
+                            <a href="#" class="category-card">
+                                <span class="category-icon">📊</span>
+                                <span class="category-name">Data Science</span>
+                                <span class="category-count">9 articles</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notes Page (Initially Hidden) -->
+            <section id="notes-page" class="page-section" style="display: none;">
+                <div class="notes-hero">
+                    <h1>Notes</h1>
+                    <p class="notes-intro">Thoughts, reflections, and informal writings about tech, life, and everything in between</p>
+                    <div class="notes-nav-links">
+                        <a href="#" class="quick-preview-link-notes">← View Recent Notes on Homepage</a>
+                    </div>
+                </div>
+
+                <div class="notes-content">
+                    <!-- Pinned Note -->
+                    <div class="pinned-note">
+                        <span class="pin-icon">📌</span>
+                        <div class="note-content">
+                            <h2>Year in Review: 2024 into 2025</h2>
+                            <div class="note-meta">
+                                <span class="note-date">December 31, 2024</span>
+                                <span class="note-category">Reflection</span>
+                            </div>
+                            <p>Looking back at an incredible year of growth, challenges, and achievements. From completing my thesis on DeblurGAN-v2 to starting my Master's in AI, this year has been transformative. Here are the key lessons learned and goals for 2025...</p>
+                            <a href="#" class="note-link">Read Full Note →</a>
+                        </div>
+                    </div>
+
+                    <!-- Recent Notes -->
+                    <div class="notes-grid">
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">🎓</span>
+                                <span class="note-date">Dec 15, 2024</span>
+                            </div>
+                            <h3>My Thesis Journey: DeblurGAN-v2 Research</h3>
+                            <p>Six months of research, countless experiments, and finally defending my thesis on image deblurring. The journey taught me more than just technical skills...</p>
+                            <div class="note-tags">
+                                <span class="note-tag">Research</span>
+                                <span class="note-tag">Academic</span>
+                            </div>
+                        </article>
+
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">🌍</span>
+                                <span class="note-date">Nov 28, 2024</span>
+                            </div>
+                            <h3>The Growing Tech Scene in Morocco</h3>
+                            <p>Observations on how Morocco's tech ecosystem is evolving, from AI startups in Casablanca to the growing developer community across the country.</p>
+                            <div class="note-tags">
+                                <span class="note-tag">Tech Culture</span>
+                                <span class="note-tag">Morocco</span>
+                            </div>
+                        </article>
+
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">📚</span>
+                                <span class="note-date">Nov 10, 2024</span>
+                            </div>
+                            <h3>My Favorite Machine Learning Resources</h3>
+                            <p>A curated list of books, courses, and papers that have shaped my understanding of ML. From Andrew Ng's course to recent transformer papers.</p>
+                            <div class="note-tags">
+                                <span class="note-tag">Learning</span>
+                                <span class="note-tag">Resources</span>
+                            </div>
+                        </article>
+
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">💡</span>
+                                <span class="note-date">Oct 22, 2024</span>
+                            </div>
+                            <h3>Why I Chose PyTorch Over TensorFlow</h3>
+                            <p>After years of using both frameworks, here's my take on the PyTorch vs TensorFlow debate and why I ultimately chose PyTorch for research.</p>
+                            <div class="note-tags">
+                                <span class="note-tag">Tools</span>
+                                <span class="note-tag">Opinion</span>
+                            </div>
+                        </article>
+
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">🚀</span>
+                                <span class="note-date">Oct 5, 2024</span>
+                            </div>
+                            <h3>Building in Public: Lessons from Open Source</h3>
+                            <p>What I've learned from contributing to open source projects and sharing my work publicly. The unexpected benefits and challenges.</p>
+                            <div class="note-tags">
+                                <span class="note-tag">Open Source</span>
+                                <span class="note-tag">Community</span>
+                            </div>
+                        </article>
+
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">🧠</span>
+                                <span class="note-date">Sep 18, 2024</span>
+                            </div>
+                            <h3>The Art of Debugging Neural Networks</h3>
+                            <p>Debugging neural networks is more art than science. Here are the techniques that have saved me countless hours of frustration.</p>
+                            <div class="note-tags">
+                                <span class="note-tag">Technical</span>
+                                <span class="note-tag">Tips</span>
+                            </div>
+                        </article>
+
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">☕</span>
+                                <span class="note-date">Sep 1, 2024</span>
+                            </div>
+                            <h3>Remote Work as a Developer in Morocco</h3>
+                            <p>Balancing remote work with local culture, dealing with timezone differences, and finding the best coffee shops in Casablanca for coding.</p>
+                            <div class="note-tags">
+                                <span class="note-tag">Lifestyle</span>
+                                <span class="note-tag">Work</span>
+                            </div>
+                        </article>
+
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">🔮</span>
+                                <span class="note-date">Aug 15, 2024</span>
+                            </div>
+                            <h3>AI's Impact on African Markets</h3>
+                            <p>Exploring opportunities for AI applications in African markets, from agriculture to finance, and the unique challenges we face.</p>
+                            <div class="note-tags">
+                                <span class="note-tag">AI</span>
+                                <span class="note-tag">Africa</span>
+                            </div>
+                        </article>
+
+                        <article class="note-card">
+                            <div class="note-header">
+                                <span class="note-emoji">🎯</span>
+                                <span class="note-date">Jul 25, 2024</span>
+                            </div>
+                            <h3>Setting Technical Goals That Stick</h3>
+                            <p>My system for setting and achieving technical learning goals, inspired by deliberate practice principles and spaced repetition.</p>
+                            <div class="note-tags">
+                                <span class="note-tag">Productivity</span>
+                                <span class="note-tag">Growth</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Note Categories -->
+                    <div class="notes-categories">
+                        <h2>Browse by Topic</h2>
+                        <div class="note-topics">
+                            <a href="#" class="topic-pill">Research (12)</a>
+                            <a href="#" class="topic-pill">Tech Culture (8)</a>
+                            <a href="#" class="topic-pill">Learning (15)</a>
+                            <a href="#" class="topic-pill">Career (6)</a>
+                            <a href="#" class="topic-pill">Morocco (5)</a>
+                            <a href="#" class="topic-pill">Open Source (7)</a>
+                            <a href="#" class="topic-pill">Productivity (9)</a>
+                            <a href="#" class="topic-pill">Reflections (11)</a>
+                        </div>
+                    </div>
                 </div>
             </section>
 

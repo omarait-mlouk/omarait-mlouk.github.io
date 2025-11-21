@@ -15,12 +15,239 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', newTheme);
 });
 
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Single Page Navigation System
+const navItems = document.querySelectorAll('.nav-item[data-section]');
+const homeSection = document.getElementById('home');
+const aboutSection = document.getElementById('about');
+const projectsPageSection = document.getElementById('projects-page');
+const blogPageSection = document.getElementById('blog-page');
+const notesPageSection = document.getElementById('notes-page');
+const footer = document.querySelector('.footer');
+
+// Handle navigation clicks
+navItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const section = this.getAttribute('data-section');
+        
+        // Hide all sections first
+        homeSection.style.display = 'none';
+        aboutSection.style.display = 'none';
+        projectsPageSection.style.display = 'none';
+        blogPageSection.style.display = 'none';
+        notesPageSection.style.display = 'none';
+        footer.style.display = 'none';
+        
+        // Update active state
+        navItems.forEach(nav => nav.classList.remove('active'));
+        this.classList.add('active');
+        
+        if (section === 'about') {
+            // Show About page
+            aboutSection.style.display = 'block';
+        } else if (section === 'projects') {
+            // Show Projects page
+            projectsPageSection.style.display = 'block';
+        } else if (section === 'blog') {
+            // Show Blog page
+            blogPageSection.style.display = 'block';
+        } else if (section === 'notes') {
+            // Show Notes page
+            notesPageSection.style.display = 'block';
+        } else if (section === 'home') {
+            // Show Home page
+            homeSection.style.display = 'block';
+            footer.style.display = 'block';
+        }
+        
+        window.scrollTo(0, 0);
+    });
+});
+
+// Handle View All Projects links
+const projectsSection = document.getElementById('projects');
+if (projectsSection) {
+    // Add a "View All Projects" button to the projects section
+    const viewAllButton = document.createElement('div');
+    viewAllButton.className = 'view-all-projects';
+    viewAllButton.innerHTML = '<a href="#" class="btn btn-primary view-all-btn">View All Projects →</a>';
+    projectsSection.appendChild(viewAllButton);
+    
+    const viewAllBtn = viewAllButton.querySelector('.view-all-btn');
+    viewAllBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        homeSection.style.display = 'none';
+        aboutSection.style.display = 'none';
+        projectsPageSection.style.display = 'block';
+        footer.style.display = 'none';
+        window.scrollTo(0, 0);
+        
+        navItems.forEach(nav => nav.classList.remove('active'));
+        const projectsNavItem = document.querySelector('.nav-item[data-section="projects"]');
+        if (projectsNavItem) {
+            projectsNavItem.classList.add('active');
+        }
+    });
+}
+
+// Handle Quick Preview links
+const quickPreviewLink = document.querySelector('.quick-preview-link');
+if (quickPreviewLink) {
+    quickPreviewLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Go back to home and scroll to projects section
+        homeSection.style.display = 'block';
+        aboutSection.style.display = 'none';
+        projectsPageSection.style.display = 'none';
+        blogPageSection.style.display = 'none';
+        notesPageSection.style.display = 'none';
+        footer.style.display = 'block';
+        
+        // Scroll to projects section
+        setTimeout(() => {
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+                projectsSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }, 100);
+        
+        // Update navigation
+        navItems.forEach(nav => nav.classList.remove('active'));
+    });
+}
+
+// Handle Blog quick preview link
+const quickPreviewBlog = document.querySelector('.quick-preview-link-blog');
+if (quickPreviewBlog) {
+    quickPreviewBlog.addEventListener('click', function(e) {
+        e.preventDefault();
+        homeSection.style.display = 'block';
+        aboutSection.style.display = 'none';
+        projectsPageSection.style.display = 'none';
+        blogPageSection.style.display = 'none';
+        notesPageSection.style.display = 'none';
+        footer.style.display = 'block';
+        
+        setTimeout(() => {
+            const blogSection = document.getElementById('blog');
+            if (blogSection) {
+                blogSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }, 100);
+        
+        navItems.forEach(nav => nav.classList.remove('active'));
+    });
+}
+
+// Handle Notes quick preview link
+const quickPreviewNotes = document.querySelector('.quick-preview-link-notes');
+if (quickPreviewNotes) {
+    quickPreviewNotes.addEventListener('click', function(e) {
+        e.preventDefault();
+        homeSection.style.display = 'block';
+        aboutSection.style.display = 'none';
+        projectsPageSection.style.display = 'none';
+        blogPageSection.style.display = 'none';
+        notesPageSection.style.display = 'none';
+        footer.style.display = 'block';
+        
+        setTimeout(() => {
+            const notesSection = document.getElementById('notes');
+            if (notesSection) {
+                notesSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }, 100);
+        
+        navItems.forEach(nav => nav.classList.remove('active'));
+    });
+}
+
+// Add "View All" buttons for Blog and Notes sections
+const blogSection = document.getElementById('blog');
+if (blogSection) {
+    const viewAllBlog = document.createElement('div');
+    viewAllBlog.className = 'view-all-projects';
+    viewAllBlog.innerHTML = '<a href="#" class="btn btn-primary view-all-blog-btn">View All Articles →</a>';
+    blogSection.appendChild(viewAllBlog);
+    
+    viewAllBlog.querySelector('.view-all-blog-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        homeSection.style.display = 'none';
+        aboutSection.style.display = 'none';
+        projectsPageSection.style.display = 'none';
+        blogPageSection.style.display = 'block';
+        notesPageSection.style.display = 'none';
+        footer.style.display = 'none';
+        window.scrollTo(0, 0);
+        
+        navItems.forEach(nav => nav.classList.remove('active'));
+        const blogNavItem = document.querySelector('.nav-item[data-section="blog"]');
+        if (blogNavItem) blogNavItem.classList.add('active');
+    });
+}
+
+const notesSection = document.getElementById('notes');
+if (notesSection) {
+    const viewAllNotes = document.createElement('div');
+    viewAllNotes.className = 'view-all-projects';
+    viewAllNotes.innerHTML = '<a href="#" class="btn btn-primary view-all-notes-btn">View All Notes →</a>';
+    notesSection.appendChild(viewAllNotes);
+    
+    viewAllNotes.querySelector('.view-all-notes-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        homeSection.style.display = 'none';
+        aboutSection.style.display = 'none';
+        projectsPageSection.style.display = 'none';
+        blogPageSection.style.display = 'none';
+        notesPageSection.style.display = 'block';
+        footer.style.display = 'none';
+        window.scrollTo(0, 0);
+        
+        navItems.forEach(nav => nav.classList.remove('active'));
+        const notesNavItem = document.querySelector('.nav-item[data-section="notes"]');
+        if (notesNavItem) notesNavItem.classList.add('active');
+    });
+}
+
+// Handle logo click to go home
+const logo = document.querySelector('.logo');
+logo.addEventListener('click', function(e) {
+    e.preventDefault();
+    homeSection.style.display = 'block';
+    aboutSection.style.display = 'none';
+    projectsPageSection.style.display = 'none';
+    blogPageSection.style.display = 'none';
+    notesPageSection.style.display = 'none';
+    footer.style.display = 'block';
+    window.scrollTo(0, 0);
+    navItems.forEach(nav => nav.classList.remove('active'));
+});
+
+// Handle smooth scrolling for hash links within home page
+document.querySelectorAll('a[href^="#"]:not(.nav-item):not(.view-all-btn):not(.view-all-blog-btn):not(.view-all-notes-btn)').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        
+        if (target && targetId !== 'about' && targetId !== 'projects-page' && targetId !== 'blog-page' && targetId !== 'notes-page') {
+            // Ensure we're on the home page
+            homeSection.style.display = 'block';
+            aboutSection.style.display = 'none';
+            projectsPageSection.style.display = 'none';
+            blogPageSection.style.display = 'none';
+            notesPageSection.style.display = 'none';
+            footer.style.display = 'block';
+            
             target.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
@@ -29,27 +256,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add active state to navigation based on scroll position
+// Add active state to navigation based on scroll position (only for home sections)
 const sections = document.querySelectorAll('.content-section');
-const navItems = document.querySelectorAll('.nav-item');
 
 function highlightNavigation() {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href') === `#${current}`) {
-            item.classList.add('active');
-        }
-    });
+    // Only highlight if we're on the home page
+    if (homeSection.style.display !== 'none') {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navItems.forEach(item => {
+            const section = item.getAttribute('data-section');
+            if (section !== 'about') {
+                item.classList.remove('active');
+                if (section === current) {
+                    item.classList.add('active');
+                }
+            }
+        });
+    }
 }
 
 window.addEventListener('scroll', highlightNavigation);

@@ -257,7 +257,6 @@ body {
 .main-content {
     flex: 1;
     padding: var(--space-2xl) var(--space-3xl);
-    max-width: 900px;
 }
 
 /* Hero Section */
@@ -479,50 +478,56 @@ body {
     text-decoration: underline;
 }
 
-/* Cards Grid (Deep Dives) */
-.cards-grid {
+/* Deep Dives Grid */
+.deep-dives-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
+    gap: var(--space-md);
     margin-bottom: var(--space-2xl);
 }
 
-.card {
+.deep-dive-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-card);
-    border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    transition: all 0.3s;
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    transition: all 0.2s ease;
     cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    min-height: 80px;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--link-color);
+.deep-dive-card:hover {
+    background-color: var(--code-bg);
+    transform: translateX(2px);
+    box-shadow: var(--shadow-sm);
 }
 
-.card-featured {
-    border: 2px solid var(--link-color);
-    background: linear-gradient(135deg, var(--bg-card), var(--code-bg));
+.deep-dive-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-sm);
 }
 
-.card-icon {
-    font-size: 2rem;
-    margin-bottom: var(--space-md);
+[data-theme="dark"] .deep-dive-icon {
+    background-color: var(--bg-secondary);
 }
 
-.card h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: var(--space-sm);
+.deep-dive-card h3 {
+    font-size: 1rem;
+    font-weight: 500;
     line-height: 1.4;
-}
-
-.card p {
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0;
+    padding-top: 8px;
 }
 
 /* Projects Grid */
@@ -665,7 +670,7 @@ body {
         padding: var(--space-xl) var(--space-lg);
     }
     
-    .cards-grid {
+    .deep-dives-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -679,7 +684,7 @@ body {
         flex-direction: column;
     }
     
-    .cards-grid,
+    .deep-dives-grid,
     .projects-grid {
         grid-template-columns: 1fr;
     }

@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Add hover effect to cards
-const cards = document.querySelectorAll('.card, .project-card');
+const cards = document.querySelectorAll('.project-card');
 cards.forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-4px)';
@@ -114,6 +114,8 @@ cards.forEach(card => {
         this.style.transform = 'translateY(0)';
     });
 });
+
+// Deep dive cards have their own CSS hover effects
 
 // Mobile menu toggle (for future implementation)
 function createMobileMenu() {

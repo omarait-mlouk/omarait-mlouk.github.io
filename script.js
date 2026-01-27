@@ -70,7 +70,7 @@ if (projectsSection) {
     // Add a "View All Projects" button to the projects section
     const viewAllButton = document.createElement('div');
     viewAllButton.className = 'view-all-projects';
-    viewAllButton.innerHTML = '<a href="#" class="btn btn-primary view-all-btn">View All Projects →</a>';
+    //viewAllButton.innerHTML = '<a href="#" class="btn btn-primary view-all-btn">View All Projects →</a>';
     projectsSection.appendChild(viewAllButton);
     
     const viewAllBtn = viewAllButton.querySelector('.view-all-btn');
@@ -176,7 +176,7 @@ const blogSection = document.getElementById('blog');
 if (blogSection) {
     const viewAllBlog = document.createElement('div');
     viewAllBlog.className = 'view-all-projects';
-    viewAllBlog.innerHTML = '<a href="#" class="btn btn-primary view-all-blog-btn">View All Articles →</a>';
+    //viewAllBlog.innerHTML = '<a href="#" class="btn btn-primary view-all-blog-btn">View All Articles →</a>';
     blogSection.appendChild(viewAllBlog);
     
     viewAllBlog.querySelector('.view-all-blog-btn').addEventListener('click', function(e) {

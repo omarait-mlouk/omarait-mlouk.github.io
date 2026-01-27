@@ -396,6 +396,161 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 
 lazyImages.forEach(img => imageObserver.observe(img));
 
+// Search functionality for Projects, Blog, and Notes
+function initializeSearch() {
+    // Projects Search
+    const projectsSearch = document.getElementById('projects-search');
+    if (projectsSearch) {
+        projectsSearch.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+            
+            // Search through featured projects
+            const featuredProjects = document.querySelectorAll('.featured-project');
+            featuredProjects.forEach(project => {
+                const title = project.querySelector('h3').textContent.toLowerCase();
+                const description = project.querySelector('p').textContent.toLowerCase();
+                const techStack = project.querySelector('.project-tech').textContent.toLowerCase();
+                
+                if (searchTerm === '' || title.includes(searchTerm) || description.includes(searchTerm) || techStack.includes(searchTerm)) {
+                    project.style.display = 'grid';
+                    visibleCount++;
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+            
+            // Search through project cards
+            const projectCards = document.querySelectorAll('.project-card-detailed');
+            projectCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const techStack = card.querySelector('.project-tech') ? card.querySelector('.project-tech').textContent.toLowerCase() : '';
+                
+                if (searchTerm === '' || title.includes(searchTerm) || description.includes(searchTerm) || techStack.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Search through contributions
+            const contributions = document.querySelectorAll('.contribution-item');
+            contributions.forEach(item => {
+                const title = item.querySelector('h4').textContent.toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                
+                if (searchTerm === '' || title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide section headers based on visibility
+            document.querySelectorAll('.project-category').forEach(category => {
+                const visibleCards = category.querySelectorAll('.project-card-detailed[style*="flex"], .contribution-item[style*="block"]');
+                if (visibleCards.length === 0 && searchTerm !== '') {
+                    category.style.display = 'none';
+                } else {
+                    category.style.display = 'block';
+                }
+            });
+        });
+    }
+    
+    // Blog Search
+    const blogSearch = document.getElementById('blog-search');
+    if (blogSearch) {
+        blogSearch.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Search through featured article
+            const featuredArticle = document.querySelector('.featured-article');
+            if (featuredArticle) {
+                const title = featuredArticle.querySelector('h2').textContent.toLowerCase();
+                const excerpt = featuredArticle.querySelector('.article-excerpt').textContent.toLowerCase();
+                const tags = featuredArticle.querySelector('.article-tags').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm) || tags.includes(searchTerm)) {
+                    featuredArticle.style.display = 'block';
+                } else {
+                    featuredArticle.style.display = 'none';
+                }
+            }
+            
+            // Search through article cards
+            const articleCards = document.querySelectorAll('.article-card');
+            articleCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const category = card.querySelector('.article-category').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Search through series
+            const seriesItems = document.querySelectorAll('.series-item');
+            seriesItems.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                const parts = item.querySelector('.series-parts').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || parts.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+    
+    // Notes Search
+    const notesSearch = document.getElementById('notes-search');
+    if (notesSearch) {
+        notesSearch.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Search through pinned note
+            const pinnedNote = document.querySelector('.pinned-note');
+            if (pinnedNote) {
+                const title = pinnedNote.querySelector('h2').textContent.toLowerCase();
+                const content = pinnedNote.querySelector('p').textContent.toLowerCase();
+                const category = pinnedNote.querySelector('.note-category') ? pinnedNote.querySelector('.note-category').textContent.toLowerCase() : '';
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm) || category.includes(searchTerm)) {
+                    pinnedNote.style.display = 'block';
+                } else {
+                    pinnedNote.style.display = 'none';
+                }
+            }
+            
+            // Search through note cards
+            const noteCards = document.querySelectorAll('.note-card');
+            noteCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const tags = card.querySelector('.note-tags') ? card.querySelector('.note-tags').textContent.toLowerCase() : '';
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    }
+}
+
+// Initialize search when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeSearch);
+
 // Console Easter egg
 console.log('%c👋 Hey there, fellow developer!', 'font-size: 20px; color: #2563EB;');
 console.log('%cLooking for the source code? Check out my GitHub!', 'font-size: 14px;');

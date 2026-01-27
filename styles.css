@@ -792,6 +792,58 @@ body {
     text-decoration: underline;
 }
 
+/* Search Bar Styles */
+.search-container {
+    margin-top: var(--space-xl);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-icon {
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.125rem;
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: var(--space-md) var(--space-md) var(--space-md) calc(var(--space-xl) + 20px);
+    background-color: var(--bg-card);
+    border: 2px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: all 0.2s;
+    font-family: var(--font-sans);
+}
+
+.search-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+[data-theme="dark"] .search-input:focus {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+.search-input:hover {
+    border-color: var(--link-color);
+}
+
 .projects-content {
     max-width: 1200px;
 }
@@ -1506,6 +1558,10 @@ body {
     
     .note-topics {
         justify-content: center;
+    }
+    
+    .search-box {
+        max-width: 100%;
     }
 }
 

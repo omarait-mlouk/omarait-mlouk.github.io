@@ -16,7 +16,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 // Single Page Navigation System
-const navItems = document.querySelectorAll('.nav-item[data-section]');
+const navItems = document.querySelectorAll('[data-section]');
 const homeSection = document.getElementById('home');
 const aboutSection = document.getElementById('about');
 const projectsPageSection = document.getElementById('projects-page');
@@ -70,7 +70,7 @@ if (projectsSection) {
     // Add a "View All Projects" button to the projects section
     const viewAllButton = document.createElement('div');
     viewAllButton.className = 'view-all-projects';
-    //viewAllButton.innerHTML = '<a href="#" class="btn btn-primary view-all-btn">View All Projects →</a>';
+    // viewAllButton.innerHTML = '<a href="#" class="btn btn-primary view-all-btn">View All Projects →</a>';
     projectsSection.appendChild(viewAllButton);
     
     const viewAllBtn = viewAllButton.querySelector('.view-all-btn');
@@ -234,6 +234,7 @@ logo.addEventListener('click', function(e) {
 
 // Handle smooth scrolling for hash links within home page
 document.querySelectorAll('a[href^="#"]:not(.nav-item):not(.view-all-btn):not(.view-all-blog-btn):not(.view-all-notes-btn)').forEach(anchor => {
+   console.log("COOOOOL")
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);

@@ -274,7 +274,7 @@ body {
     display: flex;
     gap: var(--space-2xl);
     align-items: flex-start;
-    margin-bottom: var(--space-xl);
+    margin-bottom: -40px;
 }
 
 .hero-text {

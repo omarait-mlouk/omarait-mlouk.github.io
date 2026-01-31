@@ -119,7 +119,13 @@ body {
 }
 
 .logo-icon {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: #2563EB;
+}
+
+[data-theme="dark"] .logo-icon {
+    color: #60A5FA;
 }
 
 .theme-toggle {
@@ -130,22 +136,27 @@ body {
     padding: var(--space-xs);
     border-radius: var(--radius-sm);
     transition: background-color 0.2s;
+    color: var(--text-primary);
 }
 
 .theme-toggle:hover {
     background-color: var(--code-bg);
 }
 
-.theme-icon-dark {
+.theme-toggle .theme-icon-light {
     display: none;
 }
 
-[data-theme="dark"] .theme-icon-light {
-    display: none;
+.theme-toggle .theme-icon-dark {
+    display: inline-block;
 }
 
-[data-theme="dark"] .theme-icon-dark {
-    display: inline;
+[data-theme="dark"] .theme-toggle .theme-icon-light {
+    display: inline-block;
+}
+
+[data-theme="dark"] .theme-toggle .theme-icon-dark {
+    display: none;
 }
 
 /* About Section in Sidebar */

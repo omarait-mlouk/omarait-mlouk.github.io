@@ -65,7 +65,7 @@ navItems.forEach(item => {
 });
 
 // Handle View All Projects links
-const projectsSection = document.getElementById('projects');
+/*const projectsSection = document.getElementById('projects');
 if (projectsSection) {
     // Add a "View All Projects" button to the projects section
     const viewAllButton = document.createElement('div');
@@ -89,7 +89,7 @@ if (projectsSection) {
         }
     });
 }
-
+*/
 // Handle Quick Preview links
 const quickPreviewLink = document.querySelector('.quick-preview-link');
 if (quickPreviewLink) {

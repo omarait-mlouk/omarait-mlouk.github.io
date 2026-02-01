@@ -1534,6 +1534,111 @@ body {
     }
 }
 
+/* Alternating Timeline */
+.timeline-alt {
+    position: relative;
+    max-width: 800px;
+    margin: var(--space-lg) auto;
+}
+
+.timeline-alt::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--border-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-alt-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-alt-item::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--bg-primary);
+    border: 2px solid var(--link-color);
+    border-radius: 50%;
+    top: 20px;
+}
+
+.timeline-alt-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-alt-item.left::after {
+    right: -6px;
+}
+
+.timeline-alt-item.right {
+    left: 50%;
+    text-align: left;
+}
+
+.timeline-alt-item.right::after {
+    left: -6px;
+}
+
+.timeline-alt-content {
+    padding: var(--space-md);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+}
+
+.timeline-alt-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.timeline-alt-content p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.timeline-alt-content .timeline-date {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--link-color);
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+}
+
+@media (max-width: 768px) {
+    .timeline-alt::before {
+        left: 20px;
+    }
+    
+    .timeline-alt-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+        text-align: left;
+    }
+    
+    .timeline-alt-item.left,
+    .timeline-alt-item.right {
+        left: 0;
+        text-align: left;
+    }
+    
+    .timeline-alt-item.left::after,
+    .timeline-alt-item.right::after {
+        left: 14px;
+    }
+}
+
 /* Footer */
 .footer {
     margin-top: var(--space-3xl);

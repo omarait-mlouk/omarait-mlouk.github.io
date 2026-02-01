@@ -501,15 +501,15 @@ body {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
 }
 
 .project-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
-    padding: var(--space-xl);
+    padding: var(--space-lg);
     transition: all 0.2s;
 }
 
@@ -520,30 +520,31 @@ body {
 
 .project-year {
     display: inline-block;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: var(--text-tertiary);
     background-color: var(--code-bg);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-sm);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
 
 .project-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
     color: var(--link-color);
 }
 
 .project-card p {
     color: var(--text-secondary);
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
     line-height: 1.5;
+    font-size: 0.9rem;
 }
 
 .project-links {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
 }
 
 .btn-small {
@@ -555,7 +556,7 @@ body {
     border: 1px solid var(--link-color);
     border-radius: var(--radius-sm);
     text-decoration: none;
-    font-size: 0.9375rem;
+    font-size: 0.85rem;
     font-weight: 500;
     transition: all 0.2s;
 }
@@ -1616,6 +1617,10 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .tech-grid {
         grid-template-columns: 1fr;
     }
@@ -1638,8 +1643,14 @@ body {
         flex-direction: column;
     }
     
-    .deep-dives-grid,
-    .projects-grid,
+    .deep-dives-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .project-grid {
         grid-template-columns: 1fr;
     }

@@ -405,6 +405,23 @@ body {
     margin-bottom: var(--space-3xl);
 }
 
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-xl);
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+
+.section-header .section-description {
+    margin-bottom: 0;
+}
+
 .content-section h2 {
     font-size: 2rem;
     font-weight: 700;
@@ -444,6 +461,33 @@ body {
 .blog-item a:hover {
     color: var(--link-hover);
     text-decoration: underline;
+}
+
+/* View More Link */
+.view-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-lg);
+    padding: var(--space-sm) 0;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.3s ease;
+}
+
+.view-more-link .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.view-more-link:hover {
+    color: var(--link-hover);
+}
+
+.view-more-link:hover .arrow {
+    transform: translateX(5px);
 }
 
 /* Deep Dives Grid */

@@ -556,3 +556,18 @@ document.addEventListener('DOMContentLoaded', initializeSearch);
 console.log('%c👋 Hey there, fellow developer!', 'font-size: 20px; color: #2563EB;');
 console.log('%cLooking for the source code? Check out my GitHub!', 'font-size: 14px;');
 console.log('%chttps://github.com/omarait-mlouk', 'font-size: 12px; color: #2563EB;');
+
+// Handle View More links
+const viewMoreLinks = document.querySelectorAll('.view-more-link');
+viewMoreLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const section = this.getAttribute('data-section');
+        
+        // Find and click the corresponding nav item
+        const navItem = document.querySelector(`.nav-item[data-section="${section}"]`);
+        if (navItem) {
+            navItem.click();
+        }
+    });
+});

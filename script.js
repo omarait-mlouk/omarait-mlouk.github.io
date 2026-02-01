@@ -172,7 +172,7 @@ if (quickPreviewNotes) {
 }
 
 // Add "View All" buttons for Blog and Notes sections
-const blogSection = document.getElementById('blog');
+/*const blogSection = document.getElementById('blog');
 if (blogSection) {
     const viewAllBlog = document.createElement('div');
     viewAllBlog.className = 'view-all-projects';
@@ -217,7 +217,7 @@ if (notesSection) {
         if (notesNavItem) notesNavItem.classList.add('active');
     });
 }
-
+*/
 // Handle logo click to go home
 const logo = document.querySelector('.logo');
 logo.addEventListener('click', function(e) {

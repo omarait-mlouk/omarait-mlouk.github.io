@@ -102,32 +102,8 @@
                 <h2>Blog</h2>
                 <p class="section-description">Guides, references, and tutorials.</p>
                 
-                <div class="blog-list">
-                    <article class="blog-item">
-                        <a href="/blog/deblurgan-v2-implementation">
-                            Advanced Image Deblurring with DeblurGAN-v2 and FPN
-                        </a>
-                    </article>
-                    <article class="blog-item">
-                        <a href="/blog/tifinagh-recognition">
-                            Building a Tifinagh Character Recognition System with CNNs
-                        </a>
-                    </article>
-                    <article class="blog-item">
-                        <a href="/blog/odoo-tourism-platform">
-                            Creating a Complete Tourism Booking Platform in Odoo
-                        </a>
-                    </article>
-                    <article class="blog-item">
-                        <a href="/blog/neural-architectures">
-                            Understanding U-Net, Autoencoders, and Modern CNN Architectures
-                        </a>
-                    </article>
-                    <article class="blog-item">
-                        <a href="/blog/flask-ml-deployment">
-                            Deploying Deep Learning Models with Flask: A Complete Guide
-                        </a>
-                    </article>
+                <div class="blog-list" id="home-blog-list">
+                    <!-- Populated dynamically from blog-data.json -->
                 </div>
                 <a href="#blog" class="view-more-link" data-section="blog">
                     View all posts <span class="arrow">→</span>
@@ -738,121 +714,23 @@
 
                 <div class="blog-content">
                     <!-- Featured Article -->
-                    <div class="featured-article">
-                        <span class="article-badge">Featured • Computer Vision</span>
-                        <h2>Advanced Image Deblurring with DeblurGAN-v2 and Feature Pyramid Networks</h2>
-                        <div class="article-meta">
-                            <span class="article-date">November 15, 2024</span>
-                            <span class="article-read-time">• 12 min read</span>
-                        </div>
-                        <p class="article-excerpt">A comprehensive guide to implementing state-of-the-art motion deblurring using DeblurGAN-v2 architecture. Learn how Feature Pyramid Networks enhance multi-scale processing and discover optimization techniques that achieve real-time performance on consumer GPUs.</p>
-                        <div class="article-tags">
-                            <span class="tag">Deep Learning</span>
-                            <span class="tag">GANs</span>
-                            <span class="tag">Computer Vision</span>
-                            <span class="tag">PyTorch</span>
-                        </div>
-                        <a href="/blog/deblurgan-v2-implementation" class="read-more-link">Continue Reading →</a>
+                    <div id="blog-featured" class="featured-article" style="display:none;">
+                        <!-- Populated dynamically from blog-data.json -->
                     </div>
 
                     <!-- Recent Articles -->
                     <div class="blog-category">
                         <h2>Recent Articles</h2>
-                        <div class="articles-grid">
-                            <article class="article-card">
-                                <span class="article-category">Machine Learning</span>
-                                <h3>Building a Tifinagh Character Recognition System with CNNs</h3>
-                                <p>Explore the development of a CNN-based OCR system for Amazigh script, achieving 96% accuracy through careful data augmentation and architecture design.</p>
-                                <div class="article-footer">
-                                    <span class="article-date">Oct 28, 2024</span>
-                                    <a href="#" class="article-link">Read More →</a>
-                                </div>
-                            </article>
-
-                            <article class="article-card">
-                                <span class="article-category">Web Development</span>
-                                <h3>Creating a Complete Tourism Booking Platform in Odoo</h3>
-                                <p>Step-by-step guide to building an enterprise tourism platform with multi-language support, payment integration, and real-time availability tracking.</p>
-                                <div class="article-footer">
-                                    <span class="article-date">Oct 15, 2024</span>
-                                    <a href="#" class="article-link">Read More →</a>
-                                </div>
-                            </article>
-
-                            <article class="article-card">
-                                <span class="article-category">Deep Learning</span>
-                                <h3>Understanding U-Net, Autoencoders, and Modern CNN Architectures</h3>
-                                <p>A deep dive into the evolution of convolutional architectures, from basic autoencoders to sophisticated segmentation networks.</p>
-                                <div class="article-footer">
-                                    <span class="article-date">Sep 20, 2024</span>
-                                    <a href="#" class="article-link">Read More →</a>
-                                </div>
-                            </article>
-
-                            <article class="article-card">
-                                <span class="article-category">MLOps</span>
-                                <h3>Deploying Deep Learning Models with Flask: A Complete Guide</h3>
-                                <p>Learn how to productionize your models with Flask, Docker, and cloud deployment strategies for scalable AI applications.</p>
-                                <div class="article-footer">
-                                    <span class="article-date">Sep 5, 2024</span>
-                                    <a href="#" class="article-link">Read More →</a>
-                                </div>
-                            </article>
-
-                            <article class="article-card">
-                                <span class="article-category">Computer Vision</span>
-                                <h3>Real-Time Face Mask Detection with MobileNetV2</h3>
-                                <p>Build an efficient face mask detection system optimized for edge devices using transfer learning and model quantization.</p>
-                                <div class="article-footer">
-                                    <span class="article-date">Aug 18, 2024</span>
-                                    <a href="#" class="article-link">Read More →</a>
-                                </div>
-                            </article>
-
-                            <article class="article-card">
-                                <span class="article-category">Data Science</span>
-                                <h3>Interactive Data Visualization with D3.js and React</h3>
-                                <p>Create dynamic, interactive visualizations by combining D3's power with React's component architecture.</p>
-                                <div class="article-footer">
-                                    <span class="article-date">Jul 30, 2024</span>
-                                    <a href="#" class="article-link">Read More →</a>
-                                </div>
-                            </article>
+                        <div class="articles-grid" id="blog-articles-grid">
+                            <!-- Populated dynamically from blog-data.json -->
                         </div>
                     </div>
 
-                    <!-- Tutorial Series -->
-                    <div class="blog-category">
+                    <!-- Tutorial Series (auto-grouped from posts with series field) -->
+                    <div class="blog-category" id="blog-series-section" style="display:none;">
                         <h2>Tutorial Series</h2>
-                        <div class="series-list">
-                            <div class="series-item">
-                                <div class="series-header">
-                                    <h3>GANs From Scratch</h3>
-                                    <span class="series-count">5 parts</span>
-                                </div>
-                                <p>A comprehensive series covering GAN fundamentals, from basic theory to advanced architectures like StyleGAN and CycleGAN.</p>
-                                <ol class="series-parts">
-                                    <li><a href="#">Part 1: Understanding Generative Adversarial Networks</a></li>
-                                    <li><a href="#">Part 2: Implementing Your First GAN in PyTorch</a></li>
-                                    <li><a href="#">Part 3: DCGAN and Convolutional Architectures</a></li>
-                                    <li><a href="#">Part 4: Advanced GANs - WGAN, StyleGAN, and Beyond</a></li>
-                                    <li><a href="#">Part 5: Real-World Applications and Best Practices</a></li>
-                                </ol>
-                            </div>
-
-                            <div class="series-item">
-                                <div class="series-header">
-                                    <h3>Building Production ML Systems</h3>
-                                    <span class="series-count">4 parts</span>
-                                </div>
-                                <p>Learn how to take machine learning models from notebook to production with best practices for deployment and monitoring.</p>
-                                <ol class="series-parts">
-                                    <li><a href="#">Part 1: Model Development and Validation</a></li>
-                                    <li><a href="#">Part 2: Containerization with Docker</a></li>
-                                    <li><a href="#">Part 3: API Development and Testing</a></li>
-                                    <li><a href="#">Part 4: Monitoring and Maintenance</a></li>
-                                </ol>
-                            </div>
+                        <div class="series-list" id="blog-series-list">
+                            <!-- Populated dynamically from blog-data.json -->
                         </div>
                     </div>
                 </div>
@@ -1054,6 +932,7 @@
         </main>
     </div>
 
+    <script src="blog-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1357,6 +1357,11 @@ body {
     text-decoration: underline;
 }
 
+.series-part-meta {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+}
+
 /* Category Grid */
 .category-grid {
     display: grid;

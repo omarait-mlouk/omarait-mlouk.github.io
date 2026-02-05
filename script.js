@@ -397,6 +397,126 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 
 lazyImages.forEach(img => imageObserver.observe(img));
 
+// Blog Data Management
+// blogData is loaded from blog-data.js
+
+function initBlog() {
+    if (typeof blogData === 'undefined' || !blogData.length) return;
+    renderHomeBlog();
+    renderBlogPage();
+    renderBlogSeries();
+    updateBlogSearchPlaceholder();
+}
+
+function renderHomeBlog() {
+    const container = document.getElementById('home-blog-list');
+    if (!container) return;
+
+    const homePosts = blogData.filter(post => post.showOnHome);
+    container.innerHTML = homePosts.map(post => `
+        <article class="blog-item">
+            <a href="${post.mediumUrl}" target="_blank">${post.title}</a>
+        </article>
+    `).join('');
+}
+
+function renderBlogPage() {
+    // Render featured article
+    const featuredContainer = document.getElementById('blog-featured');
+    const featuredPost = blogData.find(post => post.featured);
+
+    if (featuredContainer && featuredPost) {
+        featuredContainer.style.display = 'block';
+        featuredContainer.innerHTML = `
+            <span class="article-badge">Featured • ${featuredPost.category}</span>
+            <h2>${featuredPost.title}</h2>
+            <div class="article-meta">
+                <span class="article-date">${featuredPost.date}</span>
+                <span class="article-read-time">• ${featuredPost.readTime}</span>
+            </div>
+            <p class="article-excerpt">${featuredPost.excerpt}</p>
+            <div class="article-tags">
+                ${featuredPost.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <a href="${featuredPost.mediumUrl}" class="read-more-link" target="_blank">Read on Medium →</a>
+        `;
+    }
+
+    // Render article cards (all non-featured posts)
+    const gridContainer = document.getElementById('blog-articles-grid');
+    if (!gridContainer) return;
+
+    const articles = blogData.filter(post => !post.featured && !post.series);
+    gridContainer.innerHTML = articles.map(post => `
+        <article class="article-card" data-title="${post.title.toLowerCase()}" data-excerpt="${post.excerpt.toLowerCase()}" data-category="${post.category.toLowerCase()}" data-tags="${post.tags.join(' ').toLowerCase()}">
+            <span class="article-category">${post.category}</span>
+            <h3>${post.title}</h3>
+            <p>${post.excerpt}</p>
+            <div class="article-footer">
+                <span class="article-date">${post.date}</span>
+                <a href="${post.mediumUrl}" class="article-link" target="_blank">Read on Medium →</a>
+            </div>
+        </article>
+    `).join('');
+}
+
+function renderBlogSeries() {
+    const seriesSection = document.getElementById('blog-series-section');
+    const seriesList = document.getElementById('blog-series-list');
+    if (!seriesSection || !seriesList) return;
+
+    // Group posts by series name
+    const seriesMap = {};
+    blogData.forEach(post => {
+        if (post.series) {
+            const name = post.series.name;
+            if (!seriesMap[name]) seriesMap[name] = [];
+            seriesMap[name].push(post);
+        }
+    });
+
+    const seriesNames = Object.keys(seriesMap);
+    if (seriesNames.length === 0) return;
+
+    // Sort parts within each series
+    seriesNames.forEach(name => {
+        seriesMap[name].sort((a, b) => a.series.part - b.series.part);
+    });
+
+    seriesSection.style.display = 'block';
+    seriesList.innerHTML = seriesNames.map(name => {
+        const parts = seriesMap[name];
+        // Use the category & tags from the first part for the series description
+        const firstPart = parts[0];
+        return `
+            <div class="series-item" data-series-name="${name.toLowerCase()}">
+                <div class="series-header">
+                    <h3>${name}</h3>
+                    <span class="series-count">${parts.length} parts</span>
+                </div>
+                <ol class="series-parts">
+                    ${parts.map(p => `
+                        <li>
+                            <a href="${p.mediumUrl}" target="_blank">Part ${p.series.part}: ${p.title}</a>
+                            <span class="series-part-meta"> · ${p.readTime}</span>
+                        </li>
+                    `).join('')}
+                </ol>
+            </div>
+        `;
+    }).join('');
+}
+
+function updateBlogSearchPlaceholder() {
+    const searchInput = document.getElementById('blog-search');
+    if (searchInput) {
+        searchInput.placeholder = `Search ${blogData.length} articles...`;
+    }
+}
+
+// Initialize blog from global blogData
+initBlog();
+
 // Search functionality for Projects, Blog, and Notes
 function initializeSearch() {
     // Projects Search
@@ -462,53 +582,60 @@ function initializeSearch() {
         });
     }
     
-    // Blog Search
+    // Blog Search (now searches dynamically rendered content)
     const blogSearch = document.getElementById('blog-search');
     if (blogSearch) {
         blogSearch.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
+            const searchTerm = e.target.value.toLowerCase().trim();
             
             // Search through featured article
-            const featuredArticle = document.querySelector('.featured-article');
+            const featuredArticle = document.getElementById('blog-featured');
             if (featuredArticle) {
-                const title = featuredArticle.querySelector('h2').textContent.toLowerCase();
-                const excerpt = featuredArticle.querySelector('.article-excerpt').textContent.toLowerCase();
-                const tags = featuredArticle.querySelector('.article-tags').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || excerpt.includes(searchTerm) || tags.includes(searchTerm)) {
-                    featuredArticle.style.display = 'block';
-                } else {
-                    featuredArticle.style.display = 'none';
+                const featuredPost = blogData.find(post => post.featured);
+                if (featuredPost) {
+                    const match = searchTerm === '' ||
+                        featuredPost.title.toLowerCase().includes(searchTerm) ||
+                        featuredPost.excerpt.toLowerCase().includes(searchTerm) ||
+                        featuredPost.tags.join(' ').toLowerCase().includes(searchTerm) ||
+                        featuredPost.category.toLowerCase().includes(searchTerm);
+                    featuredArticle.style.display = match ? 'block' : 'none';
                 }
             }
             
             // Search through article cards
-            const articleCards = document.querySelectorAll('.article-card');
+            const articleCards = document.querySelectorAll('#blog-articles-grid .article-card');
             articleCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                const category = card.querySelector('.article-category').textContent.toLowerCase();
+                const title = card.dataset.title || '';
+                const excerpt = card.dataset.excerpt || '';
+                const category = card.dataset.category || '';
+                const tags = card.dataset.tags || '';
                 
-                if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+                const match = searchTerm === '' ||
+                    title.includes(searchTerm) ||
+                    excerpt.includes(searchTerm) ||
+                    category.includes(searchTerm) ||
+                    tags.includes(searchTerm);
+                card.style.display = match ? 'flex' : 'none';
             });
-            
+
             // Search through series
-            const seriesItems = document.querySelectorAll('.series-item');
+            const seriesItems = document.querySelectorAll('#blog-series-list .series-item');
             seriesItems.forEach(item => {
-                const title = item.querySelector('h3').textContent.toLowerCase();
-                const description = item.querySelector('p').textContent.toLowerCase();
-                const parts = item.querySelector('.series-parts').textContent.toLowerCase();
+                const name = item.dataset.seriesName || '';
+                const partsText = item.textContent.toLowerCase();
                 
-                if (title.includes(searchTerm) || description.includes(searchTerm) || parts.includes(searchTerm)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+                const match = searchTerm === '' ||
+                    name.includes(searchTerm) ||
+                    partsText.includes(searchTerm);
+                item.style.display = match ? 'block' : 'none';
             });
+
+            // Hide series section header if no series visible
+            const seriesSection = document.getElementById('blog-series-section');
+            if (seriesSection) {
+                const visibleSeries = document.querySelectorAll('#blog-series-list .series-item[style*="block"], #blog-series-list .series-item:not([style*="none"])');
+                seriesSection.style.display = (searchTerm === '' || visibleSeries.length > 0) ? 'block' : 'none';
+            }
         });
     }
     

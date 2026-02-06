@@ -613,7 +613,7 @@ function renderHomeProjects() {
             <h3>${p.title}</h3>
             <p>${p.shortDescription}</p>
             <div class="project-links">
-                ${p.links.map(link => `<a href="${link.url}" class="btn-small" target="_blank">${link.label}</a>`).join('')}
+                ${p.links.map(link => `<a href="${link.url}" class="link-pill" target="_blank"><i class="${getLinkIcon(link.label)}"></i>${link.label}</a>`).join('')}
             </div>
         </article>
     `).join('');
@@ -655,6 +655,22 @@ function renderProjectsFeatured() {
     `).join('');
 }
 
+// Map link labels to Font Awesome icon classes
+function getLinkIcon(label) {
+    const l = label.toLowerCase();
+    if (l.includes('github')) return 'fa-brands fa-github';
+    if (l.includes('demo') || l.includes('live')) return 'fa-solid fa-arrow-up-right-from-square';
+    if (l.includes('paper')) return 'fa-solid fa-file-lines';
+    if (l.includes('article')) return 'fa-solid fa-newspaper';
+    if (l.includes('video')) return 'fa-solid fa-circle-play';
+    if (l.includes('report')) return 'fa-solid fa-file-pdf';
+    if (l.includes('notebook')) return 'fa-solid fa-book-open';
+    if (l.includes('doc')) return 'fa-solid fa-book';
+    if (l.includes('case')) return 'fa-solid fa-briefcase';
+    if (l.includes('site')) return 'fa-solid fa-globe';
+    return 'fa-solid fa-link';
+}
+
 function renderProjectsCategories() {
     const container = document.getElementById('projects-categories');
     if (!container) return;
@@ -682,7 +698,7 @@ function renderProjectsCategories() {
                             ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
                         </div>
                         <div class="project-links-bottom">
-                            ${p.links.map(link => `<a href="${link.url}" class="link-with-icon" target="_blank">${link.label}</a>`).join('')}
+                            ${p.links.map(link => `<a href="${link.url}" class="link-pill" target="_blank"><i class="${getLinkIcon(link.label)}"></i>${link.label}</a>`).join('')}
                         </div>
                     </div>
                 `).join('')}

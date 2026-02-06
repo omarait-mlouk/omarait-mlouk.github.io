@@ -589,6 +589,7 @@ body {
 .project-links {
     display: flex;
     gap: var(--space-sm);
+    flex-wrap: wrap;
 }
 
 .btn-small {
@@ -602,12 +603,18 @@ body {
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 500;
-    transition: all 0.2s;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-small:hover {
     background-color: var(--link-color);
     color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+[data-theme="dark"] .btn-small:hover {
+    box-shadow: 0 2px 8px rgba(96, 165, 250, 0.25);
 }
 
 /* View All Projects Button */
@@ -969,7 +976,7 @@ body {
     color: var(--link-color);
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.2s;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-link:hover {
@@ -1037,22 +1044,47 @@ body {
 
 .project-links-bottom {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     padding-top: var(--space-md);
     border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
 }
 
-.link-with-icon {
-    color: var(--link-color);
+.link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-card);
+    border-radius: 50px;
+    color: var(--text-primary);
     text-decoration: none;
-    font-size: 0.9375rem;
+    font-size: 0.8125rem;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
 }
 
-.link-with-icon:hover {
-    color: var(--link-hover);
-    text-decoration: underline;
+.link-pill i {
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+}
+
+.link-pill:hover {
+    background-color: var(--link-color);
+    border-color: var(--link-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+[data-theme="dark"] .link-pill:hover {
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.25);
+}
+
+.link-pill:hover i {
+    transform: scale(1.1);
 }
 
 /* Contributions Section */

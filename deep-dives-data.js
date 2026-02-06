@@ -18,7 +18,7 @@ const deepDivesData = [
         description: "From model training to deployment — covering optimization, serving infrastructure, and monitoring in production.",
         category: "MLOps",
         tags: ["Computer Vision", "Deployment", "Docker"],
-        status: "coming_soon",
+        status: "published",
         url: "#"
     },
     {

@@ -501,45 +501,60 @@ body {
 .deep-dive-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-card);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     padding: var(--space-lg);
     transition: all 0.2s ease;
     cursor: pointer;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--space-md);
-    min-height: 80px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .deep-dive-card:hover {
-    background-color: var(--code-bg);
-    transform: translateX(2px);
-    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.deep-dive-card.coming-soon {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.deep-dive-card.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+    opacity: 0.75;
 }
 
 .deep-dive-icon {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--bg-primary);
-    border-radius: var(--radius-sm);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease;
 }
 
-[data-theme="dark"] .deep-dive-icon {
-    background-color: var(--bg-secondary);
+.deep-dive-card:hover .deep-dive-icon {
+    transform: scale(1.1);
 }
 
 .deep-dive-card h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.4;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.45;
     color: var(--text-primary);
     margin: 0;
-    padding-top: 8px;
+    flex: 1;
+}
+
+.deep-dive-badge {
+    display: none;
 }
 
 /* Projects Grid */

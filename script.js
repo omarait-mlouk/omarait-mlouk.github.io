@@ -517,6 +517,36 @@ function updateBlogSearchPlaceholder() {
 // Initialize blog from global blogData
 initBlog();
 
+// Deep Dives Data Management
+function initDeepDives() {
+    if (typeof deepDivesData === 'undefined' || !deepDivesData.length) return;
+    renderDeepDives();
+}
+
+function renderDeepDives() {
+    const container = document.getElementById('deep-dives-grid');
+    if (!container) return;
+
+    container.innerHTML = deepDivesData.map(dive => {
+        const isPublished = dive.status === 'published';
+        const cardTag = isPublished ? 'a' : 'div';
+        const hrefAttr = isPublished ? `href="${dive.url}" target="_blank"` : '';
+        const statusBadge = !isPublished ? '<span class="deep-dive-badge">Coming Soon</span>' : '';
+
+        return `
+            <${cardTag} ${hrefAttr} class="deep-dive-card ${!isPublished ? 'coming-soon' : ''}">
+                <span class="deep-dive-icon" style="background-color: ${dive.iconColor}15; color: ${dive.iconColor}">
+                    <i class="${dive.icon}"></i>
+                </span>
+                <h3>${dive.title}</h3>
+                ${statusBadge}
+            </${cardTag}>
+        `;
+    }).join('');
+}
+
+initDeepDives();
+
 // Notes Data Management
 // notesData is loaded from notes-data.js
 

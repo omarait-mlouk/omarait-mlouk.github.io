@@ -270,6 +270,82 @@ body {
     padding: var(--space-2xl) var(--space-3xl);
 }
 
+/* Orbiting Social Icons */
+.orbit-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    animation: orbitSpin 25s linear infinite;
+}
+
+@keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.orbit-icon {
+    --angle: calc(var(--i) * (360deg / 5));
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: var(--text-tertiary);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    box-shadow: var(--shadow-sm);
+    top: 50%;
+    left: 50%;
+    transform: rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle)));
+    animation: counterSpin 25s linear infinite;
+    transition: color 0.3s, background-color 0.3s, transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    z-index: 5;
+    cursor: pointer;
+}
+
+@keyframes counterSpin {
+    from { /* keeps icons upright as ring spins */ }
+    to { /* handled by inline transform */ }
+}
+
+.orbit-icon:hover {
+    color: white;
+    background-color: var(--color);
+    border-color: var(--color);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle))) scale(1.3);
+    z-index: 10;
+}
+
+/* Pause orbit when hovering the ring or any icon */
+.orbit-ring:hover {
+    animation-play-state: paused;
+}
+
+/* Dim siblings when one icon is hovered */
+.orbit-ring:hover .orbit-icon {
+    opacity: 0.4;
+}
+
+.orbit-ring:hover .orbit-icon:hover {
+    opacity: 1;
+}
+
+[data-theme="dark"] .orbit-icon:nth-child(4):hover,
+[data-theme="dark"] .orbit-icon:nth-child(5):hover {
+    color: #1A1A1A;
+    background-color: #FAFAFA;
+    border-color: #FAFAFA;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
 /* Hero Section */
 .hero {
     margin-bottom: var(--space-3xl);
@@ -323,6 +399,7 @@ body {
     position: relative;
     width: 240px;
     height: 240px;
+    overflow: visible;
 }
 
 .mascot-circle {
@@ -334,6 +411,7 @@ body {
     bottom: 0;
     right: 0;
     transition: background-color 0.3s ease;
+    pointer-events: none;
 }
 
 [data-theme="dark"] .mascot-circle {
@@ -349,6 +427,7 @@ body {
     object-fit: contain;
     z-index: 1;
     animation: float 3s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes float {
@@ -888,7 +967,8 @@ body {
 }
 
 .projects-featured h2,
-.project-category h2 {
+.project-category h2,
+.blog-category h2 {
     font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: var(--space-xl);
@@ -1150,6 +1230,10 @@ body {
 }
 
 /* Blog Page Styles */
+.blog-category {
+    margin-bottom: var(--space-3xl);
+}
+
 .blog-hero,
 .notes-hero {
     margin-bottom: var(--space-2xl);
@@ -1191,6 +1275,7 @@ body {
 .blog-content,
 .notes-content {
     max-width: 1200px;
+    padding-bottom: var(--space-2xl);
 }
 
 /* Featured Article */
@@ -1739,11 +1824,14 @@ body {
 .footer {
     margin-top: var(--space-3xl);
     padding-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
     border-top: 1px solid var(--border-color);
+    text-align: center;
 }
 
 .footer-links {
     display: flex;
+    justify-content: center;
     gap: var(--space-lg);
     margin-bottom: var(--space-lg);
     flex-wrap: wrap;
@@ -1763,6 +1851,7 @@ body {
 
 .footer-badges {
     display: flex;
+    justify-content: center;
     gap: var(--space-md);
     margin-bottom: var(--space-lg);
 }
@@ -1784,6 +1873,11 @@ body {
 .badge-btn:hover {
     background-color: var(--link-hover);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="dark"] .badge-btn:hover {
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
 }
 
 .badge-btn i {
@@ -1836,6 +1930,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .orbit-ring {
+        display: none;
+    }
+    
     .hero h1 {
         font-size: 2rem;
     }

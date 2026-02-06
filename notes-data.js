@@ -1,0 +1,122 @@
+const notesData = [
+    {
+        id: "2024-review",
+        emoji: "📌",
+        title: "Year in Review: 2024 into 2025",
+        excerpt: "Looking back at an incredible year of growth, challenges, and achievements. From completing my thesis on DeblurGAN-v2 to starting my Master's in AI, this year has been transformative. Here are the key lessons learned and goals for 2025...",
+        date: "December 31, 2024",
+        category: "Reflection",
+        tags: ["Reflection", "Goals"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/2024-review",
+        pinned: true,
+        showOnHome: true
+    },
+    {
+        id: "thesis-journey",
+        emoji: "🎓",
+        title: "My Thesis Journey: DeblurGAN-v2 Research",
+        excerpt: "Six months of research, countless experiments, and finally defending my thesis on image deblurring. The journey taught me more than just technical skills...",
+        date: "December 15, 2024",
+        category: "Research",
+        tags: ["Research", "Academic"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/thesis-journey",
+        pinned: false,
+        showOnHome: true
+    },
+    {
+        id: "morocco-tech",
+        emoji: "🌍",
+        title: "The Growing Tech Scene in Morocco",
+        excerpt: "Observations on how Morocco's tech ecosystem is evolving, from AI startups in Casablanca to the growing developer community across the country.",
+        date: "November 28, 2024",
+        category: "Tech Culture",
+        tags: ["Tech Culture", "Morocco"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/morocco-tech",
+        pinned: false,
+        showOnHome: true
+    },
+    {
+        id: "ml-resources",
+        emoji: "📚",
+        title: "My Favorite Machine Learning Resources",
+        excerpt: "A curated list of books, courses, and papers that have shaped my understanding of ML. From Andrew Ng's course to recent transformer papers.",
+        date: "November 10, 2024",
+        category: "Learning",
+        tags: ["Learning", "Resources"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/ml-resources",
+        pinned: false,
+        showOnHome: true
+    },
+    {
+        id: "pytorch-vs-tensorflow",
+        emoji: "💡",
+        title: "Why I Chose PyTorch Over TensorFlow",
+        excerpt: "After years of using both frameworks, here's my take on the PyTorch vs TensorFlow debate and why I ultimately chose PyTorch for research.",
+        date: "October 22, 2024",
+        category: "Tools",
+        tags: ["Tools", "Opinion"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/pytorch-vs-tensorflow",
+        pinned: false,
+        showOnHome: false
+    },
+    {
+        id: "building-in-public",
+        emoji: "🚀",
+        title: "Building in Public: Lessons from Open Source",
+        excerpt: "What I've learned from contributing to open source projects and sharing my work publicly. The unexpected benefits and challenges.",
+        date: "October 5, 2024",
+        category: "Community",
+        tags: ["Open Source", "Community"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/building-in-public",
+        pinned: false,
+        showOnHome: false
+    },
+    {
+        id: "debugging-neural-networks",
+        emoji: "🧠",
+        title: "The Art of Debugging Neural Networks",
+        excerpt: "Debugging neural networks is more art than science. Here are the techniques that have saved me countless hours of frustration.",
+        date: "September 18, 2024",
+        category: "Technical",
+        tags: ["Technical", "Tips"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/debugging-neural-networks",
+        pinned: false,
+        showOnHome: false
+    },
+    {
+        id: "remote-work-morocco",
+        emoji: "☕",
+        title: "Remote Work as a Developer in Morocco",
+        excerpt: "Balancing remote work with local culture, dealing with timezone differences, and finding the best coffee shops in Casablanca for coding.",
+        date: "September 1, 2024",
+        category: "Lifestyle",
+        tags: ["Lifestyle", "Work"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/remote-work-morocco",
+        pinned: false,
+        showOnHome: false
+    },
+    {
+        id: "ai-african-markets",
+        emoji: "🔮",
+        title: "AI's Impact on African Markets",
+        excerpt: "Exploring opportunities for AI applications in African markets, from agriculture to finance, and the unique challenges we face.",
+        date: "August 15, 2024",
+        category: "AI",
+        tags: ["AI", "Africa"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/ai-african-markets",
+        pinned: false,
+        showOnHome: false
+    },
+    {
+        id: "technical-goals",
+        emoji: "🎯",
+        title: "Setting Technical Goals That Stick",
+        excerpt: "My system for setting and achieving technical learning goals, inspired by deliberate practice principles and spaced repetition.",
+        date: "July 25, 2024",
+        category: "Productivity",
+        tags: ["Productivity", "Growth"],
+        mediumUrl: "https://medium.com/@omaraitmlouk/technical-goals",
+        pinned: false,
+        showOnHome: false
+    }
+];

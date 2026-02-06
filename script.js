@@ -517,6 +517,257 @@ function updateBlogSearchPlaceholder() {
 // Initialize blog from global blogData
 initBlog();
 
+// Deep Dives Data Management
+function initDeepDives() {
+    if (typeof deepDivesData === 'undefined' || !deepDivesData.length) return;
+    renderDeepDives();
+}
+
+function renderDeepDives() {
+    const container = document.getElementById('deep-dives-grid');
+    if (!container) return;
+
+    container.innerHTML = deepDivesData.map(dive => {
+        const isPublished = dive.status === 'published';
+        const cardTag = isPublished ? 'a' : 'div';
+        const hrefAttr = isPublished ? `href="${dive.url}" target="_blank"` : '';
+        const statusBadge = !isPublished ? '<span class="deep-dive-badge">Coming Soon</span>' : '';
+
+        return `
+            <${cardTag} ${hrefAttr} class="deep-dive-card ${!isPublished ? 'coming-soon' : ''}">
+                <span class="deep-dive-icon" style="background-color: ${dive.iconColor}15; color: ${dive.iconColor}">
+                    <i class="${dive.icon}"></i>
+                </span>
+                <h3>${dive.title}</h3>
+                ${statusBadge}
+            </${cardTag}>
+        `;
+    }).join('');
+}
+
+initDeepDives();
+
+// Notes Data Management
+// notesData is loaded from notes-data.js
+
+function initNotes() {
+    if (typeof notesData === 'undefined' || !notesData.length) return;
+    renderHomeNotes();
+    renderNotesPage();
+    updateNotesSearchPlaceholder();
+}
+
+function renderHomeNotes() {
+    const container = document.getElementById('home-notes-list');
+    if (!container) return;
+
+    const homeNotes = notesData.filter(note => note.showOnHome);
+    container.innerHTML = homeNotes.map(note => `
+        <article class="blog-item">
+            <a href="${note.mediumUrl}" target="_blank">${note.title}</a>
+        </article>
+    `).join('');
+}
+
+function renderNotesPage() {
+    // Render pinned note
+    const pinnedContainer = document.getElementById('notes-pinned');
+    const pinnedNote = notesData.find(note => note.pinned);
+
+    if (pinnedContainer && pinnedNote) {
+        pinnedContainer.style.display = 'block';
+        pinnedContainer.innerHTML = `
+            <span class="pin-icon">📌</span>
+            <div class="note-content">
+                <h2>${pinnedNote.title}</h2>
+                <div class="note-meta">
+                    <span class="note-date">${pinnedNote.date}</span>
+                    <span class="note-category">${pinnedNote.category}</span>
+                </div>
+                <p>${pinnedNote.excerpt}</p>
+                <a href="${pinnedNote.mediumUrl}" class="note-link" target="_blank">Read Full Note →</a>
+            </div>
+        `;
+    }
+
+    // Render note cards (all non-pinned)
+    const gridContainer = document.getElementById('notes-grid');
+    if (!gridContainer) return;
+
+    const notes = notesData.filter(note => !note.pinned);
+    gridContainer.innerHTML = notes.map(note => `
+        <article class="note-card" data-title="${note.title.toLowerCase()}" data-excerpt="${note.excerpt.toLowerCase()}" data-category="${note.category.toLowerCase()}" data-tags="${note.tags.join(' ').toLowerCase()}" data-url="${note.mediumUrl}" onclick="window.open(this.dataset.url, '_blank')">
+            <div class="note-header">
+                <span class="note-emoji">${note.emoji}</span>
+                <span class="note-date">${note.date}</span>
+            </div>
+            <h3>${note.title}</h3>
+            <p>${note.excerpt}</p>
+            <div class="note-tags">
+                ${note.tags.map(tag => `<span class="note-tag">${tag}</span>`).join('')}
+            </div>
+        </article>
+    `).join('');
+}
+
+function updateNotesSearchPlaceholder() {
+    const searchInput = document.getElementById('notes-search');
+    if (searchInput) {
+        searchInput.placeholder = `Search ${notesData.length} notes...`;
+    }
+}
+
+// Initialize notes from global notesData
+initNotes();
+
+// Projects Data Management
+// projectsData is loaded from projects-data.js
+
+function initProjects() {
+    if (typeof projectsData === 'undefined') return;
+    renderHomeProjects();
+    renderProjectsFeatured();
+    renderProjectsCategories();
+    renderProjectsContributions();
+    updateProjectsSearchPlaceholder();
+}
+
+function renderHomeProjects() {
+    const container = document.getElementById('home-projects-grid');
+    if (!container) return;
+
+    const homeProjects = projectsData.projects.filter(p => p.showOnHome);
+    container.innerHTML = homeProjects.map(p => `
+        <article class="project-card">
+            <div class="project-year">${p.year}</div>
+            <h3>${p.title}</h3>
+            <p>${p.shortDescription}</p>
+            <div class="project-links">
+                ${p.links.map(link => `<a href="${link.url}" class="link-pill" target="_blank"><i class="${getLinkIcon(link.label)}"></i>${link.label}</a>`).join('')}
+            </div>
+        </article>
+    `).join('');
+}
+
+function renderProjectsFeatured() {
+    const section = document.getElementById('projects-featured-section');
+    const list = document.getElementById('projects-featured-list');
+    if (!section || !list) return;
+
+    const featured = projectsData.projects.filter(p => p.featured);
+    if (featured.length === 0) return;
+
+    section.style.display = 'block';
+    list.innerHTML = featured.map((p, i) => `
+        <div class="featured-project${i % 2 !== 0 ? ' reverse' : ''}">
+            <div class="featured-project-content">
+                <span class="project-badge">${p.year} \u2022 ${p.category}</span>
+                <h3>${p.title}</h3>
+                <p>${p.description}</p>
+                <div class="project-tech">
+                    ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+                </div>
+                <div class="project-actions">
+                    ${p.links.map(link => `
+                        <a href="${link.url}" class="project-link" target="_blank">
+                            <span>${link.label}</span>
+                            <span>\u2192</span>
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+            <div class="featured-project-image">
+                <div class="project-image-placeholder">
+                    <span>${p.icon}</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Map link labels to Font Awesome icon classes
+function getLinkIcon(label) {
+    const l = label.toLowerCase();
+    if (l.includes('github')) return 'fa-brands fa-github';
+    if (l.includes('demo') || l.includes('live')) return 'fa-solid fa-arrow-up-right-from-square';
+    if (l.includes('paper')) return 'fa-solid fa-file-lines';
+    if (l.includes('article')) return 'fa-solid fa-newspaper';
+    if (l.includes('video')) return 'fa-solid fa-circle-play';
+    if (l.includes('report')) return 'fa-solid fa-file-pdf';
+    if (l.includes('notebook')) return 'fa-solid fa-book-open';
+    if (l.includes('doc')) return 'fa-solid fa-book';
+    if (l.includes('case')) return 'fa-solid fa-briefcase';
+    if (l.includes('site')) return 'fa-solid fa-globe';
+    return 'fa-solid fa-link';
+}
+
+function renderProjectsCategories() {
+    const container = document.getElementById('projects-categories');
+    if (!container) return;
+
+    const nonFeatured = projectsData.projects.filter(p => !p.featured);
+    const categories = {};
+    nonFeatured.forEach(p => {
+        if (!categories[p.category]) categories[p.category] = [];
+        categories[p.category].push(p);
+    });
+
+    container.innerHTML = Object.keys(categories).map(cat => `
+        <div class="project-category" data-category="${cat.toLowerCase()}">
+            <h2>${cat}</h2>
+            <div class="project-grid">
+                ${categories[cat].map(p => `
+                    <div class="project-card-detailed" data-title="${p.title.toLowerCase()}" data-desc="${p.description.toLowerCase()}" data-tech="${p.tech.join(' ').toLowerCase()}">
+                        <div class="project-card-header">
+                            <span class="project-icon">${p.icon}</span>
+                            <span class="project-year">${p.year}</span>
+                        </div>
+                        <h3>${p.title}</h3>
+                        <p>${p.description}</p>
+                        <div class="project-tech">
+                            ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+                        </div>
+                        <div class="project-links-bottom">
+                            ${p.links.map(link => `<a href="${link.url}" class="link-pill" target="_blank"><i class="${getLinkIcon(link.label)}"></i>${link.label}</a>`).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderProjectsContributions() {
+    const section = document.getElementById('projects-contributions-section');
+    const list = document.getElementById('projects-contributions-list');
+    if (!section || !list) return;
+
+    const contribs = projectsData.contributions;
+    if (!contribs || contribs.length === 0) return;
+
+    section.style.display = 'block';
+    list.innerHTML = contribs.map(c => `
+        <div class="contribution-item" data-title="${c.title.toLowerCase()}" data-desc="${c.description.toLowerCase()}">
+            <div class="contribution-header">
+                <h4>${c.title}</h4>
+                <span class="contribution-badge">${c.badge}</span>
+            </div>
+            <p>${c.description}</p>
+        </div>
+    `).join('');
+}
+
+function updateProjectsSearchPlaceholder() {
+    const searchInput = document.getElementById('projects-search');
+    if (searchInput) {
+        const total = projectsData.projects.length + (projectsData.contributions ? projectsData.contributions.length : 0);
+        searchInput.placeholder = `Search ${total} projects...`;
+    }
+}
+
+// Initialize projects
+initProjects();
+
 // Search functionality for Projects, Blog, and Notes
 function initializeSearch() {
     // Projects Search
@@ -639,38 +890,40 @@ function initializeSearch() {
         });
     }
     
-    // Notes Search
+    // Notes Search (now searches dynamically rendered content)
     const notesSearch = document.getElementById('notes-search');
     if (notesSearch) {
         notesSearch.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
+            const searchTerm = e.target.value.toLowerCase().trim();
             
             // Search through pinned note
-            const pinnedNote = document.querySelector('.pinned-note');
-            if (pinnedNote) {
-                const title = pinnedNote.querySelector('h2').textContent.toLowerCase();
-                const content = pinnedNote.querySelector('p').textContent.toLowerCase();
-                const category = pinnedNote.querySelector('.note-category') ? pinnedNote.querySelector('.note-category').textContent.toLowerCase() : '';
-                
-                if (title.includes(searchTerm) || content.includes(searchTerm) || category.includes(searchTerm)) {
-                    pinnedNote.style.display = 'block';
-                } else {
-                    pinnedNote.style.display = 'none';
+            const pinnedEl = document.getElementById('notes-pinned');
+            if (pinnedEl) {
+                const pinnedNote = notesData.find(n => n.pinned);
+                if (pinnedNote) {
+                    const match = searchTerm === '' ||
+                        pinnedNote.title.toLowerCase().includes(searchTerm) ||
+                        pinnedNote.excerpt.toLowerCase().includes(searchTerm) ||
+                        pinnedNote.category.toLowerCase().includes(searchTerm) ||
+                        pinnedNote.tags.join(' ').toLowerCase().includes(searchTerm);
+                    pinnedEl.style.display = match ? 'block' : 'none';
                 }
             }
             
             // Search through note cards
-            const noteCards = document.querySelectorAll('.note-card');
+            const noteCards = document.querySelectorAll('#notes-grid .note-card');
             noteCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                const tags = card.querySelector('.note-tags') ? card.querySelector('.note-tags').textContent.toLowerCase() : '';
+                const title = card.dataset.title || '';
+                const excerpt = card.dataset.excerpt || '';
+                const category = card.dataset.category || '';
+                const tags = card.dataset.tags || '';
                 
-                if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                const match = searchTerm === '' ||
+                    title.includes(searchTerm) ||
+                    excerpt.includes(searchTerm) ||
+                    category.includes(searchTerm) ||
+                    tags.includes(searchTerm);
+                card.style.display = match ? 'block' : 'none';
             });
         });
     }

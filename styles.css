@@ -501,45 +501,60 @@ body {
 .deep-dive-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-card);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     padding: var(--space-lg);
     transition: all 0.2s ease;
     cursor: pointer;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--space-md);
-    min-height: 80px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .deep-dive-card:hover {
-    background-color: var(--code-bg);
-    transform: translateX(2px);
-    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.deep-dive-card.coming-soon {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.deep-dive-card.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+    opacity: 0.75;
 }
 
 .deep-dive-icon {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--bg-primary);
-    border-radius: var(--radius-sm);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease;
 }
 
-[data-theme="dark"] .deep-dive-icon {
-    background-color: var(--bg-secondary);
+.deep-dive-card:hover .deep-dive-icon {
+    transform: scale(1.1);
 }
 
 .deep-dive-card h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.4;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.45;
     color: var(--text-primary);
     margin: 0;
-    padding-top: 8px;
+    flex: 1;
+}
+
+.deep-dive-badge {
+    display: none;
 }
 
 /* Projects Grid */
@@ -589,6 +604,7 @@ body {
 .project-links {
     display: flex;
     gap: var(--space-sm);
+    flex-wrap: wrap;
 }
 
 .btn-small {
@@ -602,12 +618,18 @@ body {
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 500;
-    transition: all 0.2s;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-small:hover {
     background-color: var(--link-color);
     color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+[data-theme="dark"] .btn-small:hover {
+    box-shadow: 0 2px 8px rgba(96, 165, 250, 0.25);
 }
 
 /* View All Projects Button */
@@ -969,7 +991,7 @@ body {
     color: var(--link-color);
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.2s;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-link:hover {
@@ -1037,22 +1059,47 @@ body {
 
 .project-links-bottom {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     padding-top: var(--space-md);
     border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
 }
 
-.link-with-icon {
-    color: var(--link-color);
+.link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-card);
+    border-radius: 50px;
+    color: var(--text-primary);
     text-decoration: none;
-    font-size: 0.9375rem;
+    font-size: 0.8125rem;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
 }
 
-.link-with-icon:hover {
-    color: var(--link-hover);
-    text-decoration: underline;
+.link-pill i {
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+}
+
+.link-pill:hover {
+    background-color: var(--link-color);
+    border-color: var(--link-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+[data-theme="dark"] .link-pill:hover {
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.25);
+}
+
+.link-pill:hover i {
+    transform: scale(1.1);
 }
 
 /* Contributions Section */

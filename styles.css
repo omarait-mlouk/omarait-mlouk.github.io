@@ -967,7 +967,8 @@ body {
 }
 
 .projects-featured h2,
-.project-category h2 {
+.project-category h2,
+.blog-category h2 {
     font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: var(--space-xl);
@@ -1229,6 +1230,10 @@ body {
 }
 
 /* Blog Page Styles */
+.blog-category {
+    margin-bottom: var(--space-3xl);
+}
+
 .blog-hero,
 .notes-hero {
     margin-bottom: var(--space-2xl);
@@ -1270,6 +1275,7 @@ body {
 .blog-content,
 .notes-content {
     max-width: 1200px;
+    padding-bottom: var(--space-2xl);
 }
 
 /* Featured Article */
@@ -1818,11 +1824,14 @@ body {
 .footer {
     margin-top: var(--space-3xl);
     padding-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
     border-top: 1px solid var(--border-color);
+    text-align: center;
 }
 
 .footer-links {
     display: flex;
+    justify-content: center;
     gap: var(--space-lg);
     margin-bottom: var(--space-lg);
     flex-wrap: wrap;
@@ -1842,6 +1851,7 @@ body {
 
 .footer-badges {
     display: flex;
+    justify-content: center;
     gap: var(--space-md);
     margin-bottom: var(--space-lg);
 }
@@ -1863,6 +1873,11 @@ body {
 .badge-btn:hover {
     background-color: var(--link-hover);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="dark"] .badge-btn:hover {
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
 }
 
 .badge-btn i {

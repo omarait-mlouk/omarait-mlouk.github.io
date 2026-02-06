@@ -115,27 +115,8 @@
                 <h2>Notes</h2>
                 <p class="section-description">Life, research, projects, and everything else.</p>
                 
-                <div class="blog-list">
-                    <article class="blog-item">
-                        <a href="/notes/2024-review">
-                            Year in Review: 2024 into 2025
-                        </a>
-                    </article>
-                    <article class="blog-item">
-                        <a href="/notes/thesis-journey">
-                            My Thesis Journey: DeblurGAN-v2 Research
-                        </a>
-                    </article>
-                    <article class="blog-item">
-                        <a href="/notes/morocco-tech">
-                            The Growing Tech Scene in Morocco
-                        </a>
-                    </article>
-                    <article class="blog-item">
-                        <a href="/notes/ml-resources">
-                            My Favorite Machine Learning Resources
-                        </a>
-                    </article>
+                <div class="blog-list" id="home-notes-list">
+                    <!-- Populated dynamically from notes-data.js -->
                 </div>
                 <a href="#notes" class="view-more-link" data-section="notes">
                     View all notes <span class="arrow">→</span>
@@ -215,66 +196,8 @@
                 <h2>Projects</h2>
                 <p class="section-description">Open-source projects I've worked on over the years.</p>
                 
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <div class="project-year">2024</div>
-                        <h3>DeblurGAN-v2 Web Platform</h3>
-                        <p>Advanced image deblurring with real-time processing</p>
-                        <div class="project-links">
-                            <a href="/projects/deblurgan" class="btn-small">Article</a>
-                            <a href="https://deblurgan-demo.herokuapp.com" class="btn-small" target="_blank">Demo</a>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card">
-                        <div class="project-year">2024</div>
-                        <h3>Morocco Tourism Booking</h3>
-                        <p>Complete Odoo-based tourism platform</p>
-                        <div class="project-links">
-                            <a href="/projects/tourism" class="btn-small">Article</a>
-                            <a href="#" class="btn-small">Demo</a>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card">
-                        <div class="project-year">2023</div>
-                        <h3>Tifinagh OCR</h3>
-                        <p>Character recognition for Amazigh script</p>
-                        <div class="project-links">
-                            <a href="/projects/tifinagh" class="btn-small">Article</a>
-                            <a href="#" class="btn-small">Demo</a>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card">
-                        <div class="project-year">2023</div>
-                        <h3>Neural Style Transfer</h3>
-                        <p>Artistic style transfer using CNNs</p>
-                        <div class="project-links">
-                            <a href="/projects/style-transfer" class="btn-small">Article</a>
-                            <a href="#" class="btn-small">Demo</a>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card">
-                        <div class="project-year">2022</div>
-                        <h3>COVID-19 X-Ray Classifier</h3>
-                        <p>Deep learning for medical imaging</p>
-                        <div class="project-links">
-                            <a href="/projects/covid-classifier" class="btn-small">Article</a>
-                            <a href="#" class="btn-small">Demo</a>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card">
-                        <div class="project-year">2022</div>
-                        <h3>Face Mask Detector</h3>
-                        <p>Real-time detection with MobileNet</p>
-                        <div class="project-links">
-                            <a href="/projects/mask-detector" class="btn-small">Article</a>
-                            <a href="#" class="btn-small">Demo</a>
-                        </div>
-                    </article>
+                <div class="projects-grid" id="home-projects-grid">
+                    <!-- Populated dynamically from projects-data.js -->
                 </div>
                 <a href="#projects" class="view-more-link" data-section="projects">
                     View all projects <span class="arrow">→</span>
@@ -428,8 +351,23 @@
 
                 <div class="projects-content">
                     <!-- Featured Projects -->
-                    <div class="projects-featured">
+                    <div class="projects-featured" id="projects-featured-section" style="display:none;">
                         <h2>Featured Projects</h2>
+                        <div id="projects-featured-list"></div>
+                    </div>
+
+                    <!-- Category Sections -->
+                    <div id="projects-categories"></div>
+
+                    <!-- Open Source Contributions -->
+                    <div class="project-category" id="projects-contributions-section" style="display:none;">
+                        <h2>Open Source Contributions</h2>
+                        <div class="contributions-list" id="projects-contributions-list"></div>
+                    </div>
+                </div>
+
+                <!-- REMOVED STATIC CONTENT BELOW -->
+                <div style="display:none;">
                         
                         <div class="featured-project">
                             <div class="featured-project-content">
@@ -692,6 +630,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
 
             <!-- Blog Page (Initially Hidden) -->
@@ -756,154 +695,14 @@
 
                 <div class="notes-content">
                     <!-- Pinned Note -->
-                    <div class="pinned-note">
-                        <span class="pin-icon">📌</span>
-                        <div class="note-content">
-                            <h2>Year in Review: 2024 into 2025</h2>
-                            <div class="note-meta">
-                                <span class="note-date">December 31, 2024</span>
-                                <span class="note-category">Reflection</span>
-                            </div>
-                            <p>Looking back at an incredible year of growth, challenges, and achievements. From completing my thesis on DeblurGAN-v2 to starting my Master's in AI, this year has been transformative. Here are the key lessons learned and goals for 2025...</p>
-                            <a href="#" class="note-link">Read Full Note →</a>
-                        </div>
+                    <div class="pinned-note" id="notes-pinned" style="display:none;">
+                        <!-- Populated dynamically from notes-data.js -->
                     </div>
 
                     <!-- Recent Notes -->
-                    <div class="notes-grid">
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">🎓</span>
-                                <span class="note-date">Dec 15, 2024</span>
-                            </div>
-                            <h3>My Thesis Journey: DeblurGAN-v2 Research</h3>
-                            <p>Six months of research, countless experiments, and finally defending my thesis on image deblurring. The journey taught me more than just technical skills...</p>
-                            <div class="note-tags">
-                                <span class="note-tag">Research</span>
-                                <span class="note-tag">Academic</span>
-                            </div>
-                        </article>
-
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">🌍</span>
-                                <span class="note-date">Nov 28, 2024</span>
-                            </div>
-                            <h3>The Growing Tech Scene in Morocco</h3>
-                            <p>Observations on how Morocco's tech ecosystem is evolving, from AI startups in Casablanca to the growing developer community across the country.</p>
-                            <div class="note-tags">
-                                <span class="note-tag">Tech Culture</span>
-                                <span class="note-tag">Morocco</span>
-                            </div>
-                        </article>
-
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">📚</span>
-                                <span class="note-date">Nov 10, 2024</span>
-                            </div>
-                            <h3>My Favorite Machine Learning Resources</h3>
-                            <p>A curated list of books, courses, and papers that have shaped my understanding of ML. From Andrew Ng's course to recent transformer papers.</p>
-                            <div class="note-tags">
-                                <span class="note-tag">Learning</span>
-                                <span class="note-tag">Resources</span>
-                            </div>
-                        </article>
-
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">💡</span>
-                                <span class="note-date">Oct 22, 2024</span>
-                            </div>
-                            <h3>Why I Chose PyTorch Over TensorFlow</h3>
-                            <p>After years of using both frameworks, here's my take on the PyTorch vs TensorFlow debate and why I ultimately chose PyTorch for research.</p>
-                            <div class="note-tags">
-                                <span class="note-tag">Tools</span>
-                                <span class="note-tag">Opinion</span>
-                            </div>
-                        </article>
-
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">🚀</span>
-                                <span class="note-date">Oct 5, 2024</span>
-                            </div>
-                            <h3>Building in Public: Lessons from Open Source</h3>
-                            <p>What I've learned from contributing to open source projects and sharing my work publicly. The unexpected benefits and challenges.</p>
-                            <div class="note-tags">
-                                <span class="note-tag">Open Source</span>
-                                <span class="note-tag">Community</span>
-                            </div>
-                        </article>
-
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">🧠</span>
-                                <span class="note-date">Sep 18, 2024</span>
-                            </div>
-                            <h3>The Art of Debugging Neural Networks</h3>
-                            <p>Debugging neural networks is more art than science. Here are the techniques that have saved me countless hours of frustration.</p>
-                            <div class="note-tags">
-                                <span class="note-tag">Technical</span>
-                                <span class="note-tag">Tips</span>
-                            </div>
-                        </article>
-
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">☕</span>
-                                <span class="note-date">Sep 1, 2024</span>
-                            </div>
-                            <h3>Remote Work as a Developer in Morocco</h3>
-                            <p>Balancing remote work with local culture, dealing with timezone differences, and finding the best coffee shops in Casablanca for coding.</p>
-                            <div class="note-tags">
-                                <span class="note-tag">Lifestyle</span>
-                                <span class="note-tag">Work</span>
-                            </div>
-                        </article>
-
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">🔮</span>
-                                <span class="note-date">Aug 15, 2024</span>
-                            </div>
-                            <h3>AI's Impact on African Markets</h3>
-                            <p>Exploring opportunities for AI applications in African markets, from agriculture to finance, and the unique challenges we face.</p>
-                            <div class="note-tags">
-                                <span class="note-tag">AI</span>
-                                <span class="note-tag">Africa</span>
-                            </div>
-                        </article>
-
-                        <article class="note-card">
-                            <div class="note-header">
-                                <span class="note-emoji">🎯</span>
-                                <span class="note-date">Jul 25, 2024</span>
-                            </div>
-                            <h3>Setting Technical Goals That Stick</h3>
-                            <p>My system for setting and achieving technical learning goals, inspired by deliberate practice principles and spaced repetition.</p>
-                            <div class="note-tags">
-                                <span class="note-tag">Productivity</span>
-                                <span class="note-tag">Growth</span>
-                            </div>
-                        </article>
+                    <div class="notes-grid" id="notes-grid">
+                        <!-- Populated dynamically from notes-data.js -->
                     </div>
-
-                    <!-- Note Categories - Commented out until real content is ready
-                    <div class="notes-categories">
-                        <h2>Browse by Topic</h2>
-                        <div class="note-topics">
-                            <a href="#" class="topic-pill">Research (12)</a>
-                            <a href="#" class="topic-pill">Tech Culture (8)</a>
-                            <a href="#" class="topic-pill">Learning (15)</a>
-                            <a href="#" class="topic-pill">Career (6)</a>
-                            <a href="#" class="topic-pill">Morocco (5)</a>
-                            <a href="#" class="topic-pill">Open Source (7)</a>
-                            <a href="#" class="topic-pill">Productivity (9)</a>
-                            <a href="#" class="topic-pill">Reflections (11)</a>
-                        </div>
-                    </div>
-                    -->
                 </div>
             </section>
 
@@ -933,6 +732,8 @@
     </div>
 
     <script src="blog-data.js"></script>
+    <script src="notes-data.js"></script>
+    <script src="projects-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

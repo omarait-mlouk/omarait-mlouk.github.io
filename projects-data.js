@@ -10,7 +10,7 @@ const projectsData = {
             category: "AI & Machine Learning",
             tech: ["PyTorch", "Flask", "OpenCV", "Docker"],
             links: [
-                { label: "View on GitHub", url: "https://github.com/omarait-mlouk/deblurgan-v2" },
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/deblurgan-v2" },
                 { label: "Live Demo", url: "https://deblurgan-demo.herokuapp.com" }
             ],
             featured: true,

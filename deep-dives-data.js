@@ -1,15 +1,15 @@
 const deepDivesData = [
     {
-        id: "deblurgan-v2",
-        icon: "fa-solid fa-microscope",
-        iconColor: "#8B5CF6",
-        title: "DeblurGAN-v2: State-of-the-Art Motion Deblurring",
-        description: "A deep dive into the DeblurGAN-v2 architecture, Feature Pyramid Networks, and practical image restoration techniques.",
-        category: "Computer Vision",
-        tags: ["GANs", "Image Restoration", "PyTorch"],
-        status: "published",
-        url: "#"
-    },
+    "id": "multitier-architecture-guide",
+    "icon": "fa-solid fa-layer-group",
+    "iconColor": "#2563EB",
+    "title": "Multitier Architecture Explained: Designing Scalable Systems",
+    "description": "An in-depth breakdown of multitier architecture covering layered design principles, request lifecycle, scalability benefits, and real-world system examples.",
+    "category": "Software Architecture",
+    "tags": ["System Design", "Distributed Systems", "Backend", "Engineering"],
+    "status": "published",
+    "url": "https://medium.com/@omaraitmlouk/multitier-architecture-explained-complete-beginner-guide-ad282465b644"
+},
     {
         id: "production-cv",
         icon: "fa-solid fa-eye",

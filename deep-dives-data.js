@@ -1,25 +1,25 @@
 const deepDivesData = [
     {
-    "id": "multitier-architecture-guide",
-    "icon": "fa-solid fa-layer-group",
-    "iconColor": "#2563EB",
-    "title": "Multitier Architecture Explained: Designing Scalable Systems",
-    "description": "An in-depth breakdown of multitier architecture covering layered design principles, request lifecycle, scalability benefits, and real-world system examples.",
-    "category": "Software Architecture",
-    "tags": ["System Design", "Distributed Systems", "Backend", "Engineering"],
-    "status": "published",
-    "url": "https://medium.com/@omaraitmlouk/multitier-architecture-explained-complete-beginner-guide-ad282465b644"
-},
+        "id": "multitier-architecture-guide",
+        "icon": "fa-solid fa-layer-group",
+        "iconColor": "#2563EB",
+        "title": "Multitier Architecture Explained: Designing Scalable Systems",
+        "description": "An in-depth breakdown of multitier architecture covering layered design principles, request lifecycle, scalability benefits, and real-world system examples.",
+        "category": "Software Architecture",
+        "tags": ["System Design", "Distributed Systems", "Backend", "Engineering"],
+        "status": "published",
+        "url": "https://medium.com/@omaraitmlouk/multitier-architecture-explained-complete-beginner-guide-ad282465b644"
+    },
     {
-        id: "production-cv",
-        icon: "fa-solid fa-eye",
-        iconColor: "#3B82F6",
-        title: "Building Production-Ready Computer Vision Systems",
-        description: "From model training to deployment — covering optimization, serving infrastructure, and monitoring in production.",
-        category: "MLOps",
-        tags: ["Computer Vision", "Deployment", "Docker"],
-        status: "published",
-        url: "#"
+        "id": "image-segmentation-blog",
+        "icon": "fa-solid fa-image",
+        "iconColor": "#10B981",
+        "title": "Deep Dive into Image Segmentation",
+        "description": "A medium-length blog explaining image segmentation techniques, types, and applications — from classic methods to modern deep learning approaches.",
+        "category": "Computer Vision",
+        "tags": ["Image Segmentation", "Computer Vision", "Deep Learning"],
+        "status": "published",
+        "url": "https://medium.com/@omaraitmlouk/image-segmentation-explained-the-key-to-pixel-level-understanding-in-computer-vision-d8b1968670b4"
     },
     {
         id: "odoo-tourism",

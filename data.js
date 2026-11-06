@@ -15,7 +15,7 @@ const site = {
 const projects = [
     {
         title: "Federated RAG for Healthcare",
-        subtitle: "Master's thesis · in progress",
+        subtitle: "Master's thesis · University of Skövde, Sweden",
         description: "A privacy-preserving clinical decision support system. Federated learning lets medical institutions train together while patient data stays on site, and retrieval-augmented generation grounds the answers in each institution's own knowledge.",
         year: "2026",
         tags: ["Federated Learning", "RAG", "PyTorch", "LangChain", "FAISS", "Flower"],
@@ -126,6 +126,7 @@ const articles = [
 ];
 
 const experience = [
+    { when: "Feb — Jul 2026", role: "Research Intern", where: "University of Skövde · Sweden" },
     { when: "2024 — now", role: "AI Engineer", where: "AinnovateX · Part-time · Marrakech" },
     { when: "2023 — 2024", role: "Python Developer, Odoo", where: "Flyer.be / Batteria · Casablanca" },
     { when: "2021 — 2023", role: "Software Engineer", where: "AinnovateX" },

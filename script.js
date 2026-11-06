@@ -2,8 +2,9 @@
 const themeToggle = document.getElementById('themeToggle');
 const htmlElement = document.documentElement;
 
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
+// Check for saved theme preference or fall back to the system setting
+const currentTheme = localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 htmlElement.setAttribute('data-theme', currentTheme);
 
 // Theme toggle functionality
@@ -234,7 +235,6 @@ logo.addEventListener('click', function(e) {
 
 // Handle smooth scrolling for hash links within home page
 document.querySelectorAll('a[href^="#"]:not(.nav-item):not(.view-all-btn):not(.view-all-blog-btn):not(.view-all-notes-btn)').forEach(anchor => {
-   console.log("COOOOOL")
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
@@ -314,12 +314,7 @@ function typeWriterEffect(element, options = {}) {
     setTimeout(type, delay);
 }
 
-const heroTitle = document.querySelector('.hero h1');
-typeWriterEffect(heroTitle, {
-    speed: 40,
-    delay: 300,
-    cursor: true
-});
+
 
 
 
@@ -337,17 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Add hover effect to cards
-const cards = document.querySelectorAll('.project-card');
-cards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-4px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
-
 // Deep dive cards have their own CSS hover effects
 
 // Mobile menu toggle (for future implementation)

@@ -8,69 +8,26 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <a href="index.html" class="logo">
-                    <i class="fa-solid fa-robot logo-icon"></i>
-                    <span class="logo-text">omar.dev</span>
-                </a>
+        <!-- Header -->
+        <header class="site-header">
+            <a href="index.html" class="logo">Omar<span class="logo-rest"> Ait Mlouk</span></a>
+            <nav class="main-nav">
+                <a href="#blog" class="nav-item" data-section="blog">Blog</a>
+                <a href="#notes" class="nav-item" data-section="notes">Notes</a>
+                <a href="#projects" class="nav-item" data-section="projects">Projects</a>
+                <a href="#about" class="nav-item" data-section="about">About</a>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fa-solid fa-sun theme-icon-light"></i>
+                    <i class="fa-regular fa-sun theme-icon-light"></i>
                     <i class="fa-regular fa-moon theme-icon-dark"></i>
                 </button>
-            </div>
-
-            <section class="about-section">
-                <h3>About Me</h3>
-                <p>I'm <a href="#about" class="name-link" data-section="about">Omar</a>, software and AI engineer. Welcome to my digital space. 🪐</p>
-            </section>
-
-            <nav class="main-nav">
-                <a href="#" class="nav-item" data-section="home">
-                    <span class="nav-icon">🏠</span>
-                    <span>Home</span>
-                </a>
-                <a href="#blog" class="nav-item" data-section="blog">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAXlJREFUWEdjZBjkgHGQu48Bw4FcXFz/B9LR3759Q3HT0HEgesh9DQ1CCUju1evA/K9brFDFfY6B+d8OOKOIcznsBfPPnz+PIn7/9n28ERQUBrEXFpLwEBxyDhzIdEhUCA5aB5qZmWF124cPH6jq5i9fvqCY9+3bNzAfZg/ONDjqQGi4Df8Q3D/VEmuaM4zeTpW0SHEIDnoHwoKJ2rkXZi7FIThkHEgoqg+5e2JNk3Y78adVqoXgoHUgvdIeLPhJrkmGjAOTFiZRpdyDGTIpeBJW88gOwUHvQKoGHwMDA3ruHf5pEOZDq8bDVA3MXcWGsL4HirlEtwfRc/GgdyClwUco7aFXrQRb1NQuB2nuwPNLsde5sPYhrjoZFjJGa1dj7YOgxwzZaXDQO5DcNIir1YLLPLJDcNA7kNhi5li9LdgvbkuWkeSnJW4upPWLyS0HB8yBJAUHljoX1lohZA7d0iCpmYNgQQ1TMDrCSiCOCQ4BE0oj9JYf9KP8AAwOCkcMzeo6AAAAAElFTkSuQmCC" alt="Blog">
-                    <span>Blog</span>
-                </a>
-                <a href="#notes" class="nav-item" data-section="notes">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAlFJREFUWEfVmT9IQkEcx7XmJ4QRBBItbZGiLc7SVtmQ0GJbRottDRaKRlMQ5BI4SdIgLQk6iAkiRJNiW7VE5WTSoNAiZfi7fuK7ON97vhPu3fJ793535/f3ud/94Wk2MYokSd2eK5VKQQu/3w+Wd73dbptZGnrvmU7DCIwcRiDA6EkUbCwSAxuOhrnUkR6LpCJB4QTi1JZLZQguuB8E6131gs1kM2Dj5/Ghfrq9Ur32UIPxaJL/CBpGYKvVgohqVRIZlumZ6WGLjulLX6VluYwNHXYH+R2tBA0n0OEkkbJKvV4f6rfb7eDPHSfBSo1vsO6zbVk/1TlIExRW4EgJN9DJarXKhggGya6w2SVEX9/fwG5dH4HVTFB4gfQqVit4L+CEps8vU2CRXKVSgbrL5SLEso9gE0+50QgKL1AtMVzFvo056HJ/d0u6fnrArO+uycjF4+QkwtLpdEYjKLxAtVOMOUeTy19OQIxLCxawizukjiV0EIJHvC1pXsXCC1SaYvcyIaJEbna+De3cgR+wF4kq2GKhqI+g8AJZU6w252hym75TiNmzQla3boLCC6SnWG/O4X2y2WjyISi8QJxivTlHB8o9B4UVaLGQE6D1cUMg/J2t9AnB2ucw52w2mwwizozuVWwcgaUvIJAvwCeb/tnK2ueUNnhuOdgnKLpAJPKUnIRHVs4pkeO+DyJBwwikCeE3HHzPWrXox5s3t5OEJiiMQPzsppRTvPyab9TCChwgQjY8qkiSxAuabBzNX1hNJpPwAsdCSuugQ/8C0DrYONr/AqWg4EdKn+XrAAAAAElFTkSuQmCC" alt="Notes">
-                    <span>Notes</span>
-                </a>
-                <a href="#projects" class="nav-item" data-section="projects">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAlFJREFUWEfVmLtKA0EUhg1iETD2ETtJbATFlHaxtLFSMAHB0sZOsPLSCGkkCj5BougrCNamWBMrQ6JdRDshEawk4pn9zcwwl911i9k0k90zc+afb8+cuaTG9L+hb0oZ6sRhMvZj6txZgSSsXNokOrX6JShhMBAelZ7gx9AP+VcRTJbAp3abRuJ5D1RixMAHe1Ccsh/ZvwzNStAlgcKnDUsmKEFdvUH/k0ydbkeIeZ5gMgViZP8lhPaZqUmlq8gEEyOQi41YYBYKS+RHBhA6BhXo3RKIvPV1dxSLMDhJFw/or0wyNEFnBWIN7jevBXKZxXXhedC6MZLV1Z/4YCuUTBJAsKJo82DiBILE7doyjfzq+Z3Kau1ESdBWP3aCtg5llbb6EQSO+0vdBvVVq7PY6zfZfhAdbs/PClpsBHX1RwKP/dm8QKXnPfr+vyn8uBhMuEBbErw/rAaKTZAb5cOYCDogEBLMn9omVGcPSw5+FDtq9wRqjpfhhO6W9wV4F+dbSpjpIou5fI5lg073RZi1cqNfgokRqPvsNIB8Li+NOFo0jsiJZw+dN56gmwKzjSERWjkrkUDuJsGPFUYu7p+879MSdF4glEPo9E6BXmFfhthDPZzKdIepoHZ532eKQbI5L5AbAcVktsGyT6Y8589eNutwN4ObB/lQFdZuI6m9m3FZIGBK+e8vb5EdpzEFAWpns9vuBXU5j49VtwRWeiwf7s2ob4UrPRaTMdiNN7VcP+KO2lmBEIZve/oqZqS3FnuurLISdrxH7bB2tJP9yPkw5brAHy6QY3VmdklZAAAAAElFTkSuQmCC" alt="Projects">
-                    <span>Projects</span>
-                </a>
-                <a href="#about" class="nav-item" data-section="about">
-                    <span class="nav-icon">👨‍💻</span>
-                    <span>About Me</span>
-                </a>
             </nav>
-
-            <section class="connect-section">
-                <h3>Stay Connected</h3>
-                <div class="connect-links">
-                    <a href="https://www.linkedin.com/in/aitmloukomar" class="connect-item" target="_blank">
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://www.instagram.com/aitmloukomar/" class="connect-item" target="_blank">
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://medium.com/@omaraitmlouk" class="connect-item" target="_blank">
-                        <span>Medium</span>
-                    </a>
-                </div>
-            </section>
-
-        </aside>
+        </header>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -78,42 +35,17 @@
             <div id="home" class="page-section">
                 <!-- Hero Section -->
                 <section class="hero">
-                <h1>Hey, I'm Omar!</h1>
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <p>I'm an AI engineer, deep learning researcher, and full-stack developer. I've been building AI solutions and <a href="#blog">writing on this blog</a> about everything from generative AI and NLP to big data, deep learning, and the engines that power today’s AI systems.</p>
-                        <p class="hero-note">Everything on this site is written by me, not AI.</p>
+                    <h1>Hey, I'm Omar.</h1>
+                    <p>I'm an AI engineer, deep learning researcher, and full-stack developer. I build AI systems and <a href="#blog">write</a> about generative AI, NLP, big data, deep learning, and the engines that power today's AI.</p>
+                    <p class="hero-note">Everything on this site is written by me, not AI.</p>
+                    <div class="hero-links">
+                        <a href="mailto:omaraitmlouk.per@gmail.com">Email</a>
+                        <a href="https://github.com/omarait-mlouk" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/aitmloukomar" target="_blank">LinkedIn</a>
+                        <a href="https://medium.com/@omaraitmlouk" target="_blank">Medium</a>
+                        <a href="https://www.instagram.com/aitmloukomar/" target="_blank">Instagram</a>
                     </div>
-                    <div class="hero-image">
-                        <div class="mascot-container">
-                            <div class="mascot-circle"></div>
-                            <img src="batman.png" alt="Camel mascot" class="mascot-img">
-                            <!-- Orbiting Social Icons -->
-                            <div class="orbit-ring">
-                                <a href="mailto:omaraitmlouk.per@gmail.com" class="orbit-icon" style="--i:0; --color:#EA4335" title="Email">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/aitmloukomar" class="orbit-icon" target="_blank" style="--i:1; --color:#0A66C2" title="LinkedIn">
-                                    <i class="fa-brands fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://www.instagram.com/aitmloukomar/" class="orbit-icon" target="_blank" style="--i:2; --color:#E4405F" title="Instagram">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <a href="https://github.com/omarait-mlouk" class="orbit-icon" target="_blank" style="--i:3; --color:#333" title="GitHub">
-                                    <i class="fa-brands fa-github"></i>
-                                </a>
-                                <a href="https://medium.com/@omaraitmlouk" class="orbit-icon" target="_blank" style="--i:4; --color:#333" title="Medium">
-                                    <i class="fa-brands fa-medium"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-primary" data-section="about">About Me</a>
-                    <a href="mailto:omaraitmlouk.per@gmail.com" class="btn btn-secondary">📧 Email Me</a>
-                </div>
-            </section>
+                </section>
 
             <!-- Blog Section -->
             <section id="blog" class="content-section">
@@ -308,7 +240,7 @@
                     <!-- Search Bar -->
                     <div class="search-container">
                         <div class="search-box">
-                            <span class="search-icon">🔍</span>
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
                             <input type="text" id="projects-search" class="search-input" placeholder="Search 15 projects...">
                         </div>
                     </div>
@@ -346,7 +278,7 @@
                     <!-- Search Bar -->
                     <div class="search-container">
                         <div class="search-box">
-                            <span class="search-icon">🔍</span>
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
                             <input type="text" id="blog-search" class="search-input" placeholder="Search 61 articles...">
                         </div>
                     </div>
@@ -388,7 +320,7 @@
                     <!-- Search Bar -->
                     <div class="search-container">
                         <div class="search-box">
-                            <span class="search-icon">🔍</span>
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
                             <input type="text" id="notes-search" class="search-input" placeholder="Search 42 notes...">
                         </div>
                     </div>
@@ -409,25 +341,12 @@
 
             <!-- Footer -->
             <footer class="footer">
+                <p>© 2026 Omar Ait Mlouk</p>
                 <div class="footer-links">
-                    <a href="#newsletter">Email signup</a>
-                    <a href="/rss.xml">RSS feed</a>
                     <a href="https://github.com/omarait-mlouk" target="_blank">GitHub</a>
                     <a href="https://linkedin.com/in/aitmloukomar" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">Buy me a coffee</a>
+                    <a href="https://medium.com/@omaraitmlouk" target="_blank">Medium</a>
                 </div>
-                <div class="footer-badges">
-                    <a href="https://github.com/omarait-mlouk" class="badge-btn" target="_blank">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/aitmloukomar" class="badge-btn" target="_blank">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    <a href="https://medium.com/@omaraitmlouk" class="badge-btn" target="_blank">
-                        <i class="fa-brands fa-medium"></i>
-                    </a>
-                </div>
-                <p class="footer-credit">Made with ❤️ by <a href="#about" class="name-link" data-section="about">Omar Ait-Mlouk</a></p>
             </footer>
         </main>
     </div>

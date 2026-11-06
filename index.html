@@ -3,439 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar Ait Mlouk - AI Engineer & Developer</title>
-    <meta name="description" content="AI engineer, deep learning researcher, and full-stack developer. This is my digital garden.">
-    <link rel="stylesheet" href="styles.css">
+    <title>Omar Ait Mlouk · AI Engineer</title>
+    <meta name="description" content="AI engineer and full-stack developer building computer vision models, data platforms, and the software around them.">
+    <meta name="theme-color" content="#07080B">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Omar Ait Mlouk · AI Engineer">
+    <meta property="og:description" content="Computer vision, data platforms, and the software around them.">
+    <meta property="og:url" content="https://omarait-mlouk.github.io/">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <a href="index.html" class="logo">
-                    <i class="fa-solid fa-robot logo-icon"></i>
-                    <span class="logo-text">omar.dev</span>
-                </a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fa-solid fa-sun theme-icon-light"></i>
-                    <i class="fa-regular fa-moon theme-icon-dark"></i>
-                </button>
+    <a class="skip" href="#work">Skip to content</a>
+
+    <header class="nav" id="nav">
+        <a href="#top" class="nav-logo" aria-label="Omar Ait Mlouk, back to top">
+            <span class="nav-mark" aria-hidden="true"></span>OAM
+        </a>
+        <nav class="nav-links" aria-label="Sections">
+            <a href="#work">Work</a>
+            <a href="#writing">Writing</a>
+            <a href="#journey">Journey</a>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero: live neural field -->
+        <section class="hero" id="top">
+            <canvas class="hero-canvas" id="field" aria-hidden="true"></canvas>
+            <div class="hero-inner">
+                <p class="hero-kicker reveal"><span class="pulse-dot"></span>Open to roles, freelance &amp; research</p>
+                <h1 class="hero-title">
+                    <span class="line"><span class="word">Omar</span></span>
+                    <span class="line"><span class="word">Ait&nbsp;Mlouk</span></span>
+                </h1>
+                <p class="hero-sub reveal">AI engineer &amp; full-stack developer. I build <em>computer vision models</em>, <em>data platforms</em>, and the software that puts them to work.</p>
+                <div class="hero-actions reveal">
+                    <a href="#work" class="btn btn-solid">See my work</a>
+                    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+                </div>
             </div>
+            <a href="#intro" class="scroll-hint" aria-label="Scroll down">
+                <span></span>
+            </a>
+        </section>
 
-            <section class="about-section">
-                <h3>About Me</h3>
-                <p>I'm <a href="#about" class="name-link" data-section="about">Omar</a>, software and AI engineer. Welcome to my digital space. 🪐</p>
-            </section>
-
-            <nav class="main-nav">
-                <a href="#" class="nav-item" data-section="home">
-                    <span class="nav-icon">🏠</span>
-                    <span>Home</span>
-                </a>
-                <a href="#blog" class="nav-item" data-section="blog">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAXlJREFUWEdjZBjkgHGQu48Bw4FcXFz/B9LR3759Q3HT0HEgesh9DQ1CCUju1evA/K9brFDFfY6B+d8OOKOIcznsBfPPnz+PIn7/9n28ERQUBrEXFpLwEBxyDhzIdEhUCA5aB5qZmWF124cPH6jq5i9fvqCY9+3bNzAfZg/ONDjqQGi4Df8Q3D/VEmuaM4zeTpW0SHEIDnoHwoKJ2rkXZi7FIThkHEgoqg+5e2JNk3Y78adVqoXgoHUgvdIeLPhJrkmGjAOTFiZRpdyDGTIpeBJW88gOwUHvQKoGHwMDA3ruHf5pEOZDq8bDVA3MXcWGsL4HirlEtwfRc/GgdyClwUco7aFXrQRb1NQuB2nuwPNLsde5sPYhrjoZFjJGa1dj7YOgxwzZaXDQO5DcNIir1YLLPLJDcNA7kNhi5li9LdgvbkuWkeSnJW4upPWLyS0HB8yBJAUHljoX1lohZA7d0iCpmYNgQQ1TMDrCSiCOCQ4BE0oj9JYf9KP8AAwOCkcMzeo6AAAAAElFTkSuQmCC" alt="Blog">
-                    <span>Blog</span>
-                </a>
-                <a href="#notes" class="nav-item" data-section="notes">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAlFJREFUWEfVmT9IQkEcx7XmJ4QRBBItbZGiLc7SVtmQ0GJbRottDRaKRlMQ5BI4SdIgLQk6iAkiRJNiW7VE5WTSoNAiZfi7fuK7ON97vhPu3fJ793535/f3ud/94Wk2MYokSd2eK5VKQQu/3w+Wd73dbptZGnrvmU7DCIwcRiDA6EkUbCwSAxuOhrnUkR6LpCJB4QTi1JZLZQguuB8E6131gs1kM2Dj5/Ghfrq9Ur32UIPxaJL/CBpGYKvVgohqVRIZlumZ6WGLjulLX6VluYwNHXYH+R2tBA0n0OEkkbJKvV4f6rfb7eDPHSfBSo1vsO6zbVk/1TlIExRW4EgJN9DJarXKhggGya6w2SVEX9/fwG5dH4HVTFB4gfQqVit4L+CEps8vU2CRXKVSgbrL5SLEso9gE0+50QgKL1AtMVzFvo056HJ/d0u6fnrArO+uycjF4+QkwtLpdEYjKLxAtVOMOUeTy19OQIxLCxawizukjiV0EIJHvC1pXsXCC1SaYvcyIaJEbna+De3cgR+wF4kq2GKhqI+g8AJZU6w252hym75TiNmzQla3boLCC6SnWG/O4X2y2WjyISi8QJxivTlHB8o9B4UVaLGQE6D1cUMg/J2t9AnB2ucw52w2mwwizozuVWwcgaUvIJAvwCeb/tnK2ueUNnhuOdgnKLpAJPKUnIRHVs4pkeO+DyJBwwikCeE3HHzPWrXox5s3t5OEJiiMQPzsppRTvPyab9TCChwgQjY8qkiSxAuabBzNX1hNJpPwAsdCSuugQ/8C0DrYONr/AqWg4EdKn+XrAAAAAElFTkSuQmCC" alt="Notes">
-                    <span>Notes</span>
-                </a>
-                <a href="#projects" class="nav-item" data-section="projects">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAlFJREFUWEfVmLtKA0EUhg1iETD2ETtJbATFlHaxtLFSMAHB0sZOsPLSCGkkCj5BougrCNamWBMrQ6JdRDshEawk4pn9zcwwl911i9k0k90zc+afb8+cuaTG9L+hb0oZ6sRhMvZj6txZgSSsXNokOrX6JShhMBAelZ7gx9AP+VcRTJbAp3abRuJ5D1RixMAHe1Ccsh/ZvwzNStAlgcKnDUsmKEFdvUH/k0ydbkeIeZ5gMgViZP8lhPaZqUmlq8gEEyOQi41YYBYKS+RHBhA6BhXo3RKIvPV1dxSLMDhJFw/or0wyNEFnBWIN7jevBXKZxXXhedC6MZLV1Z/4YCuUTBJAsKJo82DiBILE7doyjfzq+Z3Kau1ESdBWP3aCtg5llbb6EQSO+0vdBvVVq7PY6zfZfhAdbs/PClpsBHX1RwKP/dm8QKXnPfr+vyn8uBhMuEBbErw/rAaKTZAb5cOYCDogEBLMn9omVGcPSw5+FDtq9wRqjpfhhO6W9wV4F+dbSpjpIou5fI5lg073RZi1cqNfgokRqPvsNIB8Li+NOFo0jsiJZw+dN56gmwKzjSERWjkrkUDuJsGPFUYu7p+879MSdF4glEPo9E6BXmFfhthDPZzKdIepoHZ532eKQbI5L5AbAcVktsGyT6Y8589eNutwN4ObB/lQFdZuI6m9m3FZIGBK+e8vb5EdpzEFAWpns9vuBXU5j49VtwRWeiwf7s2ob4UrPRaTMdiNN7VcP+KO2lmBEIZve/oqZqS3FnuurLISdrxH7bB2tJP9yPkw5brAHy6QY3VmdklZAAAAAElFTkSuQmCC" alt="Projects">
-                    <span>Projects</span>
-                </a>
-                <a href="#about" class="nav-item" data-section="about">
-                    <span class="nav-icon">👨‍💻</span>
-                    <span>About Me</span>
-                </a>
-            </nav>
-
-            <section class="connect-section">
-                <h3>Stay Connected</h3>
-                <div class="connect-links">
-                    <a href="https://www.linkedin.com/in/aitmloukomar" class="connect-item" target="_blank">
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://www.instagram.com/aitmloukomar/" class="connect-item" target="_blank">
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://medium.com/@omaraitmlouk" class="connect-item" target="_blank">
-                        <span>Medium</span>
-                    </a>
-                </div>
-            </section>
-
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Home Page Content -->
-            <div id="home" class="page-section">
-                <!-- Hero Section -->
-                <section class="hero">
-                <h1>Hey, I'm Omar!</h1>
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <p>I'm an AI engineer, deep learning researcher, and full-stack developer. I've been building AI solutions and <a href="#blog">writing on this blog</a> about everything from generative AI and NLP to big data, deep learning, and the engines that power today’s AI systems.</p>
-                        <p class="hero-note">Everything on this site is written by me, not AI.</p>
-                    </div>
-                    <div class="hero-image">
-                        <div class="mascot-container">
-                            <div class="mascot-circle"></div>
-                            <img src="batman.png" alt="Camel mascot" class="mascot-img">
-                            <!-- Orbiting Social Icons -->
-                            <div class="orbit-ring">
-                                <a href="mailto:omaraitmlouk.per@gmail.com" class="orbit-icon" style="--i:0; --color:#EA4335" title="Email">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/aitmloukomar" class="orbit-icon" target="_blank" style="--i:1; --color:#0A66C2" title="LinkedIn">
-                                    <i class="fa-brands fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://www.instagram.com/aitmloukomar/" class="orbit-icon" target="_blank" style="--i:2; --color:#E4405F" title="Instagram">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <a href="https://github.com/omarait-mlouk" class="orbit-icon" target="_blank" style="--i:3; --color:#333" title="GitHub">
-                                    <i class="fa-brands fa-github"></i>
-                                </a>
-                                <a href="https://medium.com/@omaraitmlouk" class="orbit-icon" target="_blank" style="--i:4; --color:#333" title="Medium">
-                                    <i class="fa-brands fa-medium"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-primary" data-section="about">About Me</a>
-                    <a href="mailto:omaraitmlouk.per@gmail.com" class="btn btn-secondary">📧 Email Me</a>
-                </div>
-            </section>
-
-            <!-- Blog Section -->
-            <section id="blog" class="content-section">
-                <h2>Blog</h2>
-                <p class="section-description">Guides, references, and tutorials.</p>
-                
-                <div class="blog-list" id="home-blog-list">
-                    <!-- Populated dynamically from blog-data.json -->
-                </div>
-                <a href="#blog" class="view-more-link" data-section="blog">
-                    View all posts <span class="arrow">→</span>
-                </a>
-            </section>
-
-            <!-- Notes Section -->
-            <section id="notes" class="content-section">
-                <h2>Notes</h2>
-                <p class="section-description">Life, research, projects, and everything else.</p>
-                
-                <div class="blog-list" id="home-notes-list">
-                    <!-- Populated dynamically from notes-data.js -->
-                </div>
-                <a href="#notes" class="view-more-link" data-section="notes">
-                    View all notes <span class="arrow">→</span>
-                </a>
-            </section>
-
-            <!-- Deep Dives Section -->
-            <section id="deep-dives" class="content-section">
-                <h2>Deep Dives</h2>
-                <p class="section-description">Long-form tutorials on a variety of development topics.</p>
-                
-                <div class="deep-dives-grid" id="deep-dives-grid">
-                    <!-- Populated dynamically from deep-dives-data.js -->
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section id="projects" class="content-section">
-                <h2>Projects</h2>
-                <p class="section-description">Open-source projects I've worked on over the years.</p>
-                
-                <div class="projects-grid" id="home-projects-grid">
-                    <!-- Populated dynamically from projects-data.js -->
-                </div>
-                <a href="#projects" class="view-more-link" data-section="projects">
-                    View all projects <span class="arrow">→</span>
-                </a>
-            </section>
+        <!-- Intro: three ways to work together -->
+        <section class="section" id="intro">
+            <div class="section-head reveal">
+                <span class="layer">layer_01</span>
+                <h2>Three ways to work together</h2>
             </div>
-            <!-- End Home Page Content -->
+            <div class="paths">
+                <article class="path reveal">
+                    <span class="path-num">01</span>
+                    <h3>Hire me</h3>
+                    <p>Five years shipping software, from Odoo ERP systems to deep learning models. I'm looking for an AI or ML engineering role on a team that ships.</p>
+                    <a href="#journey" class="path-link">See my experience <span>→</span></a>
+                </article>
+                <article class="path reveal">
+                    <span class="path-num">02</span>
+                    <h3>Build with me</h3>
+                    <p>Need a model trained, a data pipeline built, or an Odoo module customized? I take freelance projects end to end.</p>
+                    <a href="#contact" class="path-link">Start a project <span>→</span></a>
+                </article>
+                <article class="path reveal">
+                    <span class="path-num">03</span>
+                    <h3>Research with me</h3>
+                    <p>I'm interested in image restoration, segmentation, privacy-preserving AI, and low-resource scripts like Tifinagh.</p>
+                    <a href="#writing" class="path-link">Read my writing <span>→</span></a>
+                </article>
+            </div>
+        </section>
 
-            <!-- About Section (Initially Hidden) -->
-            <section id="about" class="page-section" style="display: none;">
-                <div class="about-hero">
-                    <h1>About Me</h1>
-                    <p class="about-intro">AI Engineer · Deep Learning Researcher · Full-Stack Developer</p>
+        <!-- Selected work -->
+        <section class="section" id="work">
+            <div class="section-head reveal">
+                <span class="layer">layer_02</span>
+                <h2>Selected work</h2>
+            </div>
+            <div class="featured" id="featured"></div>
+
+            <h3 class="sub-head reveal">More experiments</h3>
+            <ul class="more" id="more"></ul>
+        </section>
+
+        <!-- Stack marquee -->
+        <div class="marquee" aria-label="Tech stack">
+            <div class="marquee-track" id="stack"></div>
+        </div>
+
+        <!-- Writing -->
+        <section class="section" id="writing">
+            <div class="section-head reveal">
+                <span class="layer">layer_03</span>
+                <h2>Writing</h2>
+            </div>
+            <ol class="articles" id="articles"></ol>
+            <a href="https://omaraitmlouk.medium.com" class="more-link reveal" target="_blank" rel="noopener">All articles on Medium <span>↗</span></a>
+        </section>
+
+        <!-- Journey -->
+        <section class="section" id="journey">
+            <div class="section-head reveal">
+                <span class="layer">layer_04</span>
+                <h2>Journey</h2>
+            </div>
+            <div class="journey">
+                <div class="timeline-col">
+                    <h3 class="sub-head reveal">Experience</h3>
+                    <ol class="timeline" id="experience"></ol>
                 </div>
-
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>Hi, I’m Omar Ait Mlouk 👋</h2>
-                        <p>I’m a Master’s student in Artificial Intelligence and Applications at Université Ibn Zohr in Morocco, while working as a Full-Stack Developer and Python & Odoo ERP Specialist at AinnovateX.</p>
-                        
-                        <p>With over 4 years of professional experience in software development, I’ve had the privilege of working on diverse projects ranging from enterprise ERP solutions to cutting-edge computer vision systems. My journey in tech began with web development and gradually evolved into the fascinating world of AI and machine learning.</p>
-
-                        <h3>What I Do</h3>
-                        <p>I specialize in building end-to-end AI solutions, from research and model development to deployment and optimization. My recent work includes:</p>
-                        <ul class="about-list">
-                            <li>Implementing state-of-the-art deep learning models like DeblurGAN-v2 for image restoration</li>
-                            <li>Developing computer vision systems for medical imaging and character recognition</li>
-                            <li>Creating full-stack web applications with modern frameworks</li>
-                            <li>Building custom ERP solutions and business automation tools</li>
-                        </ul>
-
-                        <h3>Research Interests</h3>
-                        <p>My research focuses on:</p>
-                        <ul class="about-list">
-                            <li><strong>Computer Vision:</strong> Image restoration, GANs, and medical imaging</li>
-                            <li><strong>Deep Learning:</strong> Neural architecture design and optimization</li>
-                            <li><strong>NLP:</strong> Multilingual systems and low-resource languages</li>
-                            <li><strong>MLOps:</strong> Model deployment and production systems</li>
-                        </ul>
-
-                        <h3>Technical Stack</h3>
-                        <div class="tech-grid">
-                            <div class="tech-category">
-                                <h4>AI/ML</h4>
-                                <span class="tech-tag">PyTorch</span>
-                                <span class="tech-tag">TensorFlow</span>
-                                <span class="tech-tag">Scikit-learn</span>
-                                <span class="tech-tag">OpenCV</span>
-                                <span class="tech-tag">Hugging Face</span>
-                            </div>
-                            <div class="tech-category">
-                                <h4>Backend</h4>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Flask</span>
-                                <span class="tech-tag">FastAPI</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Odoo</span>
-                            </div>
-                            <div class="tech-category">
-                                <h4>Frontend</h4>
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">TypeScript</span>
-                                <span class="tech-tag">HTML/CSS</span>
-                                <span class="tech-tag">D3.js</span>
-                            </div>
-                            <div class="tech-category">
-                                <h4>Tools</h4>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">Git</span>
-                                <span class="tech-tag">AWS</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                            </div>
-                        </div>
-
-                        <h3>Professional Experience</h3>
-                        <div class="timeline-alt">
-                            <div class="timeline-alt-item left">
-                                <div class="timeline-alt-content">
-                                    <span class="timeline-date">Jul 2024 - Present</span>
-                                    <h4>Software Developer</h4>
-                                    <p>AinnovateX · Part-time · Remote</p>
-                                </div>
-                            </div>
-                            <div class="timeline-alt-item right">
-                                <div class="timeline-alt-content">
-                                    <span class="timeline-date">Jun 2023 - Jun 2024</span>
-                                    <h4>Python Developer - Odoo</h4>
-                                    <p>Flyer.be · Full-time · Casablanca</p>
-                                </div>
-                            </div>
-                            <div class="timeline-alt-item left">
-                                <div class="timeline-alt-content">
-                                    <span class="timeline-date">Jan 2021 - May 2023</span>
-                                    <h4>Software Engineer</h4>
-                                    <p>AinnovateX · Full-time</p>
-                                </div>
-                            </div>
-                            <div class="timeline-alt-item right">
-                                <div class="timeline-alt-content">
-                                    <span class="timeline-date">Jul 2019 - Aug 2019</span>
-                                    <h4>Full-Stack Developer Intern</h4>
-                                    <p>Province Administration · Ouarzazate</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3>Education</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <span class="timeline-date">2024 - 2026</span>
-                                <h4>Master’s in Artificial Intelligence and Applications</h4>
-                                <p>Université Ibn Zohr, Morocco</p>
-                            </div>
-                            <div class="timeline-item">
-                                <span class="timeline-date">2022 - 2023</span>
-                                <h4>Licence in Computer Science</h4>
-                                <p>Private University of Marrakech (UPM), Morocco</p>
-                            </div>
-                            <div class="timeline-item">
-                                <span class="timeline-date">2018 - 2020</span>
-                                <h4>DUT in Computer Science</h4>
-                                <p>Higher School of Technology (EST), Meknes</p>
-                            </div>
-                        </div>
-
-                        <h3>Let’s Connect!</h3>
-                        <p>I’m always excited to discuss new projects, research collaborations, or interesting technical challenges. Feel free to reach out!</p>
-                        <div class="about-links">
-                            <a href="mailto:omaraitmlouk.per@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Email Me</a>
-                            <a href="https://github.com/omarait-mlouk" class="btn btn-secondary" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                            <a href="https://linkedin.com/in/aitmloukomar" class="btn btn-secondary" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                        </div>
-                    </div>
+                <div class="timeline-col">
+                    <h3 class="sub-head reveal">Education</h3>
+                    <ol class="timeline" id="education"></ol>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Projects Page (Initially Hidden) -->
-            <section id="projects-page" class="page-section" style="display: none;">
-                <div class="projects-hero">
-                    <h1>Projects</h1>
-                    <p class="projects-intro">A collection of my work in AI, machine learning, and full-stack development</p>
-                    <div class="projects-nav-links">
-                        <a href="#" class="quick-preview-link">← View Quick Preview on Homepage</a>
-                    </div>
-                    
-                    <!-- Search Bar -->
-                    <div class="search-container">
-                        <div class="search-box">
-                            <span class="search-icon">🔍</span>
-                            <input type="text" id="projects-search" class="search-input" placeholder="Search 15 projects...">
-                        </div>
-                    </div>
-                </div>
+        <!-- Contact -->
+        <section class="section contact" id="contact">
+            <span class="layer reveal">output</span>
+            <h2 class="contact-title reveal">Let's build something<br><span class="grad">intelligent.</span></h2>
+            <p class="contact-sub reveal">A role, a project, or a research idea: my inbox is open.</p>
+            <div class="contact-actions reveal">
+                <a class="btn btn-solid" id="mailBtn" href="#">Email me</a>
+                <button class="btn btn-ghost" id="copyBtn" type="button">Copy address</button>
+            </div>
+            <ul class="socials reveal" id="socials"></ul>
+        </section>
+    </main>
 
-                <div class="projects-content">
-                    <!-- Featured Projects -->
-                    <div class="projects-featured" id="projects-featured-section" style="display:none;">
-                        <h2>Featured Projects</h2>
-                        <div id="projects-featured-list"></div>
-                    </div>
+    <footer class="footer">
+        <span>© 2026 Omar Ait Mlouk</span>
+        <span>Written by me, not AI. Animated by a few hundred lines of JS.</span>
+    </footer>
 
-                    <!-- Category Sections -->
-                    <div id="projects-categories"></div>
-
-                    <!-- Open Source Contributions -->
-                    <div class="project-category" id="projects-contributions-section" style="display:none;">
-                        <h2>Open Source Contributions</h2>
-                        <div class="contributions-list" id="projects-contributions-list"></div>
-                    </div>
-                </div>
-
-
-            </section>
-
-            <!-- Blog Page (Initially Hidden) -->
-            <section id="blog-page" class="page-section" style="display: none;">
-                <div class="blog-hero">
-                    <h1>Blog</h1>
-                    <p class="blog-intro">Guides, references, tutorials, and deep dives into AI and development</p>
-                    <div class="blog-nav-links">
-                        <a href="#" class="quick-preview-link-blog">← View Recent Posts on Homepage</a>
-                    </div>
-                    
-                    <!-- Search Bar -->
-                    <div class="search-container">
-                        <div class="search-box">
-                            <span class="search-icon">🔍</span>
-                            <input type="text" id="blog-search" class="search-input" placeholder="Search 61 articles...">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-content">
-                    <!-- Featured Article -->
-                    <div id="blog-featured" class="featured-article" style="display:none;">
-                        <!-- Populated dynamically from blog-data.json -->
-                    </div>
-
-                    <!-- Recent Articles -->
-                    <div class="blog-category">
-                        <h2>Recent Articles</h2>
-                        <div class="articles-grid" id="blog-articles-grid">
-                            <!-- Populated dynamically from blog-data.json -->
-                        </div>
-                    </div>
-
-                    <!-- Tutorial Series (auto-grouped from posts with series field) -->
-                    <div class="blog-category" id="blog-series-section" style="display:none;">
-                        <h2>Tutorial Series</h2>
-                        <div class="series-list" id="blog-series-list">
-                            <!-- Populated dynamically from blog-data.json -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Notes Page (Initially Hidden) -->
-            <section id="notes-page" class="page-section" style="display: none;">
-                <div class="notes-hero">
-                    <h1>Notes</h1>
-                    <p class="notes-intro">Thoughts, reflections, and informal writings about tech, life, and everything in between</p>
-                    <div class="notes-nav-links">
-                        <a href="#" class="quick-preview-link-notes">← View Recent Notes on Homepage</a>
-                    </div>
-                    
-                    <!-- Search Bar -->
-                    <div class="search-container">
-                        <div class="search-box">
-                            <span class="search-icon">🔍</span>
-                            <input type="text" id="notes-search" class="search-input" placeholder="Search 42 notes...">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="notes-content">
-                    <!-- Pinned Note -->
-                    <div class="pinned-note" id="notes-pinned" style="display:none;">
-                        <!-- Populated dynamically from notes-data.js -->
-                    </div>
-
-                    <!-- Recent Notes -->
-                    <div class="notes-grid" id="notes-grid">
-                        <!-- Populated dynamically from notes-data.js -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="footer-links">
-                    <a href="#newsletter">Email signup</a>
-                    <a href="/rss.xml">RSS feed</a>
-                    <a href="https://github.com/omarait-mlouk" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/aitmloukomar" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">Buy me a coffee</a>
-                </div>
-                <div class="footer-badges">
-                    <a href="https://github.com/omarait-mlouk" class="badge-btn" target="_blank">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/aitmloukomar" class="badge-btn" target="_blank">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    <a href="https://medium.com/@omaraitmlouk" class="badge-btn" target="_blank">
-                        <i class="fa-brands fa-medium"></i>
-                    </a>
-                </div>
-                <p class="footer-credit">Made with ❤️ by <a href="#about" class="name-link" data-section="about">Omar Ait-Mlouk</a></p>
-            </footer>
-        </main>
-    </div>
-
-    <script src="blog-data.js"></script>
-    <script src="notes-data.js"></script>
-    <script src="projects-data.js"></script>
-    <script src="deep-dives-data.js"></script>
-    <script src="script.js"></script>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -126,7 +126,7 @@ const articles = [
 ];
 
 const experience = [
-    { when: "2024 — now", role: "Software Developer", where: "AinnovateX · Remote" },
+    { when: "2024 — now", role: "AI Engineer", where: "AinnovateX · Part-time · Marrakech" },
     { when: "2023 — 2024", role: "Python Developer, Odoo", where: "Flyer.be / Batteria · Casablanca" },
     { when: "2021 — 2023", role: "Software Engineer", where: "AinnovateX" },
     { when: "2019", role: "Full-Stack Developer Intern", where: "Province Administration · Ouarzazate" }

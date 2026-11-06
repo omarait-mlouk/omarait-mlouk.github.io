@@ -489,6 +489,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     flex: 1;
 }
 
+.path-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 24px;
+}
+
 .path-link {
     margin-top: 24px;
     font-size: 0.9rem;
@@ -500,7 +507,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     transition: transform 0.3s var(--ease-out);
 }
 
-.path:hover .path-link span { transform: translateX(4px); }
+.path-links .path-link { margin-top: 0; }
+
+.path-link:hover span { transform: translateX(4px); }
 
 /* Featured work
    ========================================================================== */

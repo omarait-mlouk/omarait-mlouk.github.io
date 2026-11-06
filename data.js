@@ -2,6 +2,7 @@
 
 const site = {
     email: "omaraitmlouk.per@gmail.com",
+    cv: "resume.pdf",
     links: [
         { label: "GitHub", url: "https://github.com/omarait-mlouk" },
         { label: "LinkedIn", url: "https://www.linkedin.com/in/aitmloukomar" },
@@ -12,6 +13,16 @@ const site = {
 
 // Featured projects get a large card; the rest show in the compact list.
 const projects = [
+    {
+        title: "Federated RAG for Healthcare",
+        subtitle: "Master's thesis · in progress",
+        description: "A privacy-preserving clinical decision support system. Federated learning lets medical institutions train together while patient data stays on site, and retrieval-augmented generation grounds the answers in each institution's own knowledge.",
+        year: "2026",
+        tags: ["Federated Learning", "RAG", "PyTorch", "LangChain", "FAISS", "Flower"],
+        links: [{ label: "Background article", url: "https://omaraitmlouk.medium.com/federated-learning-the-architecture-of-privacy-preserving-ai-4e9ae0967e43" }],
+        featured: true,
+        pattern: "federated"
+    },
     {
         title: "AtlasRetail",
         subtitle: "Data warehouse & BI platform",
@@ -116,7 +127,7 @@ const articles = [
 
 const experience = [
     { when: "2024 — now", role: "Software Developer", where: "AinnovateX · Remote" },
-    { when: "2023 — 2024", role: "Python Developer, Odoo", where: "Flyer.be · Casablanca" },
+    { when: "2023 — 2024", role: "Python Developer, Odoo", where: "Flyer.be / Batteria · Casablanca" },
     { when: "2021 — 2023", role: "Software Engineer", where: "AinnovateX" },
     { when: "2019", role: "Full-Stack Developer Intern", where: "Province Administration · Ouarzazate" }
 ];

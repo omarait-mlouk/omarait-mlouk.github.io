@@ -285,6 +285,102 @@ function neuralField() {
    ========================================================================== */
 
 const patterns = {
+    // Thesis: hospitals train locally, only model updates travel to the server
+    federated: {
+        setup(s) {
+            s.clients = ['A', 'B', 'C', 'D', 'E'].map((label, i, all) => {
+                const angle = -Math.PI / 2 + (i / all.length) * Math.PI * 2;
+                return { label, angle, phase: i * 0.37 };
+            });
+        },
+        frame({ ctx, w, h, t, clients }) {
+            ctx.clearRect(0, 0, w, h);
+            const cx = w / 2;
+            const cy = h / 2 + 6;
+            const R = Math.min(w, h) * 0.34;
+            const round = t / 3.2;
+            const p = round % 1;
+            const toServer = p < 0.5;
+            const k = toServer ? p / 0.5 : (p - 0.5) / 0.5;
+            const ease = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+
+            ctx.font = '10px "JetBrains Mono", monospace';
+            ctx.textAlign = 'center';
+
+            clients.forEach(c => {
+                const x = cx + Math.cos(c.angle) * R;
+                const y = cy + Math.sin(c.angle) * R;
+
+                ctx.strokeStyle = rgba(INK, 0.1);
+                ctx.setLineDash([3, 4]);
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(cx, cy);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Local data: a dot cluster that never moves
+                for (let d = 0; d < 7; d++) {
+                    const a = d * 0.9 + c.phase;
+                    ctx.fillStyle = rgba(INK, 0.25);
+                    ctx.beginPath();
+                    ctx.arc(x + Math.cos(a) * 20, y + Math.sin(a) * 20, 1.6, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.fillStyle = rgba(BG, 1);
+                ctx.strokeStyle = rgba(CYAN, 0.7);
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.arc(x, y, 12, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+                ctx.lineWidth = 1;
+                ctx.fillStyle = rgba(INK, 0.7);
+                ctx.fillText(c.label, x, y + 3.5);
+
+                // Updates travel in, the global model travels back out
+                const from = toServer ? [x, y] : [cx, cy];
+                const to = toServer ? [cx, cy] : [x, y];
+                const px = from[0] + (to[0] - from[0]) * ease;
+                const py = from[1] + (to[1] - from[1]) * ease;
+                const col = toServer ? CYAN : VIOLET;
+                const g = ctx.createRadialGradient(px, py, 0, px, py, 9);
+                g.addColorStop(0, rgba(col, 0.95));
+                g.addColorStop(1, rgba(col, 0));
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.arc(px, py, 9, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Aggregation server pulses as updates arrive
+            const glow = toServer ? ease : 1 - ease;
+            ctx.fillStyle = rgba(VIOLET, 0.12 + glow * 0.2);
+            ctx.beginPath();
+            ctx.arc(cx, cy, 26 + glow * 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = rgba(BG, 1);
+            ctx.strokeStyle = rgba(VIOLET, 0.9);
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 20, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            ctx.lineWidth = 1;
+            ctx.fillStyle = rgba(INK, 0.85);
+            ctx.fillText('global', cx, cy + 3.5);
+
+            ctx.fillStyle = rgba(INK, 0.4);
+            ctx.textAlign = 'left';
+            ctx.fillText(`round ${pad2(Math.floor(round) % 100)}`, 16, h - 16);
+            ctx.textAlign = 'right';
+            ctx.fillText(toServer ? 'updates → server' : 'model → clients', w - 16, h - 16);
+            ctx.fillText('patient data stays local', w - 16, h - 30);
+            ctx.textAlign = 'left';
+        }
+    },
+
     // AtlasRetail: warehouse bars with a forecast line extending past "today"
     grid: {
         setup(s) {

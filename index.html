@@ -19,7 +19,6 @@
             <a href="index.html" class="logo">Omar<span class="logo-rest"> Ait Mlouk</span></a>
             <nav class="main-nav">
                 <a href="#blog" class="nav-item" data-section="blog">Blog</a>
-                <a href="#notes" class="nav-item" data-section="notes">Notes</a>
                 <a href="#projects" class="nav-item" data-section="projects">Projects</a>
                 <a href="#about" class="nav-item" data-section="about">About</a>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -36,7 +35,8 @@
                 <!-- Hero Section -->
                 <section class="hero">
                     <h1>Hey, I'm Omar.</h1>
-                    <p>I'm an AI engineer, deep learning researcher, and full-stack developer. I build AI systems and <a href="#blog">write</a> about generative AI, NLP, big data, deep learning, and the engines that power today's AI.</p>
+                    <p>I'm an AI engineer and full-stack developer with a Master's-level background in artificial intelligence. I build computer vision models, data platforms, and the software around them, and I <a href="#blog">write</a> about how AI systems work.</p>
+                    <p class="hero-status">Open to full-time roles, freelance projects, and research collaborations.</p>
                     <p class="hero-note">Everything on this site is written by me, not AI.</p>
                     <div class="hero-links">
                         <a href="mailto:omaraitmlouk.per@gmail.com">Email</a>
@@ -50,7 +50,7 @@
             <!-- Blog Section -->
             <section id="blog" class="content-section">
                 <h2>Blog</h2>
-                <p class="section-description">Guides, references, and tutorials.</p>
+                <p class="section-description">Explainers on AI and software architecture.</p>
                 
                 <div class="blog-list" id="home-blog-list">
                     <!-- Populated dynamically from blog-data.json -->
@@ -60,33 +60,10 @@
                 </a>
             </section>
 
-            <!-- Notes Section -->
-            <section id="notes" class="content-section">
-                <h2>Notes</h2>
-                <p class="section-description">Life, research, projects, and everything else.</p>
-                
-                <div class="blog-list" id="home-notes-list">
-                    <!-- Populated dynamically from notes-data.js -->
-                </div>
-                <a href="#notes" class="view-more-link" data-section="notes">
-                    View all notes <span class="arrow">→</span>
-                </a>
-            </section>
-
-            <!-- Deep Dives Section -->
-            <section id="deep-dives" class="content-section">
-                <h2>Deep Dives</h2>
-                <p class="section-description">Long-form tutorials on a variety of development topics.</p>
-                
-                <div class="deep-dives-grid" id="deep-dives-grid">
-                    <!-- Populated dynamically from deep-dives-data.js -->
-                </div>
-            </section>
-
             <!-- Projects Section -->
             <section id="projects" class="content-section">
                 <h2>Projects</h2>
-                <p class="section-description">Open-source projects I've worked on over the years.</p>
+                <p class="section-description">Things I've built, with the code on GitHub.</p>
                 
                 <div class="projects-grid" id="home-projects-grid">
                     <!-- Populated dynamically from projects-data.js -->
@@ -116,7 +93,8 @@
                         <p>I specialize in building end-to-end AI solutions, from research and model development to deployment and optimization. My recent work includes:</p>
                         <ul class="about-list">
                             <li>Implementing state-of-the-art deep learning models like DeblurGAN-v2 for image restoration</li>
-                            <li>Developing computer vision systems for medical imaging and character recognition</li>
+                            <li>Building computer vision models for Tifinagh character recognition and image segmentation</li>
+                            <li>Designing data platforms, from ETL pipelines to BI dashboards and forecasting</li>
                             <li>Creating full-stack web applications with modern frameworks</li>
                             <li>Building custom ERP solutions and business automation tools</li>
                         </ul>
@@ -124,7 +102,8 @@
                         <h3>Research Interests</h3>
                         <p>My research focuses on:</p>
                         <ul class="about-list">
-                            <li><strong>Computer Vision:</strong> Image restoration, GANs, and medical imaging</li>
+                            <li><strong>Computer Vision:</strong> Image restoration, GANs, and segmentation</li>
+                            <li><strong>Privacy-preserving AI:</strong> Federated learning</li>
                             <li><strong>Deep Learning:</strong> Neural architecture design and optimization</li>
                             <li><strong>NLP:</strong> Multilingual systems and low-resource languages</li>
                             <li><strong>MLOps:</strong> Model deployment and production systems</li>
@@ -241,7 +220,7 @@
                     <div class="search-container">
                         <div class="search-box">
                             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                            <input type="text" id="projects-search" class="search-input" placeholder="Search 15 projects...">
+                            <input type="text" id="projects-search" class="search-input" placeholder="Search projects...">
                         </div>
                     </div>
                 </div>
@@ -279,7 +258,7 @@
                     <div class="search-container">
                         <div class="search-box">
                             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                            <input type="text" id="blog-search" class="search-input" placeholder="Search 61 articles...">
+                            <input type="text" id="blog-search" class="search-input" placeholder="Search articles...">
                         </div>
                     </div>
                 </div>
@@ -352,9 +331,7 @@
     </div>
 
     <script src="blog-data.js"></script>
-    <script src="notes-data.js"></script>
     <script src="projects-data.js"></script>
-    <script src="deep-dives-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

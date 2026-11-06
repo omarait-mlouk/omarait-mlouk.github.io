@@ -1,200 +1,144 @@
 const projectsData = {
     projects: [
         {
+            id: "atlas-retail-dw",
+            icon: "📊",
+            title: "AtlasRetail Data Warehouse & BI Platform",
+            shortDescription: "End-to-end data warehouse with ETL, OLAP analytics, a dashboard and sales forecasting",
+            description: "An end-to-end data warehouse and BI platform: a Python ETL pipeline feeds a dimensional warehouse, OLAP queries power the analytics, a Streamlit dashboard presents the results, and an ML model forecasts retail sales.",
+            year: "2026",
+            category: "Data Engineering",
+            tech: ["Python", "SQL", "Streamlit", "Machine Learning"],
+            links: [
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/atlas-retail-dw" }
+            ],
+            featured: true,
+            showOnHome: true
+        },
+        {
             id: "deblurgan-v2",
             icon: "🔬",
-            title: "DeblurGAN-v2 Image Restoration Platform",
-            shortDescription: "Advanced image deblurring with real-time processing",
-            description: "Implemented state-of-the-art motion deblurring using DeblurGAN-v2 architecture with Feature Pyramid Networks. The web platform processes images in real-time, achieving significant improvements in image quality metrics.",
-            year: "2024",
-            category: "AI & Machine Learning",
-            tech: ["PyTorch", "Flask", "OpenCV", "Docker"],
+            title: "DeblurGAN-v2 Image Restoration",
+            shortDescription: "Motion deblurring with DeblurGAN-v2, wrapped in a Flask web app",
+            description: "A web application around a DeblurGAN-v2 model for motion deblurring. Upload a blurry image by drag and drop, process it on CPU or GPU, compare before and after side by side, and download the result.",
+            year: "2025",
+            category: "Computer Vision",
+            tech: ["PyTorch", "Flask", "GANs"],
             links: [
-                { label: "GitHub", url: "https://github.com/omarait-mlouk/deblurgan-v2" },
-                { label: "Live Demo", url: "https://deblurgan-demo.herokuapp.com" }
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/deblurGAN" }
             ],
             featured: true,
             showOnHome: true
         },
         {
-            id: "tourism-booking",
-            icon: "🏖️",
-            title: "Morocco Tourism Booking Platform",
-            shortDescription: "Complete Odoo-based tourism platform",
-            description: "Developed a comprehensive tourism booking system using Odoo ERP. Features include multi-language support, real-time availability, payment integration, and an admin dashboard for tour operators.",
-            year: "2024",
-            category: "Web Development",
-            tech: ["Odoo 18", "Python", "PostgreSQL", "XML/QWeb"],
-            links: [
-                { label: "Case Study", url: "#" },
-                { label: "View Demo", url: "#" }
-            ],
-            featured: true,
-            showOnHome: true
-        },
-        {
-            id: "tifinagh-ocr",
-            icon: "🔤",
+            id: "tifinagh-recognition",
+            icon: "ⵣ",
             title: "Tifinagh Character Recognition",
-            shortDescription: "Character recognition for Amazigh script",
-            description: "Built a CNN-based OCR system for recognizing Amazigh script characters, achieving 96% accuracy on handwritten samples.",
-            year: "2023",
-            category: "AI & Machine Learning",
-            tech: ["TensorFlow", "Keras", "NumPy"],
+            shortDescription: "Classifying Amazigh (Tifinagh) characters, from an MLP to LeNet-5",
+            description: "A series of models for recognizing Tifinagh characters, the script used to write Amazigh: a multilayer perceptron, a multiclass network on RGB images, and a LeNet-5 convolutional network.",
+            year: "2025",
+            category: "Computer Vision",
+            tech: ["Python", "Neural Networks", "CNN", "Jupyter"],
             links: [
-                { label: "GitHub", url: "#" },
-                { label: "Paper", url: "#" }
+                { label: "LeNet-5", url: "https://github.com/omarait-mlouk/lenet5-tifinagh" },
+                { label: "MLP", url: "https://github.com/omarait-mlouk/tifinagh-classification" },
+                { label: "RGB model", url: "https://github.com/omarait-mlouk/rgb-classification-tifinagh" }
             ],
             featured: false,
             showOnHome: true
         },
         {
-            id: "neural-style-transfer",
-            icon: "🎨",
-            title: "Neural Style Transfer",
-            shortDescription: "Artistic style transfer using CNNs",
-            description: "Implemented artistic style transfer using VGG19 and optimization techniques for real-time style application.",
-            year: "2023",
-            category: "AI & Machine Learning",
-            tech: ["PyTorch", "Streamlit", "PIL"],
+            id: "image-segmentation",
+            icon: "🧩",
+            title: "Image Segmentation",
+            shortDescription: "Deep learning models for pixel-level image segmentation",
+            description: "Notebook implementations of image segmentation with deep learning, the companion code to my article on the topic.",
+            year: "2025",
+            category: "Computer Vision",
+            tech: ["Python", "Deep Learning", "Jupyter"],
             links: [
-                { label: "GitHub", url: "#" },
-                { label: "Demo", url: "#" }
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/image-segmentation" },
+                { label: "Article", url: "https://omaraitmlouk.medium.com/image-segmentation-explained-the-key-to-pixel-level-understanding-in-computer-vision-d8b1968670b4" }
             ],
             featured: false,
             showOnHome: true
         },
         {
-            id: "covid-xray",
-            icon: "🫁",
-            title: "COVID-19 X-Ray Classifier",
-            shortDescription: "Deep learning for medical imaging",
-            description: "Developed a deep learning model for detecting COVID-19 from chest X-rays with 94% accuracy using transfer learning.",
-            year: "2022",
-            category: "AI & Machine Learning",
-            tech: ["TensorFlow", "ResNet50", "Flask"],
+            id: "transfer-learning",
+            icon: "🔁",
+            title: "Transfer Learning",
+            shortDescription: "Reusing pretrained networks for new image tasks",
+            description: "Experiments with transfer learning: adapting pretrained convolutional networks to new image classification tasks.",
+            year: "2025",
+            category: "Computer Vision",
+            tech: ["Python", "Deep Learning", "Jupyter"],
             links: [
-                { label: "GitHub", url: "#" },
-                { label: "Article", url: "#" }
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/transfer-learning" }
             ],
             featured: false,
-            showOnHome: true
+            showOnHome: false
         },
         {
-            id: "face-mask-detection",
-            icon: "😷",
-            title: "Face Mask Detection",
-            shortDescription: "Real-time detection with MobileNet",
-            description: "Real-time face mask detection system using MobileNetV2 for deployment on edge devices.",
-            year: "2022",
-            category: "AI & Machine Learning",
-            tech: ["OpenCV", "MobileNet", "TF Lite"],
-            links: [
-                { label: "GitHub", url: "#" },
-                { label: "Video", url: "#" }
-            ],
-            featured: false,
-            showOnHome: true
-        },
-        {
-            id: "unet-segmentation",
+            id: "cnn-implementation",
             icon: "🧠",
-            title: "U-Net Tumor Segmentation",
-            shortDescription: "Medical image segmentation with U-Net",
-            description: "Implemented U-Net architecture for breast ultrasound tumor segmentation, achieving 49.96% IoU score.",
-            year: "2023",
-            category: "AI & Machine Learning",
-            tech: ["PyTorch", "U-Net", "SimpleITK"],
+            title: "CNN Implementation",
+            shortDescription: "Building convolutional neural networks step by step",
+            description: "Convolutional neural networks implemented step by step, alongside experiments with convolution filters on images.",
+            year: "2025",
+            category: "Computer Vision",
+            tech: ["Python", "CNN", "Jupyter"],
             links: [
-                { label: "GitHub", url: "#" },
-                { label: "Report", url: "#" }
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/CNN-implementation" },
+                { label: "Filters", url: "https://github.com/omarait-mlouk/Convolution-Filters-on-Images" }
             ],
             featured: false,
             showOnHome: false
         },
         {
-            id: "autoencoder-study",
-            icon: "📊",
-            title: "Autoencoder Comparison Study",
-            shortDescription: "Autoencoder architectures comparison",
-            description: "Comprehensive comparison of autoencoder architectures on Fashion-MNIST for dimensionality reduction.",
-            year: "2023",
-            category: "AI & Machine Learning",
-            tech: ["TensorFlow", "Scikit-learn", "Matplotlib"],
+            id: "binary-classification-mlp",
+            icon: "🩺",
+            title: "Binary Classification with an MLP",
+            shortDescription: "Diabetes prediction on the Pima Indians dataset",
+            description: "A multilayer perceptron for binary classification on the Pima Indians Diabetes dataset.",
+            year: "2025",
+            category: "Machine Learning",
+            tech: ["Python", "Neural Networks", "Jupyter"],
             links: [
-                { label: "GitHub", url: "#" },
-                { label: "Notebook", url: "#" }
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/Binary-Classification-MLP" }
             ],
             featured: false,
             showOnHome: false
         },
         {
-            id: "children-book-generator",
-            icon: "📚",
-            title: "AI Children's Book Generator",
-            shortDescription: "AI-powered personalized story generation",
-            description: "Platform for generating personalized children's stories using OpenAI's GPT and DALL-E APIs.",
+            id: "odoo-kickoff",
+            icon: "🧱",
+            title: "Odoo Kickoff",
+            shortDescription: "A starting point for building custom Odoo modules",
+            description: "A starter template for new Odoo modules, with setup notes for PostgreSQL and common installation issues.",
             year: "2023",
-            category: "Web Development",
-            tech: ["React", "Node.js", "OpenAI API"],
+            category: "Software Development",
+            tech: ["Odoo", "Python", "PostgreSQL"],
             links: [
-                { label: "GitHub", url: "#" },
-                { label: "Live Site", url: "#" }
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/odoo-kickoff" }
             ],
             featured: false,
             showOnHome: false
         },
         {
-            id: "morocco-dashboard",
-            icon: "📈",
-            title: "Morocco Regional Dashboard",
-            shortDescription: "Interactive regional statistics dashboard",
-            description: "Interactive data visualization dashboard for Morocco's regional statistics using D3.js.",
+            id: "currency-exchange",
+            icon: "💱",
+            title: "Currency Exchange",
+            shortDescription: "Command-line currency converter with live rates",
+            description: "A Python command-line tool that converts between currencies using live exchange rates from the Fixer API.",
             year: "2023",
-            category: "Web Development",
-            tech: ["D3.js", "JavaScript", "TopoJSON"],
+            category: "Software Development",
+            tech: ["Python", "REST APIs"],
             links: [
-                { label: "GitHub", url: "#" },
-                { label: "Demo", url: "#" }
-            ],
-            featured: false,
-            showOnHome: false
-        },
-        {
-            id: "transportation-booking",
-            icon: "🚗",
-            title: "Transportation Booking System",
-            shortDescription: "Odoo transportation management module",
-            description: "Odoo module for managing transportation routes with interactive maps and real-time booking.",
-            year: "2024",
-            category: "Web Development",
-            tech: ["Odoo", "Leaflet.js", "PostgreSQL"],
-            links: [
-                { label: "GitHub", url: "#" },
-                { label: "Documentation", url: "#" }
+                { label: "GitHub", url: "https://github.com/omarait-mlouk/currency-exchange" }
             ],
             featured: false,
             showOnHome: false
         }
     ],
-    contributions: [
-        {
-            id: "tensorflow-models",
-            title: "TensorFlow Models",
-            badge: "15 commits",
-            description: "Contributed to the official TensorFlow models repository with improvements to image segmentation models."
-        },
-        {
-            id: "odoo-community",
-            title: "Odoo Community",
-            badge: "8 modules",
-            description: "Developed and maintained several community modules for Odoo 16-18, focusing on tourism and booking systems."
-        },
-        {
-            id: "scikit-learn",
-            title: "Scikit-learn",
-            badge: "3 PRs merged",
-            description: "Documentation improvements and bug fixes for preprocessing modules."
-        }
-    ]
+    contributions: []
 };

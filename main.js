@@ -1,6 +1,18 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const CYAN = [94, 234, 212];
-const VIOLET = [167, 139, 250];
+// Canvas colors come from CSS variables so they follow the theme
+let CYAN, VIOLET, INK, BG, FIELD;
+const redrawers = [];
+
+function readPalette() {
+    const css = getComputedStyle(document.documentElement);
+    const rgb = name => css.getPropertyValue(name).split(',').map(Number);
+    CYAN = rgb('--cyan-rgb');
+    VIOLET = rgb('--violet-rgb');
+    INK = rgb('--ink-rgb');
+    BG = rgb('--bg-rgb');
+    FIELD = parseFloat(css.getPropertyValue('--field-strength')) || 1;
+}
+readPalette();
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const rgba = (c, a) => `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${a})`;
@@ -127,6 +139,7 @@ function animatedCanvas(canvas, { setup, frame }) {
         raf = null;
     }
 
+    redrawers.push(() => { if (!raf) frame(state); });
     new ResizeObserver(resize).observe(canvas);
     new IntersectionObserver(([entry]) => {
         visible = entry.isIntersecting;
@@ -210,7 +223,7 @@ function neuralField() {
                 const b = nodes[j];
                 const d = Math.hypot(a.x - b.x, a.y - b.y);
                 if (d > LINK) continue;
-                let alpha = (1 - d / LINK) * 0.22;
+                let alpha = (1 - d / LINK) * 0.22 * FIELD;
                 if (pointer.active) {
                     const pd = Math.hypot((a.x + b.x) / 2 - pointer.x, (a.y + b.y) / 2 - pointer.y);
                     if (pd < 200) alpha += (1 - pd / 200) * 0.35;
@@ -243,7 +256,7 @@ function neuralField() {
 
         // Nodes
         for (const n of nodes) {
-            let glow = 0.55;
+            let glow = Math.min(1, 0.55 * FIELD);
             if (pointer.active) {
                 const d = Math.hypot(n.x - pointer.x, n.y - pointer.y);
                 if (d < 200) glow += (1 - d / 200) * 0.45;
@@ -286,7 +299,7 @@ const patterns = {
             const gap = (w - padX * 2) / n;
             const split = Math.floor(n * 0.66);
 
-            ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+            ctx.strokeStyle = rgba(INK, 0.05);
             for (let i = 0; i <= 4; i++) {
                 const y = base - (span * i) / 4;
                 ctx.beginPath();
@@ -330,10 +343,10 @@ const patterns = {
             ctx.lineWidth = 1;
 
             const todayX = points[split][0] - gap / 2;
-            ctx.fillStyle = 'rgba(255,255,255,0.35)';
+            ctx.fillStyle = rgba(INK, 0.35);
             ctx.font = '10px "JetBrains Mono", monospace';
             ctx.fillText('forecast →', todayX + 6, base - span - 8);
-            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+            ctx.strokeStyle = rgba(INK, 0.15);
             ctx.beginPath();
             ctx.moveTo(todayX, base - span - 20);
             ctx.lineTo(todayX, base);
@@ -345,9 +358,9 @@ const patterns = {
     blur: {
         setup(s) {
             s.shapes = [
-                { x: 0.3, y: 0.42, r: 0.16, c: CYAN },
-                { x: 0.62, y: 0.58, r: 0.2, c: VIOLET },
-                { x: 0.78, y: 0.32, r: 0.08, c: [255, 255, 255] }
+                { x: 0.3, y: 0.42, r: 0.16, c: () => CYAN },
+                { x: 0.62, y: 0.58, r: 0.2, c: () => VIOLET },
+                { x: 0.78, y: 0.32, r: 0.08, c: () => INK }
             ];
         },
         frame({ ctx, w, h, t, shapes }) {
@@ -362,13 +375,13 @@ const patterns = {
                 for (const s of shapes) {
                     for (let k = 0; k < copies; k++) {
                         const off = copies > 1 ? (k / (copies - 1) - 0.5) * spread : 0;
-                        ctx.fillStyle = rgba(s.c, blurred ? 0.09 : 0.85);
+                        ctx.fillStyle = rgba(s.c(), blurred ? 0.09 : 0.85);
                         ctx.beginPath();
                         ctx.arc(s.x * w + off, s.y * h, s.r * m, 0, Math.PI * 2);
                         ctx.fill();
                     }
                     if (!blurred) {
-                        ctx.strokeStyle = 'rgba(7,8,11,0.6)';
+                        ctx.strokeStyle = rgba(BG, 0.6);
                         ctx.lineWidth = 2;
                         for (let r = s.r * m * 0.3; r < s.r * m; r += s.r * m * 0.25) {
                             ctx.beginPath();
@@ -394,20 +407,20 @@ const patterns = {
             draw(false);
             ctx.restore();
 
-            ctx.fillStyle = 'rgba(255,255,255,0.85)';
+            ctx.fillStyle = rgba(INK, 0.85);
             ctx.fillRect(split - 0.5, 0, 1, h);
             ctx.beginPath();
             ctx.arc(split, h / 2, 12, 0, Math.PI * 2);
-            ctx.fillStyle = '#07080B';
+            ctx.fillStyle = rgba(BG, 1);
             ctx.fill();
-            ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+            ctx.strokeStyle = rgba(INK, 0.85);
             ctx.stroke();
-            ctx.fillStyle = 'rgba(255,255,255,0.85)';
+            ctx.fillStyle = rgba(INK, 0.85);
             ctx.font = '10px "JetBrains Mono", monospace';
             ctx.textAlign = 'center';
             ctx.fillText('‹ ›', split, h / 2 + 3);
             ctx.textAlign = 'left';
-            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.fillStyle = rgba(INK, 0.4);
             ctx.fillText('input', 16, h - 16);
             ctx.textAlign = 'right';
             ctx.fillText('restored', w - 16, h - 16);
@@ -472,7 +485,7 @@ const patterns = {
                     const r = cell * (0.12 + lit * 0.28);
                     ctx.fillStyle = lit > 0.1
                         ? rgba(mix(CYAN, VIOLET, y / N), 0.35 + lit * 0.65)
-                        : 'rgba(255,255,255,0.07)';
+                        : rgba(INK, 0.07);
                     ctx.beginPath();
                     ctx.arc(ox + x * cell + cell / 2, oy + y * cell + cell / 2, r, 0, Math.PI * 2);
                     ctx.fill();
@@ -489,15 +502,15 @@ const patterns = {
             const rx = w * 0.7;
             const done = local > 0.65;
             ctx.font = '10px "JetBrains Mono", monospace';
-            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.fillStyle = rgba(INK, 0.4);
             ctx.fillText('LeNet-5', rx, oy + 10);
             for (let k = 0; k < glyphs.length; k++) {
                 const y = oy + 34 + k * 22;
                 const target = done ? (k === gi ? conf[gi] : 0.02 + 0.02 * k) : 0.2;
                 const bw = (w * 0.2) * target;
-                ctx.fillStyle = 'rgba(255,255,255,0.06)';
+                ctx.fillStyle = rgba(INK, 0.06);
                 ctx.fillRect(rx, y, w * 0.2, 6);
-                ctx.fillStyle = k === gi && done ? rgba(CYAN, 0.9) : 'rgba(255,255,255,0.18)';
+                ctx.fillStyle = k === gi && done ? rgba(CYAN, 0.9) : rgba(INK, 0.18);
                 ctx.fillRect(rx, y, bw, 6);
             }
             if (done) {
@@ -586,7 +599,40 @@ function scrollEffects() {
     }, reducedMotion ? 0 : 350);
 }
 
+/* ==========================================================================
+   Theme toggle (initial theme is set inline in <head> to avoid a flash)
+   ========================================================================== */
+
+function themeToggle() {
+    const root = document.documentElement;
+    const meta = $('meta[name="theme-color"]');
+    const sync = () => {
+        readPalette();
+        meta.content = getComputedStyle(root).getPropertyValue('--bg').trim();
+        redrawers.forEach(fn => fn());
+    };
+
+    $('#themeBtn').addEventListener('click', () => {
+        const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+        root.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+        sync();
+    });
+
+    // Follow the system setting until the visitor picks a theme
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+        let saved = null;
+        try { saved = localStorage.getItem('theme'); } catch {}
+        if (saved) return;
+        root.dataset.theme = e.matches ? 'light' : 'dark';
+        sync();
+    });
+
+    sync();
+}
+
 renderContent();
+themeToggle();
 neuralField();
 projectVisuals();
 scrollEffects();

@@ -1,81 +1,36 @@
-# Omar Ait Mlouk's Portfolio
+# omarait-mlouk.github.io
 
-🌱 My personal digital garden and portfolio website.
+My portfolio: [omarait-mlouk.github.io](https://omarait-mlouk.github.io/)
 
-## About
+AI engineer and full-stack developer. The site covers my projects, writing, and experience, with a live neural-network animation in the hero and a small generative scene for each featured project.
 
-This is my personal website where I share my journey as an AI engineer and deep learning researcher. The site features:
+## Editing content
 
-- 📝 Technical blog posts and tutorials
-- 🚀 Open-source projects and demos
-- 📓 Notes and thoughts on technology
-- 🧠 Deep dives into AI/ML topics
+All text lives in [`data.js`](data.js): projects, articles, experience, education, and the tech stack. Edit it and push; the layout picks everything up.
 
-## Features
+## Files
 
-- ✨ Clean, minimalist design inspired by Tania Rascia's portfolio
-- 🌓 Dark/Light mode support
-- 📱 Fully responsive design
-- ⚡ Fast, static site with no dependencies
-- 🔒 No tracking, no ads, no analytics
-- ♿ Accessible and semantic HTML
+```
+index.html   Page structure and meta tags
+style.css    Styles, light and dark themes
+main.js      Rendering, canvas animations, scroll effects, theme toggle
+data.js      Site content
+og.png       Link preview image (1200×630)
+favicon.svg  Site icon
+```
 
-## Tech Stack
+## Running locally
 
-- Pure HTML5
-- CSS3 with CSS Variables
-- Vanilla JavaScript
-- No frameworks, no build tools - just clean code
-
-## Local Development
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/omarait-mlouk/omarait-mlouk.github.io.git
+python3 -m http.server 8000
 ```
 
-2. Open `index.html` in your browser or use a local server:
-```bash
-python -m http.server 8000
-# or
-npx serve
-```
+Then open http://localhost:8000.
 
-## Structure
-
-```
-├── index.html          # Main portfolio page
-├── about.html         # About me page
-├── styles.css         # Main stylesheet
-├── about.css          # About page styles
-├── script.js          # JavaScript functionality
-└── README.md          # This file
-```
-
-## Color Palette
-
-### Light Mode
-- Background: `#FAF9F6` (Warm white)
-- Text: `#1A1A1A` (Near black)
-- Links: `#2563EB` (Blue)
-- Accent: `#F59E0B` (Amber)
-
-### Dark Mode
-- Background: `#0F0F0F` (Deep black)
-- Text: `#FAFAFA` (Off white)
-- Links: `#60A5FA` (Light blue)
-- Accent: `#FBB040` (Light amber)
-
-## License
-
-This project is open source and available under the MIT License.
+Plain HTML, CSS, and JavaScript: no framework, no build step. Animations respect the "reduce motion" system setting.
 
 ## Contact
 
-- Email: omar.aitmlouk@gmail.com
+- Email: omaraitmlouk.per@gmail.com
 - GitHub: [@omarait-mlouk](https://github.com/omarait-mlouk)
-- LinkedIn: [Omar Ait Mlouk](https://linkedin.com/in/omarait-mlouk)
-
----
-
-Made with ❤️ by Omar Ait Mlouk
+- LinkedIn: [aitmloukomar](https://www.linkedin.com/in/aitmloukomar)

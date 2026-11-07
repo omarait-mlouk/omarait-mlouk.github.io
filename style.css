@@ -282,6 +282,51 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     to { opacity: 1; transform: none; }
 }
 
+/* Tilt lives on its own layer so it doesn't fight the float animation */
+.photo-tilt {
+    --rx: 0deg;
+    --ry: 0deg;
+    --sx: 50%;
+    --sy: 30%;
+    pointer-events: auto;
+    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform 0.6s var(--ease-out);
+    will-change: transform;
+}
+
+.photo-tilt.tilting { transition: transform 0.12s linear; }
+
+.photo-frame {
+    overflow: hidden;
+}
+
+/* Light sheen that follows the cursor */
+.photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+    border-radius: 29px;
+    background: radial-gradient(420px circle at var(--sx) var(--sy), rgba(255, 255, 255, 0.22), transparent 45%);
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.photo-tilt.tilting .photo-frame::after { opacity: 1; }
+
+/* Dot-matrix layer that resolves into the photo on load */
+.photo-reveal {
+    position: absolute;
+    inset: 1px;
+    z-index: 1;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: 29px;
+    pointer-events: none;
+}
+
 .photo-frame {
     position: relative;
     padding: 1px;
@@ -292,7 +337,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* Soft glow behind the portrait */
-.photo-frame::before {
+.hero-photo::before {
     content: '';
     position: absolute;
     inset: 12% -10% -6%;
@@ -1026,8 +1071,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     .photo-frame,
     .photo-frame img { border-radius: 50%; }
 
-    .photo-frame { overflow: hidden; }
-
     /* Tighter crop on the face for the small round version */
     .photo-frame img {
         aspect-ratio: 1;
@@ -1081,6 +1124,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     .reveal { opacity: 1; transform: none; }
     .hero-title .word { transform: none; }
     .hero-photo { opacity: 1; transform: none; }
+    .photo-reveal { display: none; }
     .timeline::before { transform: none; }
     .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
 }

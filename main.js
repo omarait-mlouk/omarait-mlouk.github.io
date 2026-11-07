@@ -190,6 +190,25 @@ function neuralField() {
         if (best) pulses.push({ a, b: best, p: 0 });
     }
 
+    // The portrait acts as a node: nearby nodes wire into its edge
+    const photo = $('.photo-frame');
+    const WIRE = 170;
+
+    function photoRect() {
+        if (!photo) return null;
+        const r = photo.getBoundingClientRect();
+        if (r.width < 200) return null;
+        const c = canvas.getBoundingClientRect();
+        return { x: r.left - c.left, y: r.top - c.top, w: r.width, h: r.height };
+    }
+
+    function edgePoint(n, r) {
+        return {
+            x: Math.max(r.x, Math.min(n.x, r.x + r.w)),
+            y: Math.max(r.y + 20, Math.min(n.y, r.y + r.h - 20))
+        };
+    }
+
     function frame(s) {
         const { ctx, w, h, t } = s;
         ctx.clearRect(0, 0, w, h);
@@ -236,6 +255,26 @@ function neuralField() {
             }
         }
 
+        // Wires from nearby nodes into the portrait
+        const rect = photoRect();
+        if (rect) {
+            for (const n of nodes) {
+                const e = edgePoint(n, rect);
+                const d = Math.hypot(n.x - e.x, n.y - e.y);
+                if (d > WIRE || d === 0) continue;
+                ctx.strokeStyle = rgba(mix(CYAN, VIOLET, n.hue), (1 - d / WIRE) * 0.45 * FIELD);
+                ctx.beginPath();
+                ctx.moveTo(n.x, n.y);
+                ctx.lineTo(e.x, e.y);
+                ctx.stroke();
+                ctx.fillStyle = rgba(CYAN, (1 - d / WIRE) * 0.9);
+                ctx.beginPath();
+                ctx.arc(e.x, e.y, 1.6, 0, Math.PI * 2);
+                ctx.fill();
+                if (Math.random() < 0.004) pulses.push({ a: n, b: e, p: 0 });
+            }
+        }
+
         // Signals travelling along edges
         if (t - lastPulse > 0.18 && nodes.length) {
             spawnPulse();
@@ -278,6 +317,115 @@ function neuralField() {
     hero.addEventListener('pointerleave', () => { pointer.active = false; });
 
     animatedCanvas(canvas, { setup, frame });
+}
+
+/* ==========================================================================
+   Portrait: dot-matrix reveal on load, tilt + sheen on hover
+   ========================================================================== */
+
+function portrait() {
+    const canvas = $('#photoReveal');
+    const img = $('.photo-frame img');
+    const tilt = $('#photoTilt');
+    if (!canvas || !img) return;
+
+    function reveal() {
+        const rect = canvas.getBoundingClientRect();
+        if (reducedMotion || rect.width < 200) { canvas.remove(); return; }
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = rect.width;
+        const h = rect.height;
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+        const ctx = canvas.getContext('2d');
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // Sample the photo exactly as object-fit: cover crops it
+        const cell = 9;
+        const cols = Math.ceil(w / cell);
+        const rows = Math.ceil(h / cell);
+        const sample = document.createElement('canvas');
+        sample.width = cols;
+        sample.height = rows;
+        const sctx = sample.getContext('2d');
+        const scale = Math.max(w / img.naturalWidth, h / img.naturalHeight);
+        const dw = img.naturalWidth * scale;
+        const dh = img.naturalHeight * scale;
+        const ox = (w - dw) * 0.5;
+        const oy = (h - dh) * 0.28;
+        sctx.drawImage(img, ox / cell, oy / cell, dw / cell, dh / cell);
+        const px = sctx.getImageData(0, 0, cols, rows).data;
+        const lum = Array.from({ length: cols * rows }, (_, i) =>
+            (0.299 * px[i * 4] + 0.587 * px[i * 4 + 1] + 0.114 * px[i * 4 + 2]) / 255);
+
+        let start = null;
+        const DOTS_IN = 350;
+        const SCAN = 1500;
+
+        function frame(now) {
+            if (start === null) start = now;
+            const t = now - start;
+            const dotAlpha = Math.min(1, t / DOTS_IN);
+            const k = Math.max(0, Math.min(1, (t - DOTS_IN) / SCAN));
+            const scanY = (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2) * (h + 24);
+
+            ctx.clearRect(0, 0, w, h);
+            ctx.fillStyle = rgba(BG, 1);
+            ctx.fillRect(0, scanY, w, h - scanY);
+
+            for (let y = 0; y < rows; y++) {
+                const cy = y * cell + cell / 2;
+                if (cy < scanY) continue;
+                const col = mix(CYAN, VIOLET, y / rows);
+                for (let x = 0; x < cols; x++) {
+                    const l = lum[y * cols + x];
+                    ctx.fillStyle = rgba(col, (0.15 + l * 0.85) * dotAlpha);
+                    ctx.beginPath();
+                    ctx.arc(x * cell + cell / 2, cy, 0.6 + l * cell * 0.38, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            if (k > 0 && k < 1) {
+                const g = ctx.createLinearGradient(0, scanY - 28, 0, scanY + 2);
+                g.addColorStop(0, rgba(CYAN, 0));
+                g.addColorStop(1, rgba(CYAN, 0.55));
+                ctx.fillStyle = g;
+                ctx.fillRect(0, scanY - 28, w, 30);
+                ctx.fillStyle = rgba(CYAN, 0.95);
+                ctx.fillRect(0, scanY, w, 1.5);
+            }
+
+            if (k < 1) requestAnimationFrame(frame);
+            else canvas.remove();
+        }
+
+        requestAnimationFrame(frame);
+    }
+
+    const go = () => setTimeout(reveal, 250);
+    if (img.complete && img.naturalWidth) go();
+    else img.addEventListener('load', go, { once: true });
+
+    // Tilt toward the cursor (mouse and trackpad only)
+    if (!tilt || reducedMotion || !window.matchMedia('(hover: hover)').matches) return;
+    const MAX = 9;
+    tilt.addEventListener('pointermove', e => {
+        const r = tilt.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        tilt.classList.add('tilting');
+        tilt.style.setProperty('--ry', `${(x - 0.5) * MAX * 2}deg`);
+        tilt.style.setProperty('--rx', `${(0.5 - y) * MAX * 2}deg`);
+        tilt.style.setProperty('--sx', `${x * 100}%`);
+        tilt.style.setProperty('--sy', `${y * 100}%`);
+    });
+    tilt.addEventListener('pointerleave', () => {
+        tilt.classList.remove('tilting');
+        tilt.style.setProperty('--rx', '0deg');
+        tilt.style.setProperty('--ry', '0deg');
+    });
 }
 
 /* ==========================================================================
@@ -730,5 +878,6 @@ function themeToggle() {
 renderContent();
 themeToggle();
 neuralField();
+portrait();
 projectVisuals();
 scrollEffects();

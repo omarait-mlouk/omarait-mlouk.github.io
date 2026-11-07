@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=202611071053">
+    <link rel="stylesheet" href="style.css?v=202611071104">
 </head>
 <body>
     <a class="skip" href="#work">Skip to content</a>
@@ -72,8 +72,11 @@
                 </div>
                 </div>
                 <figure class="hero-photo">
-                    <div class="photo-frame">
-                        <img src="photo.jpg" alt="Portrait of Omar Ait Mlouk" width="900" height="900" fetchpriority="high">
+                    <div class="photo-tilt" id="photoTilt">
+                        <div class="photo-frame">
+                            <img src="photo.jpg" alt="Portrait of Omar Ait Mlouk" width="900" height="900" fetchpriority="high">
+                            <canvas class="photo-reveal" id="photoReveal" aria-hidden="true"></canvas>
+                        </div>
                     </div>
                 </figure>
             </div>
@@ -177,7 +180,7 @@
         <span>Written by me, not AI. Animated by a few hundred lines of JS.</span>
     </footer>
 
-    <script src="data.js?v=202611071053"></script>
-    <script src="main.js?v=202611071053"></script>
+    <script src="data.js?v=202611071104"></script>
+    <script src="main.js?v=202611071104"></script>
 </body>
 </html>

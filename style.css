@@ -257,10 +257,83 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-inner {
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 72px);
     width: 100%;
     max-width: var(--wrap);
     margin: 0 auto;
     pointer-events: none;
+}
+
+/* Portrait */
+.hero-photo {
+    position: relative;
+    justify-self: end;
+    width: 100%;
+    max-width: 340px;
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    animation: photoIn 1.2s var(--ease-out) 0.35s forwards;
+}
+
+@keyframes photoIn {
+    to { opacity: 1; transform: none; }
+}
+
+.photo-frame {
+    position: relative;
+    padding: 1px;
+    border-radius: 30px;
+    background: linear-gradient(140deg, var(--cyan), transparent 45%, transparent 60%, var(--violet));
+    box-shadow: 0 30px 80px -30px rgba(var(--violet-rgb), 0.45), 0 0 0 8px rgba(var(--ink-rgb), 0.02);
+    animation: float 7s ease-in-out 1.6s infinite;
+}
+
+/* Soft glow behind the portrait */
+.photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 12% -10% -6%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(var(--cyan-rgb), 0.22), transparent);
+    filter: blur(20px);
+}
+
+.photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 28%;
+    border-radius: 29px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.photo-chip {
+    position: absolute;
+    left: -18px;
+    bottom: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 14px 8px 12px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text);
+    background: rgba(var(--bg-rgb), 0.78);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    white-space: nowrap;
 }
 
 .hero-inner a { pointer-events: auto; }
@@ -304,7 +377,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-title {
     font-family: var(--display);
     font-weight: 600;
-    font-size: clamp(3.4rem, 12vw, 9.5rem);
+    font-size: clamp(3.4rem, 10vw, 8.2rem);
     line-height: 0.92;
     letter-spacing: -0.045em;
     margin: 28px 0 28px;
@@ -957,6 +1030,31 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ========================================================================== */
 
 @media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .hero-photo {
+        order: -1;
+        justify-self: start;
+        max-width: 120px;
+    }
+
+    .photo-frame,
+    .photo-frame img { border-radius: 50%; }
+
+    .photo-frame { overflow: hidden; }
+
+    /* Tighter crop on the face for the small round version */
+    .photo-frame img {
+        aspect-ratio: 1;
+        transform: scale(1.5);
+        transform-origin: 50% 30%;
+    }
+
+    .photo-chip { display: none; }
+
     .paths { grid-template-columns: 1fr; }
 
     .card,
@@ -1001,6 +1099,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
     .reveal { opacity: 1; transform: none; }
     .hero-title .word { transform: none; }
+    .hero-photo { opacity: 1; transform: none; }
     .timeline::before { transform: none; }
     .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
 }
